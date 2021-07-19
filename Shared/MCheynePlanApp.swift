@@ -1,5 +1,5 @@
 //
-//  mcheyne_planApp.swift
+//  MCheynePlanApp.swift
 //  Shared
 //
 //  Created by Will Walker on 7/19/21.
@@ -8,10 +8,14 @@
 import SwiftUI
 
 @main
-struct mcheyne_planApp: App {
+struct MCheynePlanApp: App {
+    
+    @StateObject var model: Model = Model()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(model)
         }
     }
 }
