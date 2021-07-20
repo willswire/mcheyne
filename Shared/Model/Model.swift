@@ -21,3 +21,9 @@ class Model: ObservableObject {
         return self.readings[day] ?? noReadings
     }
 }
+
+extension String: Identifiable {
+    public var id: UUID {
+        UUID(uuidString: self) ?? UUID()
+    }
+}
