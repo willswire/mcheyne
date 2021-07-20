@@ -99,9 +99,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6B9E16A926A5F81700CED846 /* The M'Cheyne Plan (iOS) */ = {
+		6B9E16A926A5F81700CED846 /* The M'Cheyne Plan */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6B9E16BE26A5F81700CED846 /* Build configuration list for PBXNativeTarget "The M'Cheyne Plan (iOS)" */;
+			buildConfigurationList = 6B9E16BE26A5F81700CED846 /* Build configuration list for PBXNativeTarget "The M'Cheyne Plan" */;
 			buildPhases = (
 				6B9E16A626A5F81700CED846 /* Sources */,
 				6B9E16A726A5F81700CED846 /* Frameworks */,
@@ -111,7 +111,7 @@
 			);
 			dependencies = (
 			);
-			name = "The M'Cheyne Plan (iOS)";
+			name = "The M'Cheyne Plan";
 			productName = "mcheyne-plan (iOS)";
 			productReference = 6B9E16AA26A5F81700CED846 /* The M'Cheyne Plan.app */;
 			productType = "com.apple.product-type.application";
@@ -143,7 +143,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6B9E16A926A5F81700CED846 /* The M'Cheyne Plan (iOS) */,
+				6B9E16A926A5F81700CED846 /* The M'Cheyne Plan */,
 			);
 		};
 /* End PBXProject section */
@@ -348,7 +348,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6B9E16BE26A5F81700CED846 /* Build configuration list for PBXNativeTarget "The M'Cheyne Plan (iOS)" */ = {
+		6B9E16BE26A5F81700CED846 /* Build configuration list for PBXNativeTarget "The M'Cheyne Plan" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6B9E16BF26A5F81700CED846 /* Debug */,

@@ -7,7 +7,7 @@
 
 import Foundation
 
-let DATA: Dictionary<Int, [String]> = [
+let DATA: Dictionary<Int, Array<String>> = [
     1: ["Genesis 1", "Matthew 1", "Ezra 1", "Acts 1"],
     2: ["Genesis 2", "Matthew 2", "Ezra 2", "Acts 2"],
     3: ["Genesis 3", "Matthew 3", "Ezra 3", "Acts 3"],

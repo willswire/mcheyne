@@ -15,7 +15,7 @@ class Model: ObservableObject {
     }
     
     func getReadingsFor(_ date: Date = Date()) -> [String] {
-        let noReadings = ["No reading", "No reading", "No reading", "No reading"]
+        let noReadings = Array(repeating: "No reading", count: 4)
         let cal = Calendar.current
         guard let day = cal.ordinality(of: .day, in: .year, for: date) else { return noReadings }
         return self.readings[day] ?? noReadings
