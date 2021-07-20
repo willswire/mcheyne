@@ -12,6 +12,8 @@
 		6B9E16B826A5F81700CED846 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9E16A426A5F81500CED846 /* ContentView.swift */; };
 		6B9E16BA26A5F81700CED846 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B9E16A526A5F81700CED846 /* Assets.xcassets */; };
 		6B9E16C626A60FD100CED846 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9E16C526A60FD100CED846 /* Model.swift */; };
+		6BAB39A926A7703700AC2874 /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAB39A826A7703700AC2874 /* PlanView.swift */; };
+		6BAB39AB26A7709F00AC2874 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAB39AA26A7709F00AC2874 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		6B9E16AA26A5F81700CED846 /* The M'Cheyne Plan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The M'Cheyne Plan.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B9E16AD26A5F81700CED846 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B9E16C526A60FD100CED846 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		6BAB39A826A7703700AC2874 /* PlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanView.swift; sourceTree = "<group>"; };
+		6BAB39AA26A7709F00AC2874 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,8 @@
 			isa = PBXGroup;
 			children = (
 				6B9E16A426A5F81500CED846 /* ContentView.swift */,
+				6BAB39AA26A7709F00AC2874 /* SettingsView.swift */,
+				6BAB39A826A7703700AC2874 /* PlanView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -161,7 +167,9 @@
 				6B9E16C626A60FD100CED846 /* Model.swift in Sources */,
 				6B9E16B826A5F81700CED846 /* ContentView.swift in Sources */,
 				6B9E16B626A5F81700CED846 /* MCheynePlanApp.swift in Sources */,
+				6BAB39AB26A7709F00AC2874 /* SettingsView.swift in Sources */,
 				6B3136AD26A7068000515CBF /* Data.swift in Sources */,
+				6BAB39A926A7703700AC2874 /* PlanView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
