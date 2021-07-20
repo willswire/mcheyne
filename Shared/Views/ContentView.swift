@@ -28,18 +28,17 @@ struct HeaderView: View {
             Image(systemName: "book.closed.fill")
                 .font(.system(size: 50))
             
-            VStack {
+            VStack(alignment: .leading) {
                 Text("The M'Cheyne")
                     .font(.largeTitle)
                     .bold()
-                    .padding(.horizontal)
                 
                 Text("Daily Bible Reading Plan")
                     .font(.title3)
                     .bold()
             }
+            .padding()
         }
-        .padding(.bottom)
     }
 }
 
@@ -47,38 +46,50 @@ struct ReadingSelectionsView: View {
     
     @Binding var selectedDate: Date
     @EnvironmentObject var model: Model
-    @State private var isCompleted: Bool = false
+    
     @State private var readings: [String] = [""]
     
     var body: some View {
         ForEach(readings) { reading in
-            ZStack(alignment: .leading) {
-                RoundedRectangle(cornerRadius: 25)
-                    .fill(Color(.secondarySystemBackground))
-                    .frame(maxHeight: 75)
-                HStack {
-                    Button(action: toggle, label: {
-                        Image(systemName: isCompleted ?  "largecircle.fill.circle" : "circle")
-                            .font(.title2)
-                    })
-                    Text(reading)
-                        .foregroundColor(isCompleted ? .gray : .black)
-                        .font(.title2)
-                        .padding()
-                }
-                .padding(.horizontal)
-            }
+            ReadingSelectionView(reading: reading)
         }
         .padding(.horizontal)
         .onAppear(perform: {
-            self.readings = model.getReadingsFor(self.selectedDate)
+            readings = model.getReadingsFor(selectedDate)
         })
+        .onChange(of: selectedDate, perform: { value in
+            readings = model.getReadingsFor(value)
+        })
+    }
+}
+
+struct ReadingSelectionView: View {
+    
+    @State private var isCompleted: Bool = false
+    var reading: String = ""
+    
+    var body: some View {
+        ZStack(alignment: .leading) {
+            RoundedRectangle(cornerRadius: 25)
+                .fill(Color(.secondarySystemBackground))
+                .frame(maxHeight: 75)
+            HStack {
+                Button(action: toggle, label: {
+                    Image(systemName: isCompleted ?  "largecircle.fill.circle" : "circle")
+                        .font(.title2)
+                })
+                Text(reading)
+                    .foregroundColor(isCompleted ? .gray : .black)
+                    .font(.title2)
+                    .padding()
+            }
+            .padding(.horizontal)
+        }
     }
     
     func toggle() {
-        self.isCompleted.toggle()
+        isCompleted.toggle()
     }
-    
 }
 
 struct DateSelectionView: View {
