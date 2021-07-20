@@ -8,9 +8,16 @@
 import Foundation
 
 class Model: ObservableObject {
-    private let readings: Dictionary = [1: ["Genesis 1", "Matthew 1", "Ezra 1", "Acts 1"]]
+    private let readings: Dictionary = DATA
     
     func getReadings() -> Dictionary<Int, [String]> {
         return self.readings
+    }
+    
+    func getReadingsFor(_ date: Date = Date()) -> [String] {
+        let noReadings = ["No reading", "No reading", "No reading", "No reading"]
+        let cal = Calendar.current
+        guard let day = cal.ordinality(of: .day, in: .year, for: date) else { return noReadings }
+        return self.readings[day] ?? noReadings
     }
 }

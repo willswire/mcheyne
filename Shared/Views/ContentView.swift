@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @EnvironmentObject var model: Model
-    @State private var date = Date()
+    @State private var selectedDate = Date()
     
     private let DAY_IN_SECONDS: Double = 86400
     private let today = Date()
@@ -20,7 +20,7 @@ struct ContentView: View {
 
             HeaderView()
             
-            ForEach(model.getReadings()[1]!, id: \.self) { reading in
+            ForEach(model.getReadingsFor(selectedDate), id: \.self) { reading in
                 Button(action: {}, label: {
                     ZStack(alignment: .leading) {
                         RoundedRectangle(cornerRadius: 25)
@@ -45,7 +45,7 @@ struct ContentView: View {
                     Image(systemName: "arrow.backward")
                 })
                 Spacer()
-                Text(self.date, style: .date)
+                Text(self.selectedDate, style: .date)
                 Spacer()
                 Button(action: goForward, label: {
                     Image(systemName: "arrow.forward")
@@ -54,7 +54,7 @@ struct ContentView: View {
             .padding()
             .padding(.horizontal, 75)
             
-            if (abs(date.distance(to: today)) > (DAY_IN_SECONDS / 2)) {
+            if (abs(selectedDate.distance(to: today)) > (DAY_IN_SECONDS / 2)) {
                 Button(action: returnToToday, label: {
                     Text("Today")
                 })
@@ -64,17 +64,17 @@ struct ContentView: View {
     }
     
     func goBack() {
-        self.date -= DAY_IN_SECONDS
+        self.selectedDate -= DAY_IN_SECONDS
         print("Go backwards!")
     }
     
     func goForward() {
-        self.date += DAY_IN_SECONDS
+        self.selectedDate += DAY_IN_SECONDS
         print("Go forwards!")
     }
     
     func returnToToday() {
-        self.date = self.today
+        self.selectedDate = self.today
         print("Return to today!")
     }
 }
