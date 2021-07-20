@@ -11,32 +11,18 @@ struct ContentView: View {
     
     @EnvironmentObject var model: Model
     @State private var selectedDate = Date()
+    @State private var isComplete = false
     
     private let DAY_IN_SECONDS: Double = 86400
     private let today = Date()
     
     var body: some View {
         VStack {
-
+            
             HeaderView()
             
             ForEach(model.getReadingsFor(selectedDate), id: \.self) { reading in
-                Button(action: {}, label: {
-                    ZStack(alignment: .leading) {
-                        RoundedRectangle(cornerRadius: 25)
-                            .fill(Color(.secondarySystemBackground))
-                            .frame(maxHeight: 75)
-                        HStack {
-                            Image(systemName: "circle")
-                                .font(.title2)
-                            Text(reading)
-                                .foregroundColor(.black)
-                                .font(.title2)
-                                .padding()
-                        }
-                        .padding(.horizontal)
-                    }
-                })
+                ReadingSelectionView(reading: reading)
             }
             .padding(.horizontal)
             
@@ -98,6 +84,35 @@ struct HeaderView: View {
         }
         .padding(.bottom)
     }
+}
+
+struct ReadingSelectionView: View {
+    var reading: String
+    @State private var isCompleted: Bool = false
+    
+    var body: some View {
+        ZStack(alignment: .leading) {
+            RoundedRectangle(cornerRadius: 25)
+                .fill(Color(.secondarySystemBackground))
+                .frame(maxHeight: 75)
+            HStack {
+                Button(action: toggle, label: {
+                    Image(systemName: isCompleted ?  "largecircle.fill.circle" : "circle")
+                        .font(.title2)
+                })
+                Text(reading)
+                    .foregroundColor(isCompleted ? .gray : .black)
+                    .font(.title2)
+                    .padding()
+            }
+            .padding(.horizontal)
+        }
+    }
+    
+    func toggle() {
+        self.isCompleted.toggle()
+    }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
