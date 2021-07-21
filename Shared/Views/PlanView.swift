@@ -45,56 +45,6 @@ struct HeaderView: View {
     }
 }
 
-struct ReadingSelectionsView: View {
-    
-    @Binding var selectedDate: Date
-    @EnvironmentObject var model: Model
-    
-    @State private var readings: [String] = [""]
-    
-    var body: some View {
-        ForEach(readings) { reading in
-            ReadingSelectionView(reading: reading)
-        }
-        .padding(.horizontal)
-        .onAppear(perform: {
-            readings = model.getReadingsFor(selectedDate)
-        })
-        .onChange(of: selectedDate, perform: { value in
-            readings = model.getReadingsFor(value)
-        })
-    }
-}
-
-struct ReadingSelectionView: View {
-    
-    @State private var isCompleted: Bool = false
-    var reading: String = ""
-    
-    var body: some View {
-        ZStack(alignment: .leading) {
-            RoundedRectangle(cornerRadius: 25)
-                .fill(Color(.secondarySystemBackground))
-                .frame(maxHeight: 75)
-            HStack {
-                Button(action: toggle, label: {
-                    Image(systemName: isCompleted ?  "largecircle.fill.circle" : "circle")
-                        .font(.title2)
-                })
-                Text(reading)
-                    .font(.title2)
-                    .padding()
-            }
-            .padding(.horizontal)
-        }
-    }
-    
-    func toggle() {
-        print("\(!isCompleted ? "Read" : "Un-read") \(reading)")
-        isCompleted.toggle()
-    }
-}
-
 struct DateSelectionView: View {
     @Binding var selectedDate: Date
     private let DAY_IN_SECONDS: Double = 86400

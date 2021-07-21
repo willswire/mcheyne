@@ -1,13 +1,55 @@
 //
-//  Data.swift
-//  mcheyne-plan
+//  ReadingCollection.swift
+//  The M'Cheyne Plan
 //
-//  Created by Will Walker on 7/20/21.
+//  Created by Will Walker on 7/21/21.
 //
 
 import Foundation
 
-let DATA: Dictionary<Int, Array<String>> = [
+struct ReadingSelections {
+    typealias DictionaryType = [Int : Array<String>]
+    
+    // Underlying, private storage, that is the same type of dictionary
+    // that we previously was using at the call site
+    private var selections = DictionaryType()
+    
+    // Enable our collection to be initialized with a dictionary
+    init() {
+        self.selections = SELECTIONS
+    }
+}
+
+extension ReadingSelections: Collection {
+    // Required nested types, that tell Swift what our collection contains
+    typealias Index = DictionaryType.Index
+    typealias Element = DictionaryType.Element
+    
+    // The upper and lower bounds of the collection, used in iterations
+    var startIndex: Index { return selections.startIndex }
+    var endIndex: Index { return selections.endIndex }
+    
+    // Required subscript, based on a dictionary index
+    subscript(index: Index) -> DictionaryType.Element {
+        get { return selections[index] }
+    }
+    
+    // Method that returns the next index when iterating
+    func index(after i: Index) -> Index {
+        return selections.index(after: i)
+    }
+    
+    subscript(date: Date) -> [String] {
+        get {
+            let none = Array(repeating: "No reading", count: 4)
+            let cal = Calendar.current
+            guard let day = cal.ordinality(of: .day, in: .year, for: date) else { return none }
+            return selections[day] ?? none
+        }
+    }
+}
+
+private let SELECTIONS = [
     1: ["Genesis 1", "Matthew 1", "Ezra 1", "Acts 1"],
     2: ["Genesis 2", "Matthew 2", "Ezra 2", "Acts 2"],
     3: ["Genesis 3", "Matthew 3", "Ezra 3", "Acts 3"],
@@ -374,3 +416,4 @@ let DATA: Dictionary<Int, Array<String>> = [
     364: ["2 Chronicles 35", "Revelation 21", "Malachi 3", "John 20"],
     365: ["2 Chronicles 36", "Revelation 22", "Malachi 4", "John 21"],
 ]
+
