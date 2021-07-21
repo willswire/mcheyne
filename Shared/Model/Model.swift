@@ -10,11 +10,11 @@ import Foundation
 class Model: ObservableObject {
     private let readings: Dictionary = DATA
     
-    func getReadings() -> Dictionary<Int, [String]> {
+    func getReadings() -> Dictionary<Int, Array<String>> {
         return self.readings
     }
     
-    func getReadingsFor(_ date: Date = Date()) -> [String] {
+    func getReadingsFor(_ date: Date = Date()) -> Array<String> {
         let noReadings = Array(repeating: "No reading", count: 4)
         let cal = Calendar.current
         guard let day = cal.ordinality(of: .day, in: .year, for: date) else { return noReadings }
