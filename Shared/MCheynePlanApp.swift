@@ -10,12 +10,9 @@ import SwiftUI
 @main
 struct MCheynePlanApp: App {
     
-    @StateObject var model: Model = Model()
-    
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(model)
         }
     }
 }

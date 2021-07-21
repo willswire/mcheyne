@@ -9,14 +9,13 @@ import SwiftUI
 
 struct PlanView: View {
     
-    @EnvironmentObject var model: Model
     @State private var selectedDate = Date()
     
     var body: some View {
         VStack {
             HeaderView()
             Spacer()
-            ReadingSelectionsView(selectedDate: $selectedDate)
+            ReadingSelectionView(selectedDate: $selectedDate)
             Spacer()
             DateSelectionView(selectedDate: $selectedDate)
             Spacer()
@@ -95,6 +94,5 @@ struct DateSelectionView: View {
 struct PlanView_Previews: PreviewProvider {
     static var previews: some View {
         PlanView()
-            .environmentObject(Model())
     }
 }

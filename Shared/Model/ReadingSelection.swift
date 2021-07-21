@@ -1,55 +1,44 @@
 //
-//  ReadingCollection.swift
-//  The M'Cheyne Plan
+//  Model.swift
+//  mcheyne-plan
 //
-//  Created by Will Walker on 7/21/21.
+//  Created by Will Walker on 7/19/21.
 //
 
 import Foundation
 
-struct ReadingSelections {
-    typealias DictionaryType = [Int : Array<String>]
+struct Passage: Identifiable {
+    var reference: String
+    var id: UUID = UUID()
+    var hasRead: Bool = false
     
-    // Underlying, private storage, that is the same type of dictionary
-    // that we previously was using at the call site
-    private var selections = DictionaryType()
-    
-    // Enable our collection to be initialized with a dictionary
-    init() {
-        self.selections = SELECTIONS
+    init(_ reference: String = "None") {
+        self.reference = reference
     }
 }
 
-extension ReadingSelections: Collection {
-    // Required nested types, that tell Swift what our collection contains
-    typealias Index = DictionaryType.Index
-    typealias Element = DictionaryType.Element
-    
-    // The upper and lower bounds of the collection, used in iterations
-    var startIndex: Index { return selections.startIndex }
-    var endIndex: Index { return selections.endIndex }
-    
-    // Required subscript, based on a dictionary index
-    subscript(index: Index) -> DictionaryType.Element {
-        get { return selections[index] }
+struct ReadingSelection: Identifiable {
+    var date: Date = Date()
+    var passages: Array<Passage> = []
+    var id: Int {
+        let cal = Calendar.current
+        guard let day = cal.ordinality(of: .day, in: .year, for: date) else { return 0 }
+        return day
     }
     
-    // Method that returns the next index when iterating
-    func index(after i: Index) -> Index {
-        return selections.index(after: i)
-    }
-    
-    subscript(date: Date) -> [String] {
-        get {
-            let none = Array(repeating: "No reading", count: 4)
-            let cal = Calendar.current
-            guard let day = cal.ordinality(of: .day, in: .year, for: date) else { return none }
-            return selections[day] ?? none
+    init(_ date: Date) {
+        self.date = date;
+        if let references = PLAN_DATA[id] {
+            for reference in references {
+                self.passages.append(Passage(reference))
+            }
+        } else {
+            self.passages = Array(repeating: Passage(), count: 4)
         }
     }
 }
 
-private let SELECTIONS = [
+private let PLAN_DATA = [
     1: ["Genesis 1", "Matthew 1", "Ezra 1", "Acts 1"],
     2: ["Genesis 2", "Matthew 2", "Ezra 2", "Acts 2"],
     3: ["Genesis 3", "Matthew 3", "Ezra 3", "Acts 3"],
