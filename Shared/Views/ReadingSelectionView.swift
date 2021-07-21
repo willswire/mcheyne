@@ -9,13 +9,21 @@ import SwiftUI
 
 struct ReadingSelectionView: View {
     
-    @Binding var selectedDate: Date
+    @EnvironmentObject var model: Model
+    @Binding var date: Date
+    @State var selection = ReadingSelection(["None"])
     
     var body: some View {
-        ForEach(ReadingSelection(selectedDate).passages) { passage in
+        ForEach(selection.getPassages()) { passage in
             PassageView(passage: passage)
         }
         .padding(.horizontal)
+        .onAppear(perform: {
+            self.selection = model.getSelection(for: date)
+        })
+        .onChange(of: date, perform: { value in
+            self.selection = model.getSelection(for: date)
+        })
     }
 }
 
@@ -48,7 +56,8 @@ struct PassageView: View {
 struct ReadingSelectionView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            ReadingSelectionView(selectedDate: .constant(Date()))
+            ReadingSelectionView(date: .constant(Date()))
+                .environmentObject(Model(Date()))
         }
     }
 }
