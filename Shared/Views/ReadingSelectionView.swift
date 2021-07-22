@@ -50,6 +50,7 @@ struct ReadingSelectionView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             ReadingSelectionView()
+                .environmentObject(Plan())
         }
     }
 }
