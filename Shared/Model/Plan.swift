@@ -80,9 +80,7 @@ class Plan: ObservableObject {
     func getCurrentPassages() -> Array<Passage> {
         let cal = Calendar.current
         if let startDateDay = cal.ordinality(of: .day, in: .year, for: startDate) {
-            //print("This plan started on day \(startDateDay) of 365")
             if let currentDateDay = cal.ordinality(of: .day, in: .year, for: currentDate) {
-                //print("ReadingSelection #\(currentDateDay - startDateDay) for day \(currentDateDay) of 365")
                 return (plan[currentDateDay - startDateDay + 1] ?? ReadingSelection()).getPassages()
             } else {
                 return ReadingSelection().getPassages()

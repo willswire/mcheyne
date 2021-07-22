@@ -19,14 +19,10 @@ struct ContentView: View {
                         Image(systemName: "gear")
                     })
                 })
-                .sheet(isPresented: $showSettingsView, onDismiss: settingsDismissed, content: {
+                .sheet(isPresented: $showSettingsView, content: {
                     SettingsView()
                 })
         }
-    }
-    
-    func settingsDismissed() {
-        print("SettingsView dismissed!")
     }
     
     func toggleSettingsView() {

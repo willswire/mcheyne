@@ -33,9 +33,7 @@ struct SettingsView: View {
             .alert(isPresented: $showResetAlert, content: {
                 Alert(title: Text("Reset Progress"),
                       message: Text("All reading plan progress will be erased. A new plan will be created starting on today's date."),
-                      primaryButton: .cancel({
-                        print("Canceled reset!")
-                      }),
+                      primaryButton: .cancel(),
                       secondaryButton: .destructive(Text("Reset"), action: {
                         reset()
                       })
@@ -56,7 +54,6 @@ struct SettingsView: View {
     
     func reset() {
         model.reset()
-        print("Reset progress")
     }
 }
 

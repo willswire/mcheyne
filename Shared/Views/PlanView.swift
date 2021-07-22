@@ -71,38 +71,35 @@ struct DateSelectionView: View {
             .padding()
             .padding(.horizontal, 75)
             
-
-                Button(action: returnToToday, label: {
-                    if (abs(model.currentDate.distance(to: Date())) > (DAY_IN_SECONDS / 2)) {
-                            RoundedRectangle(cornerRadius: 25)
-                                .fill(Color(.secondarySystemBackground))
-                                .frame(maxWidth: 90, maxHeight: 30)
-                                .overlay(Text("Today"))
-                    } else {
-                        RoundedRectangle(cornerRadius: 25)
-                            .fill(Color(.secondarySystemBackground))
-                            .frame(maxWidth: 90, maxHeight: 30)
-                            .overlay(Text("Today"))
-                            .hidden()
-                            .disabled(true)
-                    }
-                })
+            
+            Button(action: returnToToday, label: {
+                if (abs(model.currentDate.distance(to: Date())) > (DAY_IN_SECONDS / 2)) {
+                    RoundedRectangle(cornerRadius: 25)
+                        .fill(Color(.secondarySystemBackground))
+                        .frame(maxWidth: 90, maxHeight: 30)
+                        .overlay(Text("Today"))
+                } else {
+                    RoundedRectangle(cornerRadius: 25)
+                        .fill(Color(.secondarySystemBackground))
+                        .frame(maxWidth: 90, maxHeight: 30)
+                        .overlay(Text("Today"))
+                        .hidden()
+                        .disabled(true)
+                }
+            })
         }
     }
     
     func goBack() {
         model.currentDate -= DAY_IN_SECONDS
-        //print("Go backwards!")
     }
     
     func goForward() {
         model.currentDate += DAY_IN_SECONDS
-        //print("Go forwards!")
     }
     
     func returnToToday() {
         model.currentDate = Date()
-        //print("Return to today!")
     }
 }
 
