@@ -29,10 +29,10 @@ struct PassageView: View {
                     .frame(maxWidth: 500, maxHeight: 75)
                 HStack {
                     
-                    Image(systemName: passage.hasRead ?  "largecircle.fill.circle" : "circle")
+                    Image(systemName: passage.hasRead() ?  "largecircle.fill.circle" : "circle")
                         .font(.title2)
                     
-                    Text(passage.reference)
+                    Text(passage.description)
                         .font(.title2)
                         .padding()
                 }
@@ -42,7 +42,7 @@ struct PassageView: View {
     }
     
     func toggle() {
-        passage.hasRead.toggle()
+        passage.hasRead() ? passage.unread() : passage.read()
     }
 }
 

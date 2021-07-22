@@ -10,17 +10,35 @@ import Foundation
 let DAY_IN_SECONDS: Double = 86400
 
 class Passage: Identifiable, ObservableObject, CustomStringConvertible {
-    var description: String {
-        reference
-    }
     
+    let defaults = UserDefaults.standard
+    @Published private var completed: Bool
+    var description: String
     var id: Int
-    var reference: String
-    @Published var hasRead: Bool = false
     
     init(_ reference: String = "None", id: Int) {
-        self.reference = reference
+        self.description = reference
         self.id = id
+        self.completed = defaults.bool(forKey: reference)
+        save()
+    }
+    
+    func hasRead() -> Bool {
+        return self.completed
+    }
+    
+    func read() {
+        self.completed = true
+        save()
+    }
+    
+    func unread() {
+        self.completed = false
+        save()
+    }
+    
+    func save() {
+        defaults.set(completed, forKey: description)
     }
 }
 
