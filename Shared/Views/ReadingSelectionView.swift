@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct ReadingSelectionView: View {
-    @Binding var date: Date
     @EnvironmentObject var model: Plan
     
     var body: some View {
-        ForEach(model.getSelection(for: date).getPassages()) { passage in
+        ForEach(model.getCurrentSelection().getPassages()) { passage in
             PassageView(passage: passage)
         }
         .padding(.horizontal)
@@ -50,7 +49,7 @@ struct PassageView: View {
 struct ReadingSelectionView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            ReadingSelectionView(date: .constant(Date()))
+            ReadingSelectionView()
         }
     }
 }

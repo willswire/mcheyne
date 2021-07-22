@@ -9,16 +9,15 @@ import SwiftUI
 
 struct PlanView: View {
     
-    @State private var date = Date()
     @EnvironmentObject var model: Plan
     
     var body: some View {
         VStack {
             HeaderView()
             Spacer()
-            ReadingSelectionView(date: $date)
+            ReadingSelectionView()
             Spacer()
-            DateSelectionView(date: $date)
+            DateSelectionView()
             Spacer()
         }
         .padding()
@@ -46,7 +45,7 @@ struct HeaderView: View {
 }
 
 struct DateSelectionView: View {
-    @Binding var date: Date
+    @State var date = Date()
     @EnvironmentObject var model: Plan
     private let DAY_IN_SECONDS: Double = 86400
     private let today = Date()
@@ -81,16 +80,19 @@ struct DateSelectionView: View {
     
     func goBack() {
         self.date -= DAY_IN_SECONDS
+        self.model.currentDate = date
         //print("Go backwards!")
     }
     
     func goForward() {
         self.date += DAY_IN_SECONDS
+        self.model.currentDate = date
         //print("Go forwards!")
     }
     
     func returnToToday() {
         self.date = self.today
+        self.model.currentDate = date
         //print("Return to today!")
     }
 }

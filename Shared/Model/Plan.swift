@@ -37,21 +37,22 @@ class ReadingSelection: ObservableObject {
 }
 
 class Plan: ObservableObject {
-    private var selections: Array<ReadingSelection>
-    private var startDate: Date = Date()
+    @Published var selections: Array<ReadingSelection>
+    @Published var startDate: Date = Date()
+    @Published var currentDate: Date = Date()
     
     init(_ startDate: Date = Date()) {
         self.startDate = startDate
         self.selections = RAW_PLAN_DATA.map { ReadingSelection($0) }
     }
     
-    func getSelection(for date: Date) -> ReadingSelection {
+    func getCurrentSelection() -> ReadingSelection {
         let cal = Calendar.current
         if let startDateDay = cal.ordinality(of: .day, in: .year, for: startDate) {
             print("This plan started on day \(startDateDay) of 365")
-            if let dateDay = cal.ordinality(of: .day, in: .year, for: date) {
-                print("ReadingSelection #\(dateDay - startDateDay) for day \(dateDay) of 365")
-                return selections[dateDay - startDateDay]
+            if let currentDateDay = cal.ordinality(of: .day, in: .year, for: currentDate) {
+                print("ReadingSelection #\(currentDateDay - startDateDay) for day \(currentDateDay) of 365")
+                return selections[currentDateDay - startDateDay]
             } else {
                 return ReadingSelection()
             }
