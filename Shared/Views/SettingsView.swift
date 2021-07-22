@@ -9,15 +9,14 @@ import SwiftUI
 
 struct SettingsView: View {
     
+    @EnvironmentObject var model: Plan
     @Environment(\.presentationMode) var presentationMode
-    @State private var startDate: Date = Date()
     @State private var showResetAlert: Bool = false
     
     var body: some View {
         NavigationView {
             Form {
                 Section(header: Text("READING PLAN")) {
-                    DatePicker("Start Date", selection: $startDate, displayedComponents: .date)
                     Button("Reset Progress") {
                         showResetAlert = true
                     }

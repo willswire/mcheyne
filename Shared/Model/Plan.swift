@@ -38,6 +38,7 @@ class ReadingSelection: ObservableObject {
 
 class Plan: ObservableObject {
     private var selections: Array<ReadingSelection>
+    // consider Dictionary<Date,ReadingSelection>
     @Published var startDate: Date = Date()
     @Published var currentDate: Date = Date()
     
@@ -49,9 +50,9 @@ class Plan: ObservableObject {
     func getCurrentSelection() -> ReadingSelection {
         let cal = Calendar.current
         if let startDateDay = cal.ordinality(of: .day, in: .year, for: startDate) {
-//            print("This plan started on day \(startDateDay) of 365")
+            //print("This plan started on day \(startDateDay) of 365")
             if let currentDateDay = cal.ordinality(of: .day, in: .year, for: currentDate) {
-//                print("ReadingSelection #\(currentDateDay - startDateDay) for day \(currentDateDay) of 365")
+                //print("ReadingSelection #\(currentDateDay - startDateDay) for day \(currentDateDay) of 365")
                 return selections[currentDateDay - startDateDay]
             } else {
                 return ReadingSelection()
