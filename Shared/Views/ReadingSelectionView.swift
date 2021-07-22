@@ -26,7 +26,7 @@ struct PassageView: View {
             ZStack(alignment: .leading) {
                 RoundedRectangle(cornerRadius: 25)
                     .fill(Color(.secondarySystemBackground))
-                    .frame(maxHeight: 75)
+                    .frame(maxWidth: 500, maxHeight: 75)
                 HStack {
                     
                     Image(systemName: passage.hasRead ?  "largecircle.fill.circle" : "circle")

@@ -52,12 +52,12 @@ struct DateSelectionView: View {
         VStack {
             HStack {
                 Button(action: goBack, label: {
-                    if (abs(model.currentDate.distance(to: model.getStartDate())) > DAY_IN_SECONDS) {
+                    if (abs(model.currentDate.distance(to: model.startDate)) > DAY_IN_SECONDS) {
                         Image(systemName: "arrow.backward")
                     }
                 })
                 Spacer()
-                Text(model.currentDate, style: .date)
+                Text(model.currentDate, style: .date).fixedSize()
                 Spacer()
                 Button(action: goForward, label: {
                     Image(systemName: "arrow.forward")
