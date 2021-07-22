@@ -7,7 +7,13 @@
 
 import Foundation
 
-class Passage: Identifiable, ObservableObject {
+let DAY_IN_SECONDS: Double = 86400
+
+class Passage: Identifiable, ObservableObject, CustomStringConvertible {
+    var description: String {
+        reference
+    }
+    
     var id: Int
     var reference: String
     @Published var hasRead: Bool = false
@@ -37,28 +43,27 @@ class ReadingSelection: ObservableObject {
 }
 
 class Plan: ObservableObject {
-    private var selections: Array<ReadingSelection>
-    // consider Dictionary<Date,ReadingSelection>
+    @Published var plan: Dictionary<Int,ReadingSelection>
     @Published var startDate: Date = Date()
     @Published var currentDate: Date = Date()
     
     init(_ startDate: Date = Date()) {
         self.startDate = startDate
-        self.selections = RAW_PLAN_DATA.map { ReadingSelection($0) }
+        self.plan = Dictionary(uniqueKeysWithValues: zip(1...365, RAW_PLAN_DATA.map { ReadingSelection($0) }))
     }
     
-    func getCurrentSelection() -> ReadingSelection {
+    func getCurrentPassages() -> Array<Passage> {
         let cal = Calendar.current
         if let startDateDay = cal.ordinality(of: .day, in: .year, for: startDate) {
             //print("This plan started on day \(startDateDay) of 365")
             if let currentDateDay = cal.ordinality(of: .day, in: .year, for: currentDate) {
                 //print("ReadingSelection #\(currentDateDay - startDateDay) for day \(currentDateDay) of 365")
-                return selections[currentDateDay - startDateDay]
+                return (plan[currentDateDay - startDateDay + 1] ?? ReadingSelection()).getPassages()
             } else {
-                return ReadingSelection()
+                return ReadingSelection().getPassages()
             }
         } else {
-            return ReadingSelection()
+            return ReadingSelection().getPassages()
         }
     }
 }

@@ -46,7 +46,6 @@ struct HeaderView: View {
 
 struct DateSelectionView: View {
     @EnvironmentObject var model: Plan
-    private let DAY_IN_SECONDS: Double = 86400
     
     var body: some View {
         VStack {

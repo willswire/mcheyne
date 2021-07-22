@@ -11,7 +11,7 @@ struct ReadingSelectionView: View {
     @EnvironmentObject var model: Plan
     
     var body: some View {
-        ForEach(model.getCurrentSelection().getPassages()) { passage in
+        ForEach(model.getCurrentPassages()) { passage in
             PassageView(passage: passage)
         }
         .padding(.horizontal)
