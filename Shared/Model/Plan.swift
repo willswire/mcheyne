@@ -59,14 +59,22 @@ class ReadingSelection: ObservableObject {
     }
 }
 
+
 class Plan: ObservableObject {
     @Published var plan: Dictionary<Int,ReadingSelection>
     @Published var startDate: Date = Date()
     @Published var currentDate: Date = Date()
     
-    init(_ startDate: Date = Date()) {
-        self.startDate = startDate
-        self.plan = Dictionary(uniqueKeysWithValues: zip(1...365, RAW_PLAN_DATA.map { ReadingSelection($0) }))
+    init() {
+        if let startDate = UserDefaults.standard.value(forKey: "startDate") {
+            self.startDate = startDate as! Date
+        } else {
+            let now = Date()
+            self.startDate = now
+            UserDefaults.standard.setValue(now, forKey: "startDate")
+        }
+        
+        self.plan = Dictionary(uniqueKeysWithValues: zip(1...365, RAW_PLAN_DATA.map {ReadingSelection($0)}))
     }
     
     func getCurrentPassages() -> Array<Passage> {
@@ -90,12 +98,16 @@ class Plan: ObservableObject {
                 passage.unread()
             }
         }
+        
+        let now = Date()
+        self.startDate = now
+        UserDefaults.standard.setValue(now, forKey: "startDate")
     }
 }
 
 extension UserDefaults {
     static func resetDefaults() {
-
+        
     }
 }
 
