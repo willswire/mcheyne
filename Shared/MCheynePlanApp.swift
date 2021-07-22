@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct MCheynePlanApp: App {
     
-    @StateObject var model = Model(Date())
+    @StateObject var model = Plan()
     
     var body: some Scene {
         WindowGroup {

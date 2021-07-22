@@ -9,19 +9,23 @@ import SwiftUI
 
 struct PlanView: View {
     
-    @EnvironmentObject var model: Model
-    @State private var selectedDate = Date()
+    @EnvironmentObject var model: Plan
+    @ObservedObject var date = Date()
+    @State private var selection = ReadingSelection()
     
     var body: some View {
         VStack {
             HeaderView()
             Spacer()
-            ReadingSelectionView(date: $selectedDate)
+            ReadingSelectionView(selection: selection)
             Spacer()
-            DateSelectionView(selectedDate: $selectedDate)
+            DateSelectionView(date: $date)
             Spacer()
         }
         .padding()
+        .onAppear(perform: {
+            self.selection = self.model.getSelection(for: date)
+        })
     }
 }
 
@@ -46,7 +50,7 @@ struct HeaderView: View {
 }
 
 struct DateSelectionView: View {
-    @Binding var selectedDate: Date
+    @Binding var date: Date
     private let DAY_IN_SECONDS: Double = 86400
     private let today = Date()
     
@@ -57,7 +61,7 @@ struct DateSelectionView: View {
                     Image(systemName: "arrow.backward")
                 })
                 Spacer()
-                Text(self.selectedDate, style: .date)
+                Text(self.date, style: .date)
                 Spacer()
                 Button(action: goForward, label: {
                     Image(systemName: "arrow.forward")
@@ -67,7 +71,7 @@ struct DateSelectionView: View {
             .padding(.horizontal, 75)
             
             Button(action: returnToToday, label: {
-                if (abs(selectedDate.distance(to: today)) > (DAY_IN_SECONDS / 2)) {
+                if (abs(date.distance(to: today)) > (DAY_IN_SECONDS / 2)) {
                     Text("Today")
                 } else {
                     Text("Today").hidden()
@@ -77,17 +81,17 @@ struct DateSelectionView: View {
     }
     
     func goBack() {
-        self.selectedDate -= DAY_IN_SECONDS
+        self.date -= DAY_IN_SECONDS
         print("Go backwards!")
     }
     
     func goForward() {
-        self.selectedDate += DAY_IN_SECONDS
+        self.date += DAY_IN_SECONDS
         print("Go forwards!")
     }
     
     func returnToToday() {
-        self.selectedDate = self.today
+        self.date = self.today
         print("Return to today!")
     }
 }
