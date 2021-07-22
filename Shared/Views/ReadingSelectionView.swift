@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct ReadingSelectionView: View {
-    @State var selection: ReadingSelection
+    @Binding var date: Date
+    @EnvironmentObject var model: Plan
     
     var body: some View {
-        ForEach(selection.getPassages()) { passage in
+        ForEach(model.getSelection(for: date).getPassages()) { passage in
             PassageView(passage: passage)
         }
         .padding(.horizontal)
@@ -22,21 +23,23 @@ struct PassageView: View {
     @State var passage: Passage
     
     var body: some View {
-        ZStack(alignment: .leading) {
-            RoundedRectangle(cornerRadius: 25)
-                .fill(Color(.secondarySystemBackground))
-                .frame(maxHeight: 75)
-            HStack {
-                Button(action: toggle, label: {
+        Button(action: toggle, label: {
+            ZStack(alignment: .leading) {
+                RoundedRectangle(cornerRadius: 25)
+                    .fill(Color(.secondarySystemBackground))
+                    .frame(maxHeight: 75)
+                HStack {
+                    
                     Image(systemName: passage.hasRead ?  "largecircle.fill.circle" : "circle")
                         .font(.title2)
-                })
-                Text(passage.reference)
-                    .font(.title2)
-                    .padding()
+                    
+                    Text(passage.reference)
+                        .font(.title2)
+                        .padding()
+                }
+                .padding(.horizontal)
             }
-            .padding(.horizontal)
-        }
+        })
     }
     
     func toggle() {
@@ -47,7 +50,7 @@ struct PassageView: View {
 struct ReadingSelectionView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            ReadingSelectionView(selection: ReadingSelection())
+            ReadingSelectionView(date: .constant(Date()))
         }
     }
 }

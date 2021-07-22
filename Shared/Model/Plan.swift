@@ -18,17 +18,21 @@ struct Passage: Identifiable {
     }
 }
 
-struct ReadingSelection {
+class ReadingSelection: ObservableObject {
     private var passages: Array<Passage> = []
     
     init(_ references: [String] = Array(repeating: "None", count: 4)) {
         for reference in references {
-            self.passages.append(Passage(reference, id: passages.count))
+            self.passages.append(Passage(reference, id: (passages.count - 1)))
         }
     }
     
     func getPassages() -> Array<Passage>{
         return self.passages
+    }
+    
+    subscript(_ int: Int) -> Passage {
+        return passages[int]
     }
 }
 
@@ -54,6 +58,10 @@ class Plan: ObservableObject {
         } else {
             return ReadingSelection()
         }
+    }
+    
+    func getStartDate() -> Date {
+        return self.startDate
     }
 }
 
