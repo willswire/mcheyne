@@ -50,11 +50,17 @@ struct DateSelectionView: View {
     var body: some View {
         VStack {
             HStack {
-                Button(action: goBack, label: {
-                    if (abs(model.currentDate.distance(to: model.startDate)) > DAY_IN_SECONDS) {
+                if (abs(model.currentDate.distance(to: model.startDate)) > DAY_IN_SECONDS) {
+                    Button(action: goBack, label: {
                         Image(systemName: "arrow.backward")
-                    }
-                })
+                    })
+                } else {
+                    Button(action: goBack, label: {
+                        Image(systemName: "arrow.backward")
+                    })
+                    .hidden()
+                    .disabled(true)
+                }
                 Spacer()
                 Text(model.currentDate, style: .date).fixedSize()
                 Spacer()
@@ -65,13 +71,22 @@ struct DateSelectionView: View {
             .padding()
             .padding(.horizontal, 75)
             
-            Button(action: returnToToday, label: {
-                if (abs(model.currentDate.distance(to: Date())) > (DAY_IN_SECONDS / 2)) {
-                    Text("Today")
-                } else {
-                    Text("Today").hidden()
-                }
-            })
+
+                Button(action: returnToToday, label: {
+                    if (abs(model.currentDate.distance(to: Date())) > (DAY_IN_SECONDS / 2)) {
+                            RoundedRectangle(cornerRadius: 25)
+                                .fill(Color(.secondarySystemBackground))
+                                .frame(maxWidth: 90, maxHeight: 30)
+                                .overlay(Text("Today"))
+                    } else {
+                        RoundedRectangle(cornerRadius: 25)
+                            .fill(Color(.secondarySystemBackground))
+                            .frame(maxWidth: 90, maxHeight: 30)
+                            .overlay(Text("Today"))
+                            .hidden()
+                            .disabled(true)
+                    }
+                })
         }
     }
     
@@ -93,6 +108,6 @@ struct DateSelectionView: View {
 
 struct PlanView_Previews: PreviewProvider {
     static var previews: some View {
-        PlanView()
+        PlanView().environmentObject(Plan())
     }
 }
