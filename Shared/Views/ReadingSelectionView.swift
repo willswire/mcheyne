@@ -19,7 +19,7 @@ struct ReadingSelectionView: View {
 }
 
 struct PassageView: View {
-    @State var passage: Passage
+    @ObservedObject var passage: Passage
     
     var body: some View {
         Button(action: toggle, label: {

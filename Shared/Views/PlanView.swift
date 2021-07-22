@@ -45,21 +45,19 @@ struct HeaderView: View {
 }
 
 struct DateSelectionView: View {
-    @State var date = Date()
     @EnvironmentObject var model: Plan
     private let DAY_IN_SECONDS: Double = 86400
-    private let today = Date()
     
     var body: some View {
         VStack {
             HStack {
                 Button(action: goBack, label: {
-                    if (abs(date.distance(to: model.getStartDate())) > DAY_IN_SECONDS) {
+                    if (abs(model.currentDate.distance(to: model.getStartDate())) > DAY_IN_SECONDS) {
                         Image(systemName: "arrow.backward")
                     }
                 })
                 Spacer()
-                Text(self.date, style: .date)
+                Text(model.currentDate, style: .date)
                 Spacer()
                 Button(action: goForward, label: {
                     Image(systemName: "arrow.forward")
@@ -69,7 +67,7 @@ struct DateSelectionView: View {
             .padding(.horizontal, 75)
             
             Button(action: returnToToday, label: {
-                if (abs(date.distance(to: today)) > (DAY_IN_SECONDS / 2)) {
+                if (abs(model.currentDate.distance(to: Date())) > (DAY_IN_SECONDS / 2)) {
                     Text("Today")
                 } else {
                     Text("Today").hidden()
@@ -79,20 +77,17 @@ struct DateSelectionView: View {
     }
     
     func goBack() {
-        self.date -= DAY_IN_SECONDS
-        self.model.currentDate = date
+        model.currentDate -= DAY_IN_SECONDS
         //print("Go backwards!")
     }
     
     func goForward() {
-        self.date += DAY_IN_SECONDS
-        self.model.currentDate = date
+        model.currentDate += DAY_IN_SECONDS
         //print("Go forwards!")
     }
     
     func returnToToday() {
-        self.date = self.today
-        self.model.currentDate = date
+        model.currentDate = Date()
         //print("Return to today!")
     }
 }

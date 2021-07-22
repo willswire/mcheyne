@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct Passage: Identifiable {
+class Passage: Identifiable, ObservableObject {
     var id: Int
     var reference: String
-    var hasRead: Bool = false
+    @Published var hasRead: Bool = false
     
     init(_ reference: String = "None", id: Int) {
         self.reference = reference
@@ -37,8 +37,8 @@ class ReadingSelection: ObservableObject {
 }
 
 class Plan: ObservableObject {
-    @Published var selections: Array<ReadingSelection>
-    @Published var startDate: Date = Date()
+    private var selections: Array<ReadingSelection>
+    private var startDate: Date = Date()
     @Published var currentDate: Date = Date()
     
     init(_ startDate: Date = Date()) {
