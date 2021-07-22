@@ -37,7 +37,7 @@ struct SettingsView: View {
                         print("Canceled reset!")
                       }),
                       secondaryButton: .destructive(Text("Reset"), action: {
-                        print("Reset!")
+                        reset()
                       })
                 )
             })
@@ -55,6 +55,7 @@ struct SettingsView: View {
     }
     
     func reset() {
+        model.reset()
         print("Reset progress")
     }
 }

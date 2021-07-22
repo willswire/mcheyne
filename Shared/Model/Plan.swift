@@ -11,7 +11,6 @@ let DAY_IN_SECONDS: Double = 86400
 
 class Passage: Identifiable, ObservableObject, CustomStringConvertible {
     
-    let defaults = UserDefaults.standard
     @Published private var completed: Bool
     var description: String
     var id: Int
@@ -19,7 +18,7 @@ class Passage: Identifiable, ObservableObject, CustomStringConvertible {
     init(_ reference: String = "None", id: Int) {
         self.description = reference
         self.id = id
-        self.completed = defaults.bool(forKey: reference)
+        self.completed = UserDefaults.standard.bool(forKey: reference)
         save()
     }
     
@@ -38,7 +37,7 @@ class Passage: Identifiable, ObservableObject, CustomStringConvertible {
     }
     
     func save() {
-        defaults.set(completed, forKey: description)
+        UserDefaults.standard.set(completed, forKey: description)
     }
 }
 
@@ -83,6 +82,20 @@ class Plan: ObservableObject {
         } else {
             return ReadingSelection().getPassages()
         }
+    }
+    
+    func reset() {
+        for item in self.plan {
+            for passage in item.value.getPassages() {
+                passage.unread()
+            }
+        }
+    }
+}
+
+extension UserDefaults {
+    static func resetDefaults() {
+
     }
 }
 
