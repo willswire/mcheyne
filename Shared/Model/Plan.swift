@@ -62,32 +62,38 @@ class ReadingSelection: ObservableObject {
 
 class Plan: ObservableObject {
     @Published var plan: Dictionary<Int,ReadingSelection>
-    @Published var startDate: Date = Date()
-    @Published var currentDate: Date = Date()
+    @Published var startDate: Date
+    @Published var selectionIndex: Int
     
     init() {
-        if let startDate = UserDefaults.standard.value(forKey: "startDate") {
-            self.startDate = startDate as! Date
+        print(RAW_PLAN_DATA.count)
+        let now = Date()        
+        if let startDate = UserDefaults.standard.value(forKey: "startDate") as? Date {
+            self.startDate = startDate
+            self.selectionIndex = now.dayOfYear - startDate.dayOfYear
         } else {
-            let now = Date()
             self.startDate = now
             UserDefaults.standard.setValue(now, forKey: "startDate")
+            self.selectionIndex = 0
         }
         
-        self.plan = Dictionary(uniqueKeysWithValues: zip(1...365, RAW_PLAN_DATA.map {ReadingSelection($0)}))
+        self.plan = Dictionary(uniqueKeysWithValues: zip(0...364, RAW_PLAN_DATA.map {ReadingSelection($0)}))
     }
     
     func getCurrentPassages() -> Array<Passage> {
-        let cal = Calendar.current
-        if let startDateDay = cal.ordinality(of: .day, in: .year, for: startDate) {
-            if let currentDateDay = cal.ordinality(of: .day, in: .year, for: currentDate) {
-                return (plan[currentDateDay - startDateDay + 1] ?? ReadingSelection()).getPassages()
-            } else {
-                return ReadingSelection().getPassages()
-            }
-        } else {
-            return ReadingSelection().getPassages()
-        }
+        return (self.plan[selectionIndex] ?? ReadingSelection()).getPassages()
+    }
+    
+    func increaseSelectionIndex() {
+        self.selectionIndex += 1
+    }
+    
+    func decreaseSelectionIndex() {
+        self.selectionIndex -= 1
+    }
+    
+    func rebaseSelectionIndex() {
+        self.selectionIndex = Date().dayOfYear - startDate.dayOfYear
     }
     
     func reset() {
@@ -99,13 +105,17 @@ class Plan: ObservableObject {
         
         let now = Date()
         self.startDate = now
+        self.selectionIndex = 0
         UserDefaults.standard.setValue(now, forKey: "startDate")
     }
 }
 
-extension UserDefaults {
-    static func resetDefaults() {
-        
+extension Date {
+    var dayOfYear: Int {
+        // It is safe to force unwrap this value because the smaller value (day)
+        // always fits into the larger value (year). The optional protects from
+        // cases where the inverse may be true. This is a zero-based ordinality!
+        return Calendar.current.ordinality(of: .day, in: .year, for: self)! - 1
     }
 }
 

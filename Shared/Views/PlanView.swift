@@ -46,42 +46,50 @@ struct HeaderView: View {
 
 struct DateSelectionView: View {
     @EnvironmentObject var model: Plan
+    @State var date: Date = Date()
     
     var body: some View {
         VStack {
             HStack {
-                if (abs(model.currentDate.distance(to: model.startDate)) > DAY_IN_SECONDS) {
+                if (model.selectionIndex != 0) {
                     Button(action: goBack, label: {
                         Image(systemName: "arrow.backward")
                     })
                 } else {
-                    Button(action: goBack, label: {
+                    Button(action: {}, label: {
                         Image(systemName: "arrow.backward")
                     })
                     .hidden()
                     .disabled(true)
                 }
                 Spacer()
-                Text(model.currentDate, style: .date).fixedSize()
+                Text(date, style: .date).fixedSize()
                 Spacer()
-                Button(action: goForward, label: {
-                    Image(systemName: "arrow.forward")
-                })
+                if (model.selectionIndex != 364) {
+                    Button(action: goForward, label: {
+                        Image(systemName: "arrow.forward")
+                    })
+                } else {
+                    Button(action: {}, label: {
+                        Image(systemName: "arrow.forward")
+                    })
+                    .hidden()
+                    .disabled(true)
+                }
             }
             .padding()
             .padding(.horizontal, 75)
             
-            
             Button(action: returnToToday, label: {
-                if (abs(model.currentDate.distance(to: Date())) > (DAY_IN_SECONDS / 2)) {
+                if (model.selectionIndex + model.startDate.dayOfYear > Date().dayOfYear) {
                     RoundedRectangle(cornerRadius: 25)
                         .fill(Color(.secondarySystemBackground))
-                        .frame(maxWidth: 90, maxHeight: 30)
+                        .frame(maxWidth: 75, maxHeight: 25)
                         .overlay(Text("Today"))
                 } else {
                     RoundedRectangle(cornerRadius: 25)
                         .fill(Color(.secondarySystemBackground))
-                        .frame(maxWidth: 90, maxHeight: 30)
+                        .frame(maxWidth: 75, maxHeight: 25)
                         .overlay(Text("Today"))
                         .hidden()
                         .disabled(true)
@@ -91,15 +99,18 @@ struct DateSelectionView: View {
     }
     
     func goBack() {
-        model.currentDate -= DAY_IN_SECONDS
+        self.date -= DAY_IN_SECONDS
+        model.decreaseSelectionIndex()
     }
     
     func goForward() {
-        model.currentDate += DAY_IN_SECONDS
+        self.date += DAY_IN_SECONDS
+        model.increaseSelectionIndex()
     }
     
     func returnToToday() {
-        model.currentDate = Date()
+        self.date = Date()
+        model.rebaseSelectionIndex()
     }
 }
 

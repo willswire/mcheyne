@@ -33,7 +33,7 @@ struct PassageView: View {
                         .font(.title2)
                     
                     Text(passage.description)
-                        .font(.title2)
+                        .font(.title3)
                         .padding()
                 }
                 .padding(.horizontal)
