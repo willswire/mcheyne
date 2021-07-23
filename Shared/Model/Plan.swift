@@ -66,11 +66,15 @@ class Plan: ObservableObject {
     @Published var selectionIndex: Int
     
     init() {
-        print(RAW_PLAN_DATA.count)
-        let now = Date()        
+        let now = Date()
         if let startDate = UserDefaults.standard.value(forKey: "startDate") as? Date {
             self.startDate = startDate
-            self.selectionIndex = now.dayOfYear - startDate.dayOfYear
+            
+            if (Calendar.current.component(.year, from: now) > Calendar.current.component(.year, from: startDate)) {
+                self.selectionIndex = now.dayOfYear - startDate.dayOfYear + 365
+            } else {
+                self.selectionIndex = now.dayOfYear - startDate.dayOfYear
+            }
         } else {
             self.startDate = now
             UserDefaults.standard.setValue(now, forKey: "startDate")
