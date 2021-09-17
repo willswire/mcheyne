@@ -23,6 +23,7 @@ struct ContentView: View {
                     SettingsView()
                 })
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     func toggleSettingsView() {
