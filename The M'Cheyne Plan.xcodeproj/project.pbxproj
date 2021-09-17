@@ -18,7 +18,6 @@
 
 /* Begin PBXFileReference section */
 		6B26903326A8534E004BD79F /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
-		6B6A292226A76B68002650FA /* The M'Cheyne Plan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "The M'Cheyne Plan.entitlements"; sourceTree = "<group>"; };
 		6B9B018926A801120082D70F /* ReadingSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingSelectionView.swift; sourceTree = "<group>"; };
 		6B9E16A326A5F81500CED846 /* MCheynePlanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCheynePlanApp.swift; sourceTree = "<group>"; };
 		6B9E16A426A5F81500CED846 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -43,7 +42,6 @@
 		6B9E169D26A5F81500CED846 = {
 			isa = PBXGroup;
 			children = (
-				6B6A292226A76B68002650FA /* The M'Cheyne Plan.entitlements */,
 				6B9E16A226A5F81500CED846 /* Shared */,
 				6B9E16AC26A5F81700CED846 /* iOS */,
 				6B9E16AB26A5F81700CED846 /* Products */,
@@ -294,6 +292,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "The M'Cheyne Plan.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = QSQY64SHJ5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
@@ -302,6 +301,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.willswire.mcheyne-plan";
 				PRODUCT_NAME = "The M'Cheyne Plan";
 				SDKROOT = iphoneos;
@@ -318,6 +318,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "The M'Cheyne Plan.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = QSQY64SHJ5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
@@ -326,6 +327,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.willswire.mcheyne-plan";
 				PRODUCT_NAME = "The M'Cheyne Plan";
 				SDKROOT = iphoneos;
