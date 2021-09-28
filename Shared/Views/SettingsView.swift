@@ -12,11 +12,16 @@ struct SettingsView: View {
     @EnvironmentObject var model: Plan
     @Environment(\.presentationMode) var presentationMode
     @State private var showResetAlert: Bool = false
+    @State private var startDate: Date = Date()
     
     var body: some View {
         NavigationView {
             Form {
                 Section(header: Text("READING PLAN")) {
+                    DatePicker("Start Date", selection: $startDate)
+                        .onChange(of: startDate) { newDate in
+                            model.setStartDate(to: newDate)
+                        }
                     Button("Reset Progress") {
                         showResetAlert = true
                     }
@@ -40,11 +45,14 @@ struct SettingsView: View {
                 )
             })
             .navigationBarTitle("Settings")
-            .toolbar(content: {
+            .toolbar {
                 Button(action: close, label: {
                     Text("Close")
                 })
-            })
+            }
+            .onAppear {
+                self.startDate = model.startDate
+            }
         }
     }
     

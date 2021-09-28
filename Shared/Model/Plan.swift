@@ -9,9 +9,9 @@ import Foundation
 
 let DAY_IN_SECONDS: Double = 86400
 
-class Passage: Identifiable, ObservableObject, CustomStringConvertible {
+class Passage: Identifiable, ObservableObject {
     
-    @Published private var completed: Bool
+    @Published var completed: Bool
     var description: String
     var id: Int
     
@@ -44,7 +44,7 @@ class Passage: Identifiable, ObservableObject, CustomStringConvertible {
 class ReadingSelection: ObservableObject {
     private var passages: Array<Passage> = []
     
-    init(_ references: [String] = Array(repeating: "None", count: 4)) {
+    init(_ references: [String] = Array(repeating: "N/A", count: 4)) {
         for reference in references {
             self.passages.append(Passage(reference, id: (passages.count - 1)))
         }
@@ -63,41 +63,35 @@ class ReadingSelection: ObservableObject {
 class Plan: ObservableObject {
     @Published var plan: Dictionary<Int,ReadingSelection>
     @Published var startDate: Date
-    @Published var selectionIndex: Int
+    @Published var selection: ReadingSelection?
     
     init() {
         let now = Date()
         if let startDate = UserDefaults.standard.value(forKey: "startDate") as? Date {
             self.startDate = startDate
-            
-            if (Calendar.current.component(.year, from: now) > Calendar.current.component(.year, from: startDate)) {
-                self.selectionIndex = now.dayOfYear - startDate.dayOfYear + 365
-            } else {
-                self.selectionIndex = now.dayOfYear - startDate.dayOfYear
-            }
         } else {
             self.startDate = now
             UserDefaults.standard.setValue(now, forKey: "startDate")
-            self.selectionIndex = 0
         }
         
         self.plan = Dictionary(uniqueKeysWithValues: zip(0...364, RAW_PLAN_DATA.map {ReadingSelection($0)}))
     }
     
-    func getCurrentPassages() -> Array<Passage> {
-        return (self.plan[selectionIndex] ?? ReadingSelection()).getPassages()
+    func setSelection(to date: Date) {
+        let now = Date()
+        let index: Int
+        if (Calendar.current.component(.year, from: now) > Calendar.current.component(.year, from: startDate)) {
+            index = now.dayOfYear - startDate.dayOfYear + 365
+        } else {
+            index = now.dayOfYear - startDate.dayOfYear
+        }
+        self.selection = self.plan[index] ?? ReadingSelection()
     }
     
-    func increaseSelectionIndex() {
-        self.selectionIndex += 1
-    }
-    
-    func decreaseSelectionIndex() {
-        self.selectionIndex -= 1
-    }
-    
-    func rebaseSelectionIndex() {
-        self.selectionIndex = Date().dayOfYear - startDate.dayOfYear
+    func setStartDate(to date: Date) {
+        objectWillChange.send()
+        self.startDate = date
+        UserDefaults.standard.setValue(date, forKey: "startDate")
     }
     
     func reset() {
@@ -106,11 +100,7 @@ class Plan: ObservableObject {
                 passage.unread()
             }
         }
-        
-        let now = Date()
-        self.startDate = now
-        self.selectionIndex = 0
-        UserDefaults.standard.setValue(now, forKey: "startDate")
+        setStartDate(to: Date())
     }
 }
 
