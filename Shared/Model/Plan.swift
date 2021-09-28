@@ -44,7 +44,7 @@ class Passage: Identifiable, ObservableObject {
 class ReadingSelection: ObservableObject {
     private var passages: Array<Passage> = []
     
-    init(_ references: [String] = Array(repeating: "N/A", count: 4)) {
+    init(_ references: [String] = Array(repeating: "None", count: 4)) {
         for reference in references {
             self.passages.append(Passage(reference, id: (passages.count - 1)))
         }
@@ -88,7 +88,8 @@ class Plan: ObservableObject {
         } else {
             index = currentDate.dayOfYear - startDate.dayOfYear
         }
-        return self.plan[index]!
+        
+        return self.plan[index] ?? ReadingSelection()
     }
     
     func setCurrentDate(to date: Date) {

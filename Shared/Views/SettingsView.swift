@@ -18,7 +18,7 @@ struct SettingsView: View {
         NavigationView {
             Form {
                 Section(header: Text("READING PLAN")) {
-                    DatePicker("Start Date", selection: $startDate)
+                    DatePicker("Start Date", selection: $startDate, in: ...Date(), displayedComponents: [.date])
                         .onChange(of: startDate) { newDate in
                             model.setStartDate(to: newDate)
                         }
