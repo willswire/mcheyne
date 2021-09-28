@@ -10,21 +10,17 @@ import SwiftUI
 struct PlanView: View {
     
     @EnvironmentObject var model: Plan
-    @State var currentDate: Date = Date()
     
     var body: some View {
         VStack {
             HeaderView()
             Spacer()
-            ReadingSelectionView(selection: model.selection ?? ReadingSelection())
+            ReadingSelectionView()
             Spacer()
-            DateSelectionView(date: $currentDate)
+            DateSelectionView()
             Spacer()
         }
         .padding()
-        .onChange(of: currentDate) { newDate in
-            model.setSelection(to: newDate)
-        }
     }
     
 }
@@ -51,12 +47,11 @@ struct HeaderView: View {
 
 struct DateSelectionView: View {
     @EnvironmentObject var model: Plan
-    @Binding var date: Date
     
     var body: some View {
         VStack {
             HStack {
-                if (date.dayOfYear != model.startDate.dayOfYear) {
+                if (model.currentDate.dayOfYear != model.startDate.dayOfYear) {
                     Button(action: goBack, label: {
                         Image(systemName: "arrow.backward")
                     })
@@ -68,9 +63,9 @@ struct DateSelectionView: View {
                     .disabled(true)
                 }
                 Spacer()
-                Text(date, style: .date).fixedSize()
+                Text(model.currentDate, style: .date).fixedSize()
                 Spacer()
-                if (date.dayOfYear != 364) {
+                if (model.currentDate.dayOfYear != 364) {
                     Button(action: goForward, label: {
                         Image(systemName: "arrow.forward")
                     })
@@ -86,7 +81,7 @@ struct DateSelectionView: View {
             .padding(.horizontal, 75)
             
             Button(action: returnToToday, label: {
-                if (date.dayOfYear + model.startDate.dayOfYear > Date().dayOfYear) {
+                if (model.currentDate.dayOfYear + model.startDate.dayOfYear > Date().dayOfYear) {
                     RoundedRectangle(cornerRadius: 25)
                         .fill(Color(.secondarySystemBackground))
                         .frame(maxWidth: 75, maxHeight: 25)
@@ -104,15 +99,15 @@ struct DateSelectionView: View {
     }
     
     func goBack() {
-        self.date -= DAY_IN_SECONDS
+        model.currentDate -= DAY_IN_SECONDS
     }
     
     func goForward() {
-        self.date += DAY_IN_SECONDS
+        model.currentDate += DAY_IN_SECONDS
     }
     
     func returnToToday() {
-        self.date = Date()
+        model.currentDate = Date()
     }
 }
 

@@ -61,12 +61,16 @@ class ReadingSelection: ObservableObject {
 
 
 class Plan: ObservableObject {
-    @Published var plan: Dictionary<Int,ReadingSelection>
+    
+    @Published var currentDate: Date
     @Published var startDate: Date
-    @Published var selection: ReadingSelection?
+    @Published var plan: Dictionary<Int,ReadingSelection>
     
     init() {
         let now = Date()
+        
+        self.currentDate = now
+        
         if let startDate = UserDefaults.standard.value(forKey: "startDate") as? Date {
             self.startDate = startDate
         } else {
@@ -77,19 +81,21 @@ class Plan: ObservableObject {
         self.plan = Dictionary(uniqueKeysWithValues: zip(0...364, RAW_PLAN_DATA.map {ReadingSelection($0)}))
     }
     
-    func setSelection(to date: Date) {
-        let now = Date()
+    func getCurrentSelection() -> ReadingSelection {
         let index: Int
-        if (Calendar.current.component(.year, from: now) > Calendar.current.component(.year, from: startDate)) {
-            index = now.dayOfYear - startDate.dayOfYear + 365
+        if (Calendar.current.component(.year, from: currentDate) > Calendar.current.component(.year, from: startDate)) {
+            index = currentDate.dayOfYear - startDate.dayOfYear + 365
         } else {
-            index = now.dayOfYear - startDate.dayOfYear
+            index = currentDate.dayOfYear - startDate.dayOfYear
         }
-        self.selection = self.plan[index] ?? ReadingSelection()
+        return self.plan[index]!
+    }
+    
+    func setCurrentDate(to date: Date) {
+        self.currentDate = date
     }
     
     func setStartDate(to date: Date) {
-        objectWillChange.send()
         self.startDate = date
         UserDefaults.standard.setValue(date, forKey: "startDate")
     }
@@ -100,7 +106,9 @@ class Plan: ObservableObject {
                 passage.unread()
             }
         }
-        setStartDate(to: Date())
+        let now = Date()
+        setStartDate(to: now)
+        setCurrentDate(to: now)
     }
 }
 
