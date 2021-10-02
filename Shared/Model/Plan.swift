@@ -101,6 +101,16 @@ class Plan: ObservableObject {
         UserDefaults.standard.setValue(date, forKey: "startDate")
     }
     
+    func markPreviousSelectionsAsRead() {
+        for item in self.plan {
+            if (item.key < (currentDate.dayOfYear - startDate.dayOfYear)) {
+                for passage in item.value.getPassages() {
+                    passage.read()
+                }
+            }
+        }
+    }
+    
     func reset() {
         for item in self.plan {
             for passage in item.value.getPassages() {

@@ -6,44 +6,49 @@
 //
 
 import SwiftUI
+import UserNotifications
 
 struct SettingsView: View {
     
     @EnvironmentObject var model: Plan
     @Environment(\.presentationMode) var presentationMode
     @State private var showResetAlert: Bool = false
+    @State private var showStartDateChangeAlert: Bool = false
     @State private var startDate: Date = Date()
+    private var YTD: ClosedRange<Date> {
+        let today = Date()
+        return (today - 31536000)...today
+    }
     
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("READING PLAN")) {
-                    DatePicker("Start Date", selection: $startDate, in: ...Date(), displayedComponents: [.date])
-                        .onChange(of: startDate) { newDate in
-                            model.setStartDate(to: newDate)
+                Section {
+                    DatePicker("Start Date", selection: $startDate, in: YTD, displayedComponents: [.date])
+                        .onChange(of: startDate) { _ in
+                            showStartDateChangeAlert = true
                         }
-                    Button("Reset Progress") {
+                        .alert(isPresented: $showStartDateChangeAlert, content: {
+                            Alert(title: Text("Change Start Date"),
+                                  message: Text("All reading selections between the new start date and today will be marked as read."),
+                                  primaryButton: .cancel(),
+                                  secondaryButton: .destructive(Text("OK"), action: changeStartDate)
+                            )
+                        })
+                    Button("Reset Plan") {
                         showResetAlert = true
                     }
-                }
-                
-                Section(header: Text("ABOUT")) {
-                    HStack {
-                        Text("Version")
-                        Spacer()
-                        Text("1.0")
-                    }
+                    .alert(isPresented: $showResetAlert, content: {
+                        Alert(title: Text("Reset Progress"),
+                              message: Text("All reading plan progress will be erased. A new plan will be created starting on today's date."),
+                              primaryButton: .cancel(),
+                              secondaryButton: .destructive(Text("Reset"), action: {
+                            reset()
+                        })
+                        )
+                    })
                 }
             }
-            .alert(isPresented: $showResetAlert, content: {
-                Alert(title: Text("Reset Progress"),
-                      message: Text("All reading plan progress will be erased. A new plan will be created starting on today's date."),
-                      primaryButton: .cancel(),
-                      secondaryButton: .destructive(Text("Reset"), action: {
-                        reset()
-                      })
-                )
-            })
             .navigationBarTitle("Settings")
             .toolbar {
                 Button(action: close, label: {
@@ -56,6 +61,12 @@ struct SettingsView: View {
         }
     }
     
+    func changeStartDate() {
+        model.reset()
+        model.setStartDate(to: startDate)
+        model.markPreviousSelectionsAsRead()
+    }
+    
     func close() {
         presentationMode.wrappedValue.dismiss()
     }
@@ -63,6 +74,7 @@ struct SettingsView: View {
     func reset() {
         model.reset()
     }
+    
 }
 
 struct SettingsView_Previews: PreviewProvider {

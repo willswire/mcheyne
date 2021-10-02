@@ -21,6 +21,9 @@ struct PlanView: View {
             Spacer()
         }
         .padding()
+        .onAppear {
+            model.currentDate = Date()
+        }
     }
     
 }
@@ -81,7 +84,7 @@ struct DateSelectionView: View {
             .padding(.horizontal, 75)
             
             Button(action: returnToToday, label: {
-                if (model.currentDate.dayOfYear + model.startDate.dayOfYear > Date().dayOfYear) {
+                if (model.currentDate.dayOfYear != Date().dayOfYear) {
                     RoundedRectangle(cornerRadius: 25)
                         .fill(Color(.secondarySystemBackground))
                         .frame(maxWidth: 75, maxHeight: 25)
