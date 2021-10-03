@@ -9,19 +9,25 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @EnvironmentObject var model: Plan
     @State private var showSettingsView: Bool = false
+    @AppStorage("onboarded") var onboarded: Bool = false
     
     var body: some View {
         NavigationView {
-            PlanView()
-                .toolbar(content: {
-                    Button(action: toggleSettingsView, label: {
-                        Image(systemName: "gear")
+            if onboarded {
+                PlanView()
+                    .toolbar(content: {
+                        Button(action: toggleSettingsView, label: {
+                            Image(systemName: "gear")
+                        })
                     })
-                })
-                .sheet(isPresented: $showSettingsView, content: {
-                    SettingsView()
-                })
+                    .sheet(isPresented: $showSettingsView, content: {
+                        SettingsView()
+                    })
+            } else {
+                OnboardingView()
+            }
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
@@ -33,7 +39,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(onboarded: true)
             .environmentObject(Plan())
     }
 }

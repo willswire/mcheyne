@@ -13,7 +13,7 @@ struct SettingsView: View {
     @EnvironmentObject var model: Plan
     @Environment(\.presentationMode) var presentationMode
     @State private var showResetAlert: Bool = false
-    @State private var showStartDateChangeAlert: Bool = false
+    @State private var showDateChangeAlert: Bool = false
     @State private var startDate: Date = Date()
     private var YTD: ClosedRange<Date> {
         let today = Date()
@@ -26,25 +26,19 @@ struct SettingsView: View {
                 Section {
                     DatePicker("Start Date", selection: $startDate, in: YTD, displayedComponents: [.date])
                         .onChange(of: startDate) { _ in
-                            showStartDateChangeAlert = true
+                            changeStartDate()
                         }
-                        .alert(isPresented: $showStartDateChangeAlert, content: {
-                            Alert(title: Text("Change Start Date"),
-                                  message: Text("All reading selections between the new start date and today will be marked as read."),
-                                  primaryButton: .cancel(),
-                                  secondaryButton: .destructive(Text("OK"), action: changeStartDate)
-                            )
-                        })
+                    
                     Button("Reset Plan") {
-                        showResetAlert = true
+                        showResetAlert.toggle()
                     }
                     .alert(isPresented: $showResetAlert, content: {
                         Alert(title: Text("Reset Progress"),
                               message: Text("All reading plan progress will be erased. A new plan will be created starting on today's date."),
                               primaryButton: .cancel(),
-                              secondaryButton: .destructive(Text("Reset"), action: {
-                            reset()
-                        })
+                              secondaryButton: .destructive(Text("Reset"), action:
+                            reset
+                        )
                         )
                     })
                 }
@@ -56,7 +50,7 @@ struct SettingsView: View {
                 })
             }
             .onAppear {
-                self.startDate = model.startDate
+                startDate = model.startDate
             }
         }
     }
@@ -73,6 +67,7 @@ struct SettingsView: View {
     
     func reset() {
         model.reset()
+        startDate = model.startDate
     }
     
 }
