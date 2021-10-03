@@ -21,39 +21,43 @@ struct OnboardingView: View {
         VStack {
             HeaderView()
             
-            Form {
-                Text("Robert Murray M'Cheyne was an early 19th century pastor and preacher who lived in Scotland. His daily Bible reading plan guides readers through the Old Testament once and the New Testament and Psalms twice per year.")
-                    .padding(.vertical)
+            Group {
+                Text("Robert Murray M'Cheyne was an early 19th century minister who lived in Scotland. His daily Bible reading plan guides readers through the Old Testament once and the New Testament and Psalms twice per year.")
+                    .padding()
                 
-                Toggle(isOn: $importPlan) {
-                    Text("Import Progress")
+                VStack {
+                    Toggle(isOn: $importPlan) {
+                        Text("Import Progress")
+                    }
+                    .padding()
+                    
+                    if importPlan {
+                        DatePicker("Start Date", selection: $startDate, in: YTD, displayedComponents: [.date])
+                            .onChange(of: startDate) { _ in
+                                changeStartDate()
+                            }
+                            .padding()
+                    } else {
+                        EmptyView()
+                    }
                 }
-                .padding(.vertical)
-                if importPlan {
-                    DatePicker("Start Date", selection: $startDate, in: YTD, displayedComponents: [.date])
-                        .onChange(of: startDate) { _ in
-                            changeStartDate()
-                        }
-                        .padding(.vertical)
-                } else {
-                    EmptyView()
-                }
+                
             }
-            
+            .background(Color(.secondarySystemBackground))
+            .cornerRadius(10)
+            .padding()
             
             Spacer()
             
             Button(action: dismissView){
                 Text("Next")
-                    .foregroundColor(.white)
-                    .font(.headline)
-                    .frame(width: 350, height: 50)
+                    .frame(width: 375, height: 50)
                     .background(Color(.secondarySystemBackground))
                     .cornerRadius(10)
             }
             
-            Spacer()
         }
+        .padding()
     }
     
     func changeStartDate() {
@@ -71,7 +75,8 @@ struct OnboardingView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             OnboardingView()
+            
         }
-        .preferredColorScheme(.dark)
+        //        .preferredColorScheme(.dark)
     }
 }
