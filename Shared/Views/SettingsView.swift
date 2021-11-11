@@ -25,8 +25,8 @@ struct SettingsView: View {
             Form {
                 Section {
                     DatePicker("Start Date", selection: $startDate, in: YTD, displayedComponents: [.date])
-                        .onChange(of: startDate) { _ in
-                            changeStartDate()
+                        .onAppear {
+                            startDate = model.startDate
                         }
                     
                     Button("Reset Plan") {
@@ -49,9 +49,7 @@ struct SettingsView: View {
                     Text("Close")
                 })
             }
-            .onAppear {
-                startDate = model.startDate
-            }
+            .interactiveDismissDisabled(true)
         }
     }
     
@@ -63,6 +61,9 @@ struct SettingsView: View {
     
     func close() {
         presentationMode.wrappedValue.dismiss()
+        if self.startDate != model.startDate {
+            changeStartDate()
+        }
     }
     
     func reset() {
