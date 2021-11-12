@@ -50,6 +50,12 @@ class ReadingSelection: ObservableObject {
         }
     }
     
+    func isComplete() -> Bool {
+        return self.passages.allSatisfy { passages in
+            passages.hasRead()
+        }
+    }
+    
     func getPassages() -> Array<Passage>{
         return self.passages
     }
@@ -64,7 +70,8 @@ class Plan: ObservableObject {
     
     @Published var currentDate: Date
     @Published var startDate: Date
-    @Published var plan: Dictionary<Int,ReadingSelection>
+    @Published var plan: Array<ReadingSelection>
+    @Published var gyopReadingSelection: ReadingSelection
     
     init() {
         let now = Date()
@@ -78,7 +85,13 @@ class Plan: ObservableObject {
             UserDefaults.standard.setValue(now, forKey: "startDate")
         }
         
-        self.plan = Dictionary(uniqueKeysWithValues: zip(0...364, RAW_PLAN_DATA.map {ReadingSelection($0)}))
+        let plan = RAW_PLAN_DATA.map {ReadingSelection($0)}
+        self.plan = plan
+        self.gyopReadingSelection = plan.first(where: { r in
+            !r.isComplete()
+        }) ?? ReadingSelection()
+        
+        //print("The go your own pace reading selection is \(String(describing: gyopReadingSelection.getPassages().first?.description))")
     }
     
     func getCurrentSelection() -> ReadingSelection {
@@ -89,7 +102,7 @@ class Plan: ObservableObject {
             index = currentDate.dayOfYear - startDate.dayOfYear
         }
         
-        return self.plan[index] ?? ReadingSelection()
+        return self.plan[index]
     }
     
     func setCurrentDate(to date: Date) {
@@ -102,18 +115,16 @@ class Plan: ObservableObject {
     }
     
     func markPreviousSelectionsAsRead() {
-        for item in self.plan {
-            if (item.key < (currentDate.dayOfYear - startDate.dayOfYear)) {
-                for passage in item.value.getPassages() {
-                    passage.read()
-                }
+        for i in 0..<(currentDate.dayOfYear - startDate.dayOfYear) {
+            for passage in self.plan[i].getPassages() {
+                passage.read()
             }
         }
     }
     
     func reset() {
         for item in self.plan {
-            for passage in item.value.getPassages() {
+            for passage in item.getPassages() {
                 passage.unread()
             }
         }
