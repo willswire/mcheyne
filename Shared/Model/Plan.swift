@@ -69,29 +69,42 @@ class ReadingSelection: ObservableObject {
 
 class Plan: ObservableObject {
     
-    @Published var currentDate: Date
     @Published var startDate: Date
     @Published var selections: Array<ReadingSelection>
     @Published var isSelfPaced: Bool
+    var currentIndex: Int {
+        if (self.isSelfPaced) {
+            if let index = self.selections.firstIndex(where: { !$0.isComplete() }) {
+                return index
+            } else {
+                return 0
+            }
+        } else {
+            if (Calendar.current.component(.year, from: Date()) > Calendar.current.component(.year, from: self.startDate)) {
+                return Date().dayOfYear - self.startDate.dayOfYear + 365
+            } else {
+                return Date().dayOfYear - self.startDate.dayOfYear
+            }
+        }
+    }
     
     init() {
-        let now = Date()
-        self.currentDate = now
         
         if let startDate = UserDefaults.standard.value(forKey: "startDate") as? Date {
             self.startDate = startDate
         } else {
-            self.startDate = now
-            UserDefaults.standard.setValue(now, forKey: "startDate")
+            self.startDate = Date()
+            UserDefaults.standard.setValue(Date(), forKey: "startDate")
         }
-            
+        
         self.isSelfPaced = UserDefaults.standard.bool(forKey: "gyop")
-            
+        
         self.selections = RAW_PLAN_DATA.map {ReadingSelection($0)}
+        
     }
     
-    func getSelection(at index: Int) -> ReadingSelection {
-        return selections[index]
+    func getSelection(at index: Int?) -> ReadingSelection {
+        return selections[index ?? self.currentIndex]
     }
     
     func setStartDate(to date: Date) {
@@ -100,7 +113,7 @@ class Plan: ObservableObject {
     }
     
     func markPreviousSelectionsAsRead() {
-        for i in 0..<(currentDate.dayOfYear - startDate.dayOfYear) {
+        for i in 0..<currentIndex {
             for passage in self.selections[i].getPassages() {
                 passage.read()
             }
@@ -115,7 +128,6 @@ class Plan: ObservableObject {
         }
         let now = Date()
         setStartDate(to: now)
-        self.currentDate = now
     }
     
     func changeGYOP(to value: Bool) {

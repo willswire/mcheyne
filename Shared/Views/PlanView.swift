@@ -18,29 +18,14 @@ struct PlanView: View {
             Spacer()
             ReadingSelectionView(selection: plan.getSelection(at: index))
             Spacer()
-            DateSelectionView(index: $index)
+            DateSelectionView(selectedIndex: $index)
             Spacer()
         }
         .padding()
         .onAppear {
-            setIndex()
+            self.index = plan.currentIndex
         }
     }
-    
-    func setIndex() {
-        if (plan.isSelfPaced) {
-            if let index = plan.selections.firstIndex(where: { !$0.isComplete() }) {
-                self.index = index
-            }
-        } else {
-            if (Calendar.current.component(.year, from: Date()) > Calendar.current.component(.year, from: plan.startDate)) {
-                self.index = Date().dayOfYear - plan.startDate.dayOfYear + 365
-            } else {
-                self.index = Date().dayOfYear - plan.startDate.dayOfYear
-            }
-        }
-    }
-    
 }
 
 struct HeaderView: View {
@@ -65,13 +50,13 @@ struct HeaderView: View {
 
 struct DateSelectionView: View {
     @EnvironmentObject var plan: Plan
-    @Binding var index: Int
+    @Binding var selectedIndex: Int
     
     var body: some View {
         VStack {
             HStack {
                 
-                if (plan.currentDate.dayOfYear != plan.startDate.dayOfYear) {
+                if (selectedIndex != 0) {
                     Button(action: goBack, label: {
                         Image(systemName: "arrow.backward")
                     })
@@ -82,14 +67,18 @@ struct DateSelectionView: View {
                         .hidden()
                         .disabled(true)
                 }
+                
                 Spacer()
+                
                 if(plan.isSelfPaced) {
                     Spacer(minLength: 250)
                 } else {
-                    Text(plan.currentDate, style: .date).fixedSize()
+                    Text(Date() + (Double(selectedIndex - plan.currentIndex) * DAY_IN_SECONDS), style: .date).fixedSize()
                 }
+                
                 Spacer()
-                if (plan.currentDate.dayOfYear != 364) {
+                
+                if (selectedIndex != 364) {
                     Button(action: goForward, label: {
                         Image(systemName: "arrow.forward")
                     })
@@ -100,54 +89,41 @@ struct DateSelectionView: View {
                         .hidden()
                         .disabled(true)
                 }
+                
             }
             .padding()
             .padding(.horizontal, 75)
             
             if(!plan.isSelfPaced) {
-            Button(action: returnToToday, label: {
-                if (plan.currentDate.dayOfYear != Date().dayOfYear) {
-                    RoundedRectangle(cornerRadius: 25)
-                        .fill(Color(.secondarySystemBackground))
-                        .frame(maxWidth: 75, maxHeight: 25)
-                        .overlay(Text("Today"))
-                } else {
-                    RoundedRectangle(cornerRadius: 25)
-                        .fill(Color(.secondarySystemBackground))
-                        .frame(maxWidth: 75, maxHeight: 25)
-                        .overlay(Text("Today"))
-                        .hidden()
-                        .disabled(true)
-                }
-            })
+                Button(action: goToToday, label: {
+                    if (selectedIndex != plan.currentIndex) {
+                        RoundedRectangle(cornerRadius: 25)
+                            .fill(Color(.secondarySystemBackground))
+                            .frame(maxWidth: 75, maxHeight: 25)
+                            .overlay(Text("Today"))
+                    } else {
+                        RoundedRectangle(cornerRadius: 25)
+                            .fill(Color(.secondarySystemBackground))
+                            .frame(maxWidth: 75, maxHeight: 25)
+                            .overlay(Text("Today"))
+                            .hidden()
+                            .disabled(true)
+                    }
+                })
             }
         }
     }
     
     func goBack() {
-        plan.currentDate -= DAY_IN_SECONDS
-        index -= 1
+        selectedIndex -= 1
     }
     
     func goForward() {
-        plan.currentDate += DAY_IN_SECONDS
-        index += 1
+        selectedIndex += 1
     }
     
-    func returnToToday() {
-        plan.currentDate = Date()
-        
-        if (plan.isSelfPaced) {
-            if let index = plan.selections.firstIndex(where: { !$0.isComplete() }) {
-                self.index = index
-            }
-        } else {
-            if (Calendar.current.component(.year, from: Date()) > Calendar.current.component(.year, from: plan.startDate)) {
-                self.index = Date().dayOfYear - plan.startDate.dayOfYear + 365
-            } else {
-                self.index = Date().dayOfYear - plan.startDate.dayOfYear
-            }
-        }
+    func goToToday() {
+        selectedIndex = plan.currentIndex
     }
 }
 
