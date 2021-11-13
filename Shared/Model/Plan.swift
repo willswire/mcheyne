@@ -97,7 +97,7 @@ class Plan: ObservableObject {
             UserDefaults.standard.setValue(Date(), forKey: "startDate")
         }
         
-        self.isSelfPaced = UserDefaults.standard.bool(forKey: "gyop")
+        self.isSelfPaced = UserDefaults.standard.bool(forKey: "selfPaced")
         
         self.selections = RAW_PLAN_DATA.map {ReadingSelection($0)}
         
@@ -112,14 +112,6 @@ class Plan: ObservableObject {
         UserDefaults.standard.setValue(date, forKey: "startDate")
     }
     
-    func markPreviousSelectionsAsRead() {
-        for i in 0..<currentIndex {
-            for passage in self.selections[i].getPassages() {
-                passage.read()
-            }
-        }
-    }
-    
     func reset() {
         for item in self.selections {
             for passage in item.getPassages() {
@@ -130,10 +122,20 @@ class Plan: ObservableObject {
         setStartDate(to: now)
     }
     
-    func changeGYOP(to value: Bool) {
+    func setSelfPaced(to value: Bool) {
         self.isSelfPaced = value
-        UserDefaults.standard.set(value, forKey: "gyop")
+        UserDefaults.standard.set(value, forKey: "selfPaced")
         self.objectWillChange.send()
+    }
+    
+    func changeStartDate(to date: Date) {
+        self.reset()
+        self.setStartDate(to: date)
+        for i in 0..<currentIndex {
+            for passage in self.selections[i].getPassages() {
+                passage.read()
+            }
+        }
     }
 }
 

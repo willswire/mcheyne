@@ -9,9 +9,9 @@ import SwiftUI
 
 struct OnboardingView: View {
     
-    @EnvironmentObject var model: Plan
+    @EnvironmentObject var plan: Plan
     @State private var importPlan: Bool = false
-    @State private var gyop: Bool = false
+    @State private var isSelfPaced: Bool = false
     @State private var startDate: Date = Date()
     private var YTD: ClosedRange<Date> {
         let today = Date()
@@ -32,13 +32,13 @@ struct OnboardingView: View {
                 Text("Robert Murray M'Cheyne was an early 19th century minister who lived in Scotland. His daily Bible reading plan guides readers through the Old Testament once and the New Testament and Psalms twice per year.")
                 
                 Section {
-                    Toggle(isOn: $gyop) {
+                    Toggle(isOn: $isSelfPaced) {
                         Text("Self-Paced Mode")
                     }
-                    .onChange(of: gyop) { newValue in
-                        model.changeGYOP(to: newValue)
+                    .onChange(of: isSelfPaced) { newValue in
+                        plan.setSelfPaced(to: newValue)
                     }
-
+                    
                     Toggle(isOn: $importPlan) {
                         Text("Import Progress")
                     }
@@ -46,7 +46,7 @@ struct OnboardingView: View {
                     if importPlan {
                         DatePicker("Start Date", selection: $startDate, in: YTD, displayedComponents: [.date])
                             .onChange(of: startDate) { _ in
-                                changeStartDate()
+                                plan.changeStartDate(to: startDate)
                             }
                     } else {
                         EmptyView()
@@ -54,22 +54,13 @@ struct OnboardingView: View {
                 }
                 
                 Section {
-                Button(action: dismissView){
-                    Text("Next")
-                }
+                    Button(action: dismissView){
+                        Text("Next")
+                    }
                 }
                 
             }
-                        
-
-            
         }
-    }
-    
-    func changeStartDate() {
-        model.reset()
-        model.setStartDate(to: startDate)
-        model.markPreviousSelectionsAsRead()
     }
     
     func dismissView() {
@@ -83,6 +74,5 @@ struct OnboardingView_Previews: PreviewProvider {
             OnboardingView()
             
         }
-        //        .preferredColorScheme(.dark)
     }
 }

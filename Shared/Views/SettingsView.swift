@@ -10,11 +10,10 @@ import UserNotifications
 
 struct SettingsView: View {
     
-    @EnvironmentObject var model: Plan
+    @EnvironmentObject var plan: Plan
     @Environment(\.presentationMode) var presentationMode
-    @State private var gyop: Bool = false
+    @State private var isSelfPaced: Bool = false
     @State private var showResetAlert: Bool = false
-    @State private var showDateChangeAlert: Bool = false
     @State private var startDate: Date = Date()
     private var YTD: ClosedRange<Date> {
         let today = Date()
@@ -25,18 +24,18 @@ struct SettingsView: View {
         NavigationView {
             Form {
                 Section {
-                    Toggle(isOn: $gyop) {
+                    Toggle(isOn: $isSelfPaced) {
                         Text("Self-Paced Mode")
                     }
-                    .onChange(of: gyop) { newValue in
-                        model.changeGYOP(to: newValue)
+                    .onChange(of: isSelfPaced) { newValue in
+                        plan.setSelfPaced(to: newValue)
                     }
-                    if (!gyop) {
-                    DatePicker("Start Date", selection: $startDate, in: YTD, displayedComponents: [.date])
-                        .onAppear {
-                            startDate = model.startDate
-                            gyop = model.isSelfPaced
-                        }
+                    if (!isSelfPaced) {
+                        DatePicker("Start Date", selection: $startDate, in: YTD, displayedComponents: [.date])
+                            .onAppear {
+                                startDate = plan.startDate
+                                isSelfPaced = plan.isSelfPaced
+                            }
                     }
                 }
                 
@@ -49,8 +48,8 @@ struct SettingsView: View {
                               message: Text("All reading plan progress will be erased. A new plan will be created starting on today's date."),
                               primaryButton: .cancel(),
                               secondaryButton: .destructive(Text("Reset"), action:
-                            reset
-                        )
+                                                                reset
+                                                           )
                         )
                     })
                 }
@@ -65,22 +64,16 @@ struct SettingsView: View {
         }
     }
     
-    func changeStartDate() {
-        model.reset()
-        model.setStartDate(to: startDate)
-        model.markPreviousSelectionsAsRead()
-    }
-    
     func close() {
         presentationMode.wrappedValue.dismiss()
-        if self.startDate != model.startDate {
-            changeStartDate()
+        if self.startDate != plan.startDate {
+            plan.changeStartDate(to: self.startDate)
         }
     }
     
     func reset() {
-        model.reset()
-        startDate = model.startDate
+        plan.reset()
+        startDate = plan.startDate
     }
     
 }
