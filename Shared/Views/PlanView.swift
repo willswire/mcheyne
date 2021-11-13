@@ -9,20 +9,35 @@ import SwiftUI
 
 struct PlanView: View {
     
-    @EnvironmentObject var model: Plan
+    @EnvironmentObject var plan: Plan
+    @State private var index: Int = 0
     
     var body: some View {
         VStack {
             HeaderView()
             Spacer()
-            ReadingSelectionView()
+            ReadingSelectionView(selection: plan.getSelection(at: index))
             Spacer()
-            DateSelectionView()
+            DateSelectionView(index: $index)
             Spacer()
         }
         .padding()
         .onAppear {
-            model.currentDate = Date()
+            setIndex()
+        }
+    }
+    
+    func setIndex() {
+        if (plan.isSelfPaced) {
+            if let index = plan.selections.firstIndex(where: { !$0.isComplete() }) {
+                self.index = index
+            }
+        } else {
+            if (Calendar.current.component(.year, from: Date()) > Calendar.current.component(.year, from: plan.startDate)) {
+                self.index = Date().dayOfYear - plan.startDate.dayOfYear + 365
+            } else {
+                self.index = Date().dayOfYear - plan.startDate.dayOfYear
+            }
         }
     }
     
@@ -49,12 +64,14 @@ struct HeaderView: View {
 }
 
 struct DateSelectionView: View {
-    @EnvironmentObject var model: Plan
+    @EnvironmentObject var plan: Plan
+    @Binding var index: Int
     
     var body: some View {
         VStack {
             HStack {
-                if (model.currentDate.dayOfYear != model.startDate.dayOfYear) {
+                
+                if (plan.currentDate.dayOfYear != plan.startDate.dayOfYear) {
                     Button(action: goBack, label: {
                         Image(systemName: "arrow.backward")
                     })
@@ -62,13 +79,17 @@ struct DateSelectionView: View {
                     Button(action: {}, label: {
                         Image(systemName: "arrow.backward")
                     })
-                    .hidden()
-                    .disabled(true)
+                        .hidden()
+                        .disabled(true)
                 }
                 Spacer()
-                Text(model.currentDate, style: .date).fixedSize()
+                if(plan.isSelfPaced) {
+                    Spacer(minLength: 250)
+                } else {
+                    Text(plan.currentDate, style: .date).fixedSize()
+                }
                 Spacer()
-                if (model.currentDate.dayOfYear != 364) {
+                if (plan.currentDate.dayOfYear != 364) {
                     Button(action: goForward, label: {
                         Image(systemName: "arrow.forward")
                     })
@@ -76,15 +97,16 @@ struct DateSelectionView: View {
                     Button(action: {}, label: {
                         Image(systemName: "arrow.forward")
                     })
-                    .hidden()
-                    .disabled(true)
+                        .hidden()
+                        .disabled(true)
                 }
             }
             .padding()
             .padding(.horizontal, 75)
             
+            if(!plan.isSelfPaced) {
             Button(action: returnToToday, label: {
-                if (model.currentDate.dayOfYear != Date().dayOfYear) {
+                if (plan.currentDate.dayOfYear != Date().dayOfYear) {
                     RoundedRectangle(cornerRadius: 25)
                         .fill(Color(.secondarySystemBackground))
                         .frame(maxWidth: 75, maxHeight: 25)
@@ -98,19 +120,34 @@ struct DateSelectionView: View {
                         .disabled(true)
                 }
             })
+            }
         }
     }
     
     func goBack() {
-        model.currentDate -= DAY_IN_SECONDS
+        plan.currentDate -= DAY_IN_SECONDS
+        index -= 1
     }
     
     func goForward() {
-        model.currentDate += DAY_IN_SECONDS
+        plan.currentDate += DAY_IN_SECONDS
+        index += 1
     }
     
     func returnToToday() {
-        model.currentDate = Date()
+        plan.currentDate = Date()
+        
+        if (plan.isSelfPaced) {
+            if let index = plan.selections.firstIndex(where: { !$0.isComplete() }) {
+                self.index = index
+            }
+        } else {
+            if (Calendar.current.component(.year, from: Date()) > Calendar.current.component(.year, from: plan.startDate)) {
+                self.index = Date().dayOfYear - plan.startDate.dayOfYear + 365
+            } else {
+                self.index = Date().dayOfYear - plan.startDate.dayOfYear
+            }
+        }
     }
 }
 

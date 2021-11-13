@@ -11,6 +11,7 @@ struct OnboardingView: View {
     
     @EnvironmentObject var model: Plan
     @State private var importPlan: Bool = false
+    @State private var gyop: Bool = false
     @State private var startDate: Date = Date()
     private var YTD: ClosedRange<Date> {
         let today = Date()
@@ -19,45 +20,50 @@ struct OnboardingView: View {
     
     var body: some View {
         VStack {
-            HeaderView()
             
-            Group {
-                Text("Robert Murray M'Cheyne was an early 19th century minister who lived in Scotland. His daily Bible reading plan guides readers through the Old Testament once and the New Testament and Psalms twice per year.")
-                    .padding()
+            Form {
+                Section {
+                    HeaderView()
+                        .listRowInsets(.init())
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
+                }
+                .listRowBackground(Color(UIColor.systemGroupedBackground))
                 
-                VStack {
+                Text("Robert Murray M'Cheyne was an early 19th century minister who lived in Scotland. His daily Bible reading plan guides readers through the Old Testament once and the New Testament and Psalms twice per year.")
+                
+                Section {
+                    Toggle(isOn: $gyop) {
+                        Text("Self-Paced Mode")
+                    }
+                    .onChange(of: gyop) { newValue in
+                        model.changeGYOP(to: newValue)
+                    }
+
                     Toggle(isOn: $importPlan) {
                         Text("Import Progress")
                     }
-                    .padding()
                     
                     if importPlan {
                         DatePicker("Start Date", selection: $startDate, in: YTD, displayedComponents: [.date])
                             .onChange(of: startDate) { _ in
                                 changeStartDate()
                             }
-                            .padding()
                     } else {
                         EmptyView()
                     }
                 }
                 
+                Section {
+                Button(action: dismissView){
+                    Text("Next")
+                }
+                }
+                
             }
-            .background(Color(.secondarySystemBackground))
-            .cornerRadius(10)
-            .padding()
-            
-            Spacer()
-            
-            Button(action: dismissView){
-                Text("Next")
-                    .frame(width: 375, height: 50)
-                    .background(Color(.secondarySystemBackground))
-                    .cornerRadius(10)
-            }
+                        
+
             
         }
-        .padding()
     }
     
     func changeStartDate() {

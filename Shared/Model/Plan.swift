@@ -38,6 +38,7 @@ class Passage: Identifiable, ObservableObject {
     
     func save() {
         UserDefaults.standard.set(completed, forKey: description)
+        self.objectWillChange.send()
     }
 }
 
@@ -70,12 +71,11 @@ class Plan: ObservableObject {
     
     @Published var currentDate: Date
     @Published var startDate: Date
-    @Published var plan: Array<ReadingSelection>
-    @Published var gyopReadingSelection: ReadingSelection
+    @Published var selections: Array<ReadingSelection>
+    @Published var isSelfPaced: Bool
     
     init() {
         let now = Date()
-        
         self.currentDate = now
         
         if let startDate = UserDefaults.standard.value(forKey: "startDate") as? Date {
@@ -84,29 +84,14 @@ class Plan: ObservableObject {
             self.startDate = now
             UserDefaults.standard.setValue(now, forKey: "startDate")
         }
-        
-        let plan = RAW_PLAN_DATA.map {ReadingSelection($0)}
-        self.plan = plan
-        self.gyopReadingSelection = plan.first(where: { r in
-            !r.isComplete()
-        }) ?? ReadingSelection()
-        
-        //print("The go your own pace reading selection is \(String(describing: gyopReadingSelection.getPassages().first?.description))")
+            
+        self.isSelfPaced = UserDefaults.standard.bool(forKey: "gyop")
+            
+        self.selections = RAW_PLAN_DATA.map {ReadingSelection($0)}
     }
     
-    func getCurrentSelection() -> ReadingSelection {
-        let index: Int
-        if (Calendar.current.component(.year, from: currentDate) > Calendar.current.component(.year, from: startDate)) {
-            index = currentDate.dayOfYear - startDate.dayOfYear + 365
-        } else {
-            index = currentDate.dayOfYear - startDate.dayOfYear
-        }
-        
-        return self.plan[index]
-    }
-    
-    func setCurrentDate(to date: Date) {
-        self.currentDate = date
+    func getSelection(at index: Int) -> ReadingSelection {
+        return selections[index]
     }
     
     func setStartDate(to date: Date) {
@@ -116,21 +101,27 @@ class Plan: ObservableObject {
     
     func markPreviousSelectionsAsRead() {
         for i in 0..<(currentDate.dayOfYear - startDate.dayOfYear) {
-            for passage in self.plan[i].getPassages() {
+            for passage in self.selections[i].getPassages() {
                 passage.read()
             }
         }
     }
     
     func reset() {
-        for item in self.plan {
+        for item in self.selections {
             for passage in item.getPassages() {
                 passage.unread()
             }
         }
         let now = Date()
         setStartDate(to: now)
-        setCurrentDate(to: now)
+        self.currentDate = now
+    }
+    
+    func changeGYOP(to value: Bool) {
+        self.isSelfPaced = value
+        UserDefaults.standard.set(value, forKey: "gyop")
+        self.objectWillChange.send()
     }
 }
 

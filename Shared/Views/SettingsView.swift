@@ -12,6 +12,7 @@ struct SettingsView: View {
     
     @EnvironmentObject var model: Plan
     @Environment(\.presentationMode) var presentationMode
+    @State private var gyop: Bool = false
     @State private var showResetAlert: Bool = false
     @State private var showDateChangeAlert: Bool = false
     @State private var startDate: Date = Date()
@@ -24,11 +25,22 @@ struct SettingsView: View {
         NavigationView {
             Form {
                 Section {
+                    Toggle(isOn: $gyop) {
+                        Text("Self-Paced Mode")
+                    }
+                    .onChange(of: gyop) { newValue in
+                        model.changeGYOP(to: newValue)
+                    }
+                    if (!gyop) {
                     DatePicker("Start Date", selection: $startDate, in: YTD, displayedComponents: [.date])
                         .onAppear {
                             startDate = model.startDate
+                            gyop = model.isSelfPaced
                         }
-                    
+                    }
+                }
+                
+                Section {
                     Button("Reset Plan") {
                         showResetAlert.toggle()
                     }
