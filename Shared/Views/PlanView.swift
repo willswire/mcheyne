@@ -10,20 +10,30 @@ import SwiftUI
 struct PlanView: View {
     
     @EnvironmentObject var plan: Plan
-    @State private var index: Int = 0
+    @State private var selectionIndex: Int = 0
+    @State private var indexForTodaysDate: Int = 0
+    @Environment(\.scenePhase) var scenePhase
     
     var body: some View {
         VStack {
             HeaderView()
             Spacer()
-            ReadingSelectionView(selection: plan.getSelection(at: index))
+            ReadingSelectionView(selection: plan.getSelection(at: selectionIndex))
             Spacer()
-            DateSelectionView(selectedIndex: $index)
+            DateSelectionView(selectedIndex: $selectionIndex, indexForTodaysDate: $indexForTodaysDate)
             Spacer()
         }
         .padding()
         .onAppear {
-            self.index = plan.currentIndex
+            self.selectionIndex = plan.indexForTodaysDate
+            self.indexForTodaysDate = plan.indexForTodaysDate
+        }
+        .onChange(of: scenePhase) { newPhase in
+            if newPhase == .active {
+                // When the app is foregrounded update the index for today's
+                // date so that the "Today" button is correct
+                self.indexForTodaysDate = plan.indexForTodaysDate
+            }
         }
     }
 }
@@ -51,6 +61,7 @@ struct HeaderView: View {
 struct DateSelectionView: View {
     @EnvironmentObject var plan: Plan
     @Binding var selectedIndex: Int
+    @Binding var indexForTodaysDate: Int
     
     var body: some View {
         VStack {
@@ -73,7 +84,7 @@ struct DateSelectionView: View {
                 if(plan.isSelfPaced) {
                     Spacer(minLength: 250)
                 } else {
-                    Text(Date() + (Double(selectedIndex - plan.currentIndex) * DAY_IN_SECONDS), style: .date).fixedSize()
+                    Text(Date() + (Double(selectedIndex - plan.indexForTodaysDate) * DAY_IN_SECONDS), style: .date).fixedSize()
                 }
                 
                 Spacer()
@@ -96,7 +107,7 @@ struct DateSelectionView: View {
             
             if(!plan.isSelfPaced) {
                 Button(action: goToToday, label: {
-                    if (selectedIndex != plan.currentIndex) {
+                    if (selectedIndex != indexForTodaysDate) {
                         RoundedRectangle(cornerRadius: 25)
                             .fill(Color(.secondarySystemBackground))
                             .frame(maxWidth: 75, maxHeight: 25)
@@ -123,7 +134,7 @@ struct DateSelectionView: View {
     }
     
     func goToToday() {
-        selectedIndex = plan.currentIndex
+        selectedIndex = plan.indexForTodaysDate
     }
 }
 
