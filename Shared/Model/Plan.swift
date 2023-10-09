@@ -1,16 +1,8 @@
-//
-//  Model.swift
-//  The M'Cheyne Plan
-//
-//  Created by Will Walker on 7/21/21.
-//
-
 import Foundation
 
 let DAY_IN_SECONDS: Double = 86400
 
 class Passage: Identifiable, ObservableObject {
-    
     @Published var completed: Bool = false
     var description: String
     var id: Int
@@ -21,12 +13,7 @@ class Passage: Identifiable, ObservableObject {
         self.description = reference
         self.id = id
         self.userDefaults = userDefaults
-        
-        // userDefaultsKeyV2 is used as a unique identifier on disk. Since chapters in the
-        // New Testament and Psalms are read twice we need something more than just the passage
-        // to read. We'll use the ID within a given ReadingSelection for each passage.
         self.userDefaultsKeyV2 = description + "+" + String(id)
-        
         self.completed = userDefaults.bool(forKey: userDefaultsKeyV2)
         save()
     }
@@ -52,68 +39,48 @@ class Passage: Identifiable, ObservableObject {
 }
 
 class ReadingSelection: ObservableObject {
-    private var passages: Array<Passage> = []
+    private var passages: [Passage] = []
     
     init(_ references: [String] = Array(repeating: "None", count: 4), userDefaults: UserDefaults = UserDefaults.standard) {
         for reference in references {
-            self.passages.append(Passage(reference, id: passages.count, userDefaults:userDefaults))
+            self.passages.append(Passage(reference, id: passages.count, userDefaults: userDefaults))
         }
     }
     
     func isComplete() -> Bool {
-        return self.passages.allSatisfy { passages in
-            passages.hasRead()
-        }
+        return self.passages.allSatisfy { $0.hasRead() }
     }
     
-    func getPassages() -> Array<Passage>{
+    func getPassages() -> [Passage] {
         return self.passages
     }
     
-    subscript(_ int: Int) -> Passage {
-        return passages[int]
+    subscript(_ index: Int) -> Passage {
+        return passages[index]
     }
 }
 
-
 class Plan: ObservableObject {
-    
     @Published var startDate: Date
-    @Published var selections: Array<ReadingSelection>
+    @Published var selections: [ReadingSelection]
     @Published var isSelfPaced: Bool
     var userDefaults: UserDefaults
     
     var indexForTodaysDate: Int {
-        if (self.isSelfPaced) {
-            if let index = self.selections.firstIndex(where: { !$0.isComplete() }) {
-                return index
-            } else {
-                return 0
-            }
-        } else {
-            if (Calendar.current.component(.year, from: Date()) > Calendar.current.component(.year, from: self.startDate)) {
-                return Date().dayOfYear - self.startDate.dayOfYear + 365
-            } else {
-                return Date().dayOfYear - self.startDate.dayOfYear
-            }
-        }
+        let daysSinceStart = Calendar.current.ordinality(of: .day, in: .year, for: Date())! - Calendar.current.ordinality(of: .day, in: .year, for: self.startDate)!
+        return self.isSelfPaced ? self.selections.firstIndex(where: { !$0.isComplete() }) ?? 0 : daysSinceStart
     }
     
     init(userDefaults: UserDefaults = UserDefaults.standard) {
-        
         self.userDefaults = userDefaults
-        
         if let startDate = userDefaults.value(forKey: "startDate") as? Date {
             self.startDate = startDate
         } else {
             self.startDate = Date()
             userDefaults.setValue(Date(), forKey: "startDate")
         }
-        
         self.isSelfPaced = userDefaults.bool(forKey: "selfPaced")
-        
-        self.selections = RAW_PLAN_DATA.map {ReadingSelection($0, userDefaults: userDefaults)}
-        
+        self.selections = RAW_PLAN_DATA.map { ReadingSelection($0, userDefaults: userDefaults) }
         migrateUserDefaultsToV2SchemaIfRequired()
     }
     
@@ -211,8 +178,7 @@ class Plan: ObservableObject {
                 passage.unread()
             }
         }
-        let now = Date()
-        setStartDate(to: now)
+        setStartDate(to: Date())
     }
     
     func setSelfPaced(to value: Bool) {
@@ -234,9 +200,6 @@ class Plan: ObservableObject {
 
 extension Date {
     var dayOfYear: Int {
-        // It is safe to force unwrap this value because the smaller value (day)
-        // always fits into the larger value (year). The optional protects from
-        // cases where the inverse may be true. This is a zero-based ordinality!
         return Calendar.current.ordinality(of: .day, in: .year, for: self)! - 1
     }
 }

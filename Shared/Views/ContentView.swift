@@ -1,35 +1,26 @@
-//
-//  ContentView.swift
-//  Shared
-//
-//  Created by Will Walker on 7/19/21.
-//
-
 import SwiftUI
 
 struct ContentView: View {
-    
-    @EnvironmentObject var model: Plan
+    @EnvironmentObject var planModel: Plan
     @State private var showSettingsView: Bool = false
     @AppStorage("onboarded") var onboarded: Bool = false
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             if onboarded {
                 PlanView()
-                    .toolbar(content: {
-                        Button(action: toggleSettingsView, label: {
+                    .toolbar {
+                        Button(action: toggleSettingsView) {
                             Image(systemName: "gear")
-                        })
-                    })
-                    .sheet(isPresented: $showSettingsView, content: {
+                        }
+                    }
+                    .sheet(isPresented: $showSettingsView) {
                         SettingsView()
-                    })
+                    }
             } else {
                 OnboardingView()
             }
         }
-        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     func toggleSettingsView() {
@@ -39,7 +30,10 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(onboarded: true)
+        ContentView(onboarded: false)
             .environmentObject(Plan())
+        #if os(macOS)
+            .frame(width: 500, height: 500)
+        #endif
     }
 }

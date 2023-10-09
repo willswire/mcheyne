@@ -1,14 +1,6 @@
-//
-//  ContentView.swift
-//  Shared
-//
-//  Created by Will Walker on 7/19/21.
-//
-
 import SwiftUI
 
 struct PlanView: View {
-    
     @EnvironmentObject var plan: Plan
     @State private var selectionIndex: Int = 0
     @State private var indexForTodaysDate: Int = 0
@@ -16,6 +8,7 @@ struct PlanView: View {
     
     var body: some View {
         VStack {
+            Spacer()
             HeaderView()
             Spacer()
             ReadingSelectionView(selection: plan.getSelection(at: selectionIndex))
@@ -28,10 +21,8 @@ struct PlanView: View {
             self.selectionIndex = plan.indexForTodaysDate
             self.indexForTodaysDate = plan.indexForTodaysDate
         }
-        .onChange(of: scenePhase) { newPhase in
+        .onChange(of: scenePhase) { oldPhase, newPhase in
             if newPhase == .active {
-                // When the app is foregrounded update the index for today's
-                // date so that the "Today" button is correct
                 self.indexForTodaysDate = plan.indexForTodaysDate
             }
         }
@@ -42,7 +33,7 @@ struct HeaderView: View {
     var body: some View {
         HStack {
             Image(systemName: "book.closed.fill")
-                .font(.system(size: 50))
+                .font(.system(size: 48))
             
             VStack(alignment: .leading) {
                 Text("The M'Cheyne")
@@ -66,22 +57,14 @@ struct DateSelectionView: View {
     var body: some View {
         VStack {
             HStack {
-                
-                if (selectedIndex != 0) {
-                    Button(action: goBack, label: {
-                        Image(systemName: "arrow.backward")
-                    })
-                } else {
-                    Button(action: {}, label: {
-                        Image(systemName: "arrow.backward")
-                    })
-                        .hidden()
-                        .disabled(true)
+                Button(action: goBack) {
+                    Image(systemName: "arrow.backward")
                 }
+                .disabled(selectedIndex == 0)
                 
                 Spacer()
                 
-                if(plan.isSelfPaced) {
+                if plan.isSelfPaced {
                     Spacer(minLength: 250)
                 } else {
                     Text(Date() + (Double(selectedIndex - plan.indexForTodaysDate) * DAY_IN_SECONDS), style: .date).fixedSize()
@@ -89,38 +72,23 @@ struct DateSelectionView: View {
                 
                 Spacer()
                 
-                if (selectedIndex != 364) {
-                    Button(action: goForward, label: {
-                        Image(systemName: "arrow.forward")
-                    })
-                } else {
-                    Button(action: {}, label: {
-                        Image(systemName: "arrow.forward")
-                    })
-                        .hidden()
-                        .disabled(true)
+                Button(action: goForward) {
+                    Image(systemName: "arrow.forward")
                 }
-                
+                .disabled(selectedIndex == 364)
             }
             .padding()
             .padding(.horizontal, 75)
             
-            if(!plan.isSelfPaced) {
-                Button(action: goToToday, label: {
-                    if (selectedIndex != indexForTodaysDate) {
-                        RoundedRectangle(cornerRadius: 25)
-                            .fill(Color(.secondarySystemBackground))
-                            .frame(maxWidth: 75, maxHeight: 25)
-                            .overlay(Text("Today"))
-                    } else {
-                        RoundedRectangle(cornerRadius: 25)
-                            .fill(Color(.secondarySystemBackground))
-                            .frame(maxWidth: 75, maxHeight: 25)
-                            .overlay(Text("Today"))
-                            .hidden()
-                            .disabled(true)
-                    }
-                })
+            if !plan.isSelfPaced && selectedIndex != indexForTodaysDate {
+                Button(action: goToToday) {
+                    Text("Today")
+                }
+                .buttonStyle(.bordered)
+            } else {
+                Button("Today", action: {})
+                    .buttonStyle(.bordered)
+                    .hidden()
             }
         }
     }
@@ -140,6 +108,10 @@ struct DateSelectionView: View {
 
 struct PlanView_Previews: PreviewProvider {
     static var previews: some View {
-        PlanView().environmentObject(Plan())
+        PlanView()
+            .environmentObject(Plan())
+        #if os(macOS)
+            .frame(width: 500, height: 500)
+        #endif
     }
 }

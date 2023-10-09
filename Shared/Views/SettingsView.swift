@@ -1,41 +1,30 @@
-//
-//  SettingsView.swift
-//  The M'Cheyne Plan (iOS)
-//
-//  Created by Will Walker on 7/20/21.
-//
-
 import SwiftUI
 import UserNotifications
 
 struct SettingsView: View {
-    
     @EnvironmentObject var plan: Plan
     @Environment(\.presentationMode) var presentationMode
     @State private var isSelfPaced: Bool = false
     @State private var showResetAlert: Bool = false
     @State private var startDate: Date = Date()
-    private var YTD: ClosedRange<Date> {
+    private let secondsInAYear: TimeInterval = 31536000
+    private var yearToDate: ClosedRange<Date> {
         let today = Date()
-        return (today - 31536000)...today
+        return (today - secondsInAYear)...today
     }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
                 Section {
                     Toggle(isOn: $isSelfPaced) {
                         Text("Self-Paced Mode")
                     }
-                    .onChange(of: isSelfPaced) { newValue in
-                        plan.setSelfPaced(to: newValue)
+                    .onChange(of: isSelfPaced) { oldValue, newValue in
+                        plan.setSelfPaced(to: true)
                     }
                     if (!isSelfPaced) {
-                        DatePicker("Start Date", selection: $startDate, in: YTD, displayedComponents: [.date])
-                            .onAppear {
-                                startDate = plan.startDate
-                                isSelfPaced = plan.isSelfPaced
-                            }
+                        DatePicker("Start Date", selection: $startDate, in: yearToDate, displayedComponents: [.date])
                     }
                 }
                 
@@ -47,20 +36,26 @@ struct SettingsView: View {
                         Alert(title: Text("Reset Progress"),
                               message: Text("All reading plan progress will be erased. A new plan will be created starting on today's date."),
                               primaryButton: .cancel(),
-                              secondaryButton: .destructive(Text("Reset"), action:
-                                                                reset
-                                                           )
+                              secondaryButton: .destructive(Text("Reset"), action: reset)
                         )
                     })
                 }
             }
-            .navigationBarTitle("Settings")
+            .formStyle(.grouped)
+            .navigationTitle("Settings")
             .toolbar {
                 Button(action: close, label: {
                     Text("Close")
                 })
             }
             .interactiveDismissDisabled(true)
+            .onAppear {
+                startDate = plan.startDate
+                isSelfPaced = plan.isSelfPaced
+            }
+            #if os(macOS)
+            .frame(minHeight: 250)
+            #endif
         }
     }
     
@@ -75,11 +70,11 @@ struct SettingsView: View {
         plan.reset()
         startDate = plan.startDate
     }
-    
 }
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
+            .environmentObject(Plan())
     }
 }

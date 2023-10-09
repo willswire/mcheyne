@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1430"
+   LastUpgradeVersion = "1500"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6B9E16A926A5F81700CED846"
+               BlueprintIdentifier = "6BB432082A9161130048C787"
                BuildableName = "The M&apos;Cheyne Plan.app"
                BlueprintName = "The M&apos;Cheyne Plan"
                ReferencedContainer = "container:The M&apos;Cheyne Plan.xcodeproj">
@@ -28,19 +28,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
       shouldAutocreateTestPlan = "YES">
-      <Testables>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B1C2E0A62A6C70E700319197"
-               BuildableName = "mcheyne-plan-tests.xctest"
-               BlueprintName = "mcheyne-plan-tests"
-               ReferencedContainer = "container:The M&apos;Cheyne Plan.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -56,7 +43,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6B9E16A926A5F81700CED846"
+            BlueprintIdentifier = "6BB432082A9161130048C787"
             BuildableName = "The M&apos;Cheyne Plan.app"
             BlueprintName = "The M&apos;Cheyne Plan"
             ReferencedContainer = "container:The M&apos;Cheyne Plan.xcodeproj">
@@ -73,7 +60,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6B9E16A926A5F81700CED846"
+            BlueprintIdentifier = "6BB432082A9161130048C787"
             BuildableName = "The M&apos;Cheyne Plan.app"
             BlueprintName = "The M&apos;Cheyne Plan"
             ReferencedContainer = "container:The M&apos;Cheyne Plan.xcodeproj">

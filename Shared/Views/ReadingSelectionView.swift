@@ -1,10 +1,3 @@
-//
-//  ReadingSelectionView.swift
-//  The M'Cheyne Plan
-//
-//  Created by Will Walker on 7/21/21.
-//
-
 import SwiftUI
 
 struct ReadingSelectionView: View {
@@ -24,11 +17,10 @@ struct PassageView: View {
     var body: some View {
         Button(action: toggle, label: {
             ZStack(alignment: .leading) {
-                RoundedRectangle(cornerRadius: 25)
-                    .fill(Color(.secondarySystemBackground))
-                    .frame(maxWidth: 500, maxHeight: 75)
+                RoundedRectangle(cornerRadius: 32)
+                    .fill(Color("AppColor"))
+                    .frame(maxWidth: 512, maxHeight: 64)
                 HStack {
-                    
                     Image(systemName: passage.hasRead() ?  "largecircle.fill.circle" : "circle")
                         .font(.title2)
                     
@@ -39,10 +31,15 @@ struct PassageView: View {
                 .padding(.horizontal)
             }
         })
+        .buttonStyle(.plain)
     }
     
     func toggle() {
-        passage.hasRead() ? passage.unread() : passage.read()
+        if passage.hasRead() {
+            passage.unread()
+        } else {
+            passage.read()
+        }
     }
 }
 

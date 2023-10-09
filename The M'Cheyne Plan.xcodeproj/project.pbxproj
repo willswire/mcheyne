@@ -3,63 +3,81 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6B26903426A8534E004BD79F /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B26903326A8534E004BD79F /* Plan.swift */; };
-		6B41710327091B7700107719 /* OnboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B41710127091B7700107719 /* OnboardView.swift */; };
-		6B9B018A26A801120082D70F /* ReadingSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9B018926A801120082D70F /* ReadingSelectionView.swift */; };
-		6B9E16B626A5F81700CED846 /* MCheynePlanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9E16A326A5F81500CED846 /* MCheynePlanApp.swift */; };
-		6B9E16B826A5F81700CED846 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9E16A426A5F81500CED846 /* ContentView.swift */; };
-		6B9E16BA26A5F81700CED846 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B9E16A526A5F81700CED846 /* Assets.xcassets */; };
-		6BAB39A926A7703700AC2874 /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAB39A826A7703700AC2874 /* PlanView.swift */; };
-		6BAB39AB26A7709F00AC2874 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAB39AA26A7709F00AC2874 /* SettingsView.swift */; };
-		B1C2E0AA2A6C70E700319197 /* PlanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C2E0A92A6C70E700319197 /* PlanTests.swift */; };
-		B1C2E0B12A6C727B00319197 /* MockUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C2E0B02A6C727B00319197 /* MockUserDefaults.swift */; };
-		B1C2E0B32A6DBFB600319197 /* MockUserDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C2E0B22A6DBFB600319197 /* MockUserDefaultsTests.swift */; };
-		B1C2E0B42A706E8100319197 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B26903326A8534E004BD79F /* Plan.swift */; };
-		B1C2E0B62A73196800319197 /* PlanConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C2E0B52A73196800319197 /* PlanConstants.swift */; };
-		B1C2E0B72A73196800319197 /* PlanConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C2E0B52A73196800319197 /* PlanConstants.swift */; };
+		6BB4320D2A9161130048C787 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB4320C2A9161130048C787 /* App.swift */; };
+		6BB432112A9161150048C787 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BB432102A9161150048C787 /* Assets.xcassets */; };
+		6BB432152A9161150048C787 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BB432142A9161150048C787 /* Preview Assets.xcassets */; };
+		6BB4321F2A9161150048C787 /* PlanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB4321E2A9161150048C787 /* PlanTests.swift */; };
+		6BB432382A9161AC0048C787 /* MockUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB432372A9161AC0048C787 /* MockUserDefaults.swift */; };
+		6BB4323A2A9161C30048C787 /* MockUserDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB432392A9161C30048C787 /* MockUserDefaultsTests.swift */; };
+		6BB4324B2A9162CC0048C787 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB4323C2A9161F00048C787 /* Plan.swift */; };
+		6BB4324C2A9162D20048C787 /* PlanConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB4323E2A9161FF0048C787 /* PlanConstants.swift */; };
+		6BB4324D2A9162D60048C787 /* OnboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB432412A91622A0048C787 /* OnboardView.swift */; };
+		6BB4324E2A9162D90048C787 /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB432452A9162430048C787 /* PlanView.swift */; };
+		6BB4324F2A9162DC0048C787 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB432432A9162350048C787 /* ContentView.swift */; };
+		6BB432502A9162DF0048C787 /* ReadingSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB432472A91624D0048C787 /* ReadingSelectionView.swift */; };
+		6BB432512A9162E20048C787 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB432492A9162580048C787 /* SettingsView.swift */; };
+		6BB432522A91634B0048C787 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB4323C2A9161F00048C787 /* Plan.swift */; };
+		6BB432532A9163770048C787 /* PlanConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB4323E2A9161FF0048C787 /* PlanConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B1C2E0AB2A6C70E700319197 /* PBXContainerItemProxy */ = {
+		6BB4321B2A9161150048C787 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 6B9E169E26A5F81500CED846 /* Project object */;
+			containerPortal = 6BB432012A9161130048C787 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 6B9E16A926A5F81700CED846;
-			remoteInfo = "The M'Cheyne Plan";
+			remoteGlobalIDString = 6BB432082A9161130048C787;
+			remoteInfo = "mcheyne-plan";
+		};
+		6BB432252A9161150048C787 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6BB432012A9161130048C787 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6BB432082A9161130048C787;
+			remoteInfo = "mcheyne-plan";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6B26903326A8534E004BD79F /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
-		6B41710127091B7700107719 /* OnboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardView.swift; sourceTree = "<group>"; };
-		6B9B018926A801120082D70F /* ReadingSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingSelectionView.swift; sourceTree = "<group>"; };
-		6B9E16A326A5F81500CED846 /* MCheynePlanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCheynePlanApp.swift; sourceTree = "<group>"; };
-		6B9E16A426A5F81500CED846 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		6B9E16A526A5F81700CED846 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		6B9E16AA26A5F81700CED846 /* The M'Cheyne Plan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The M'Cheyne Plan.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6B9E16AD26A5F81700CED846 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6BAB39A826A7703700AC2874 /* PlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanView.swift; sourceTree = "<group>"; };
-		6BAB39AA26A7709F00AC2874 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		B1C2E0A72A6C70E700319197 /* mcheyne-plan-tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mcheyne-plan-tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B1C2E0A92A6C70E700319197 /* PlanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTests.swift; sourceTree = "<group>"; };
-		B1C2E0B02A6C727B00319197 /* MockUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserDefaults.swift; sourceTree = "<group>"; };
-		B1C2E0B22A6DBFB600319197 /* MockUserDefaultsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserDefaultsTests.swift; sourceTree = "<group>"; };
-		B1C2E0B52A73196800319197 /* PlanConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanConstants.swift; sourceTree = "<group>"; };
+		6BB432092A9161130048C787 /* The M'Cheyne Plan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The M'Cheyne Plan.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BB4320C2A9161130048C787 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		6BB432102A9161150048C787 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6BB432122A9161150048C787 /* App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = App.entitlements; sourceTree = "<group>"; };
+		6BB432142A9161150048C787 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		6BB4321A2A9161150048C787 /* The M'Cheyne PlanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "The M'Cheyne PlanTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BB4321E2A9161150048C787 /* PlanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTests.swift; sourceTree = "<group>"; };
+		6BB432242A9161150048C787 /* The M'Cheyne PlanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "The M'Cheyne PlanUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BB432372A9161AC0048C787 /* MockUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserDefaults.swift; sourceTree = "<group>"; };
+		6BB432392A9161C30048C787 /* MockUserDefaultsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserDefaultsTests.swift; sourceTree = "<group>"; };
+		6BB4323C2A9161F00048C787 /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
+		6BB4323E2A9161FF0048C787 /* PlanConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanConstants.swift; sourceTree = "<group>"; };
+		6BB432412A91622A0048C787 /* OnboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardView.swift; sourceTree = "<group>"; };
+		6BB432432A9162350048C787 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		6BB432452A9162430048C787 /* PlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanView.swift; sourceTree = "<group>"; };
+		6BB432472A91624D0048C787 /* ReadingSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingSelectionView.swift; sourceTree = "<group>"; };
+		6BB432492A9162580048C787 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		6BCD532E2AD49D3C00B2BEC2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		6B9E16A726A5F81700CED846 /* Frameworks */ = {
+		6BB432062A9161130048C787 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B1C2E0A42A6C70E700319197 /* Frameworks */ = {
+		6BB432172A9161150048C787 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6BB432212A9161150048C787 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -69,161 +87,195 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6B9E169D26A5F81500CED846 = {
+		6BB432002A9161130048C787 = {
 			isa = PBXGroup;
 			children = (
-				6B9E16A226A5F81500CED846 /* Shared */,
-				6B9E16AC26A5F81700CED846 /* iOS */,
-				B1C2E0A82A6C70E700319197 /* Tests */,
-				6B9E16AB26A5F81700CED846 /* Products */,
+				6BCD532E2AD49D3C00B2BEC2 /* README.md */,
+				6BB4320B2A9161130048C787 /* Shared */,
+				6BB4321D2A9161150048C787 /* Tests */,
+				6BB4320A2A9161130048C787 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		6B9E16A226A5F81500CED846 /* Shared */ = {
+		6BB4320A2A9161130048C787 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6B9E16A326A5F81500CED846 /* MCheynePlanApp.swift */,
-				6B9E16C826A60FE400CED846 /* Model */,
-				6B9E16C426A60F9D00CED846 /* Views */,
-				6B9E16A526A5F81700CED846 /* Assets.xcassets */,
-			);
-			path = Shared;
-			sourceTree = "<group>";
-		};
-		6B9E16AB26A5F81700CED846 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				6B9E16AA26A5F81700CED846 /* The M'Cheyne Plan.app */,
-				B1C2E0A72A6C70E700319197 /* mcheyne-plan-tests.xctest */,
+				6BB432092A9161130048C787 /* The M'Cheyne Plan.app */,
+				6BB4321A2A9161150048C787 /* The M'Cheyne PlanTests.xctest */,
+				6BB432242A9161150048C787 /* The M'Cheyne PlanUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6B9E16AC26A5F81700CED846 /* iOS */ = {
+		6BB4320B2A9161130048C787 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				6B9E16AD26A5F81700CED846 /* Info.plist */,
+				6BB4320C2A9161130048C787 /* App.swift */,
+				6BB4323B2A9161E90048C787 /* Model */,
+				6BB432402A91620C0048C787 /* Views */,
+				6BB432102A9161150048C787 /* Assets.xcassets */,
+				6BB432122A9161150048C787 /* App.entitlements */,
+				6BB432132A9161150048C787 /* Preview Content */,
 			);
-			path = iOS;
+			path = Shared;
 			sourceTree = "<group>";
 		};
-		6B9E16C426A60F9D00CED846 /* Views */ = {
+		6BB432132A9161150048C787 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				6B41710127091B7700107719 /* OnboardView.swift */,
-				6B9E16A426A5F81500CED846 /* ContentView.swift */,
-				6BAB39A826A7703700AC2874 /* PlanView.swift */,
-				6B9B018926A801120082D70F /* ReadingSelectionView.swift */,
-				6BAB39AA26A7709F00AC2874 /* SettingsView.swift */,
+				6BB432142A9161150048C787 /* Preview Assets.xcassets */,
 			);
-			path = Views;
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		6B9E16C826A60FE400CED846 /* Model */ = {
+		6BB4321D2A9161150048C787 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				6B26903326A8534E004BD79F /* Plan.swift */,
-				B1C2E0B52A73196800319197 /* PlanConstants.swift */,
+				6BB4321E2A9161150048C787 /* PlanTests.swift */,
+				6BB432372A9161AC0048C787 /* MockUserDefaults.swift */,
+				6BB432392A9161C30048C787 /* MockUserDefaultsTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		6BB4323B2A9161E90048C787 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6BB4323C2A9161F00048C787 /* Plan.swift */,
+				6BB4323E2A9161FF0048C787 /* PlanConstants.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		B1C2E0A82A6C70E700319197 /* Tests */ = {
+		6BB432402A91620C0048C787 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B1C2E0A92A6C70E700319197 /* PlanTests.swift */,
-				B1C2E0B02A6C727B00319197 /* MockUserDefaults.swift */,
-				B1C2E0B22A6DBFB600319197 /* MockUserDefaultsTests.swift */,
+				6BB432412A91622A0048C787 /* OnboardView.swift */,
+				6BB432452A9162430048C787 /* PlanView.swift */,
+				6BB432432A9162350048C787 /* ContentView.swift */,
+				6BB432472A91624D0048C787 /* ReadingSelectionView.swift */,
+				6BB432492A9162580048C787 /* SettingsView.swift */,
 			);
-			path = Tests;
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6B9E16A926A5F81700CED846 /* The M'Cheyne Plan */ = {
+		6BB432082A9161130048C787 /* The M'Cheyne Plan */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6B9E16BE26A5F81700CED846 /* Build configuration list for PBXNativeTarget "The M'Cheyne Plan" */;
+			buildConfigurationList = 6BB4322E2A9161150048C787 /* Build configuration list for PBXNativeTarget "The M'Cheyne Plan" */;
 			buildPhases = (
-				6B9E16A626A5F81700CED846 /* Sources */,
-				6B9E16A726A5F81700CED846 /* Frameworks */,
-				6B9E16A826A5F81700CED846 /* Resources */,
+				6BB432052A9161130048C787 /* Sources */,
+				6BB432062A9161130048C787 /* Frameworks */,
+				6BB432072A9161130048C787 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "The M'Cheyne Plan";
-			productName = "mcheyne-plan (iOS)";
-			productReference = 6B9E16AA26A5F81700CED846 /* The M'Cheyne Plan.app */;
+			productName = "mcheyne-plan";
+			productReference = 6BB432092A9161130048C787 /* The M'Cheyne Plan.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B1C2E0A62A6C70E700319197 /* mcheyne-plan-tests */ = {
+		6BB432192A9161150048C787 /* The M'Cheyne PlanTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B1C2E0AF2A6C70E700319197 /* Build configuration list for PBXNativeTarget "mcheyne-plan-tests" */;
+			buildConfigurationList = 6BB432312A9161150048C787 /* Build configuration list for PBXNativeTarget "The M'Cheyne PlanTests" */;
 			buildPhases = (
-				B1C2E0A32A6C70E700319197 /* Sources */,
-				B1C2E0A42A6C70E700319197 /* Frameworks */,
-				B1C2E0A52A6C70E700319197 /* Resources */,
+				6BB432162A9161150048C787 /* Sources */,
+				6BB432172A9161150048C787 /* Frameworks */,
+				6BB432182A9161150048C787 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				B1C2E0AC2A6C70E700319197 /* PBXTargetDependency */,
+				6BB4321C2A9161150048C787 /* PBXTargetDependency */,
 			);
-			name = "mcheyne-plan-tests";
-			productName = "mcheyne-plan-tests";
-			productReference = B1C2E0A72A6C70E700319197 /* mcheyne-plan-tests.xctest */;
+			name = "The M'Cheyne PlanTests";
+			productName = "mcheyne-planTests";
+			productReference = 6BB4321A2A9161150048C787 /* The M'Cheyne PlanTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6BB432232A9161150048C787 /* The M'Cheyne PlanUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6BB432342A9161150048C787 /* Build configuration list for PBXNativeTarget "The M'Cheyne PlanUITests" */;
+			buildPhases = (
+				6BB432202A9161150048C787 /* Sources */,
+				6BB432212A9161150048C787 /* Frameworks */,
+				6BB432222A9161150048C787 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6BB432262A9161150048C787 /* PBXTargetDependency */,
+			);
+			name = "The M'Cheyne PlanUITests";
+			productName = "mcheyne-planUITests";
+			productReference = 6BB432242A9161150048C787 /* The M'Cheyne PlanUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		6B9E169E26A5F81500CED846 /* Project object */ = {
+		6BB432012A9161130048C787 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = YES;
-				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					6B9E16A926A5F81700CED846 = {
-						CreatedOnToolsVersion = 12.5.1;
+					6BB432082A9161130048C787 = {
+						CreatedOnToolsVersion = 15.0;
 					};
-					B1C2E0A62A6C70E700319197 = {
-						CreatedOnToolsVersion = 14.3.1;
-						TestTargetID = 6B9E16A926A5F81700CED846;
+					6BB432192A9161150048C787 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = 6BB432082A9161130048C787;
+					};
+					6BB432232A9161150048C787 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = 6BB432082A9161130048C787;
 					};
 				};
 			};
-			buildConfigurationList = 6B9E16A126A5F81500CED846 /* Build configuration list for PBXProject "The M'Cheyne Plan" */;
-			compatibilityVersion = "Xcode 13.0";
+			buildConfigurationList = 6BB432042A9161130048C787 /* Build configuration list for PBXProject "The M'Cheyne Plan" */;
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 6B9E169D26A5F81500CED846;
-			productRefGroup = 6B9E16AB26A5F81700CED846 /* Products */;
+			mainGroup = 6BB432002A9161130048C787;
+			productRefGroup = 6BB4320A2A9161130048C787 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6B9E16A926A5F81700CED846 /* The M'Cheyne Plan */,
-				B1C2E0A62A6C70E700319197 /* mcheyne-plan-tests */,
+				6BB432082A9161130048C787 /* The M'Cheyne Plan */,
+				6BB432192A9161150048C787 /* The M'Cheyne PlanTests */,
+				6BB432232A9161150048C787 /* The M'Cheyne PlanUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		6B9E16A826A5F81700CED846 /* Resources */ = {
+		6BB432072A9161130048C787 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B9E16BA26A5F81700CED846 /* Assets.xcassets in Resources */,
+				6BB432152A9161150048C787 /* Preview Assets.xcassets in Resources */,
+				6BB432112A9161150048C787 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B1C2E0A52A6C70E700319197 /* Resources */ = {
+		6BB432182A9161150048C787 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6BB432222A9161150048C787 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -233,52 +285,64 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		6B9E16A626A5F81700CED846 /* Sources */ = {
+		6BB432052A9161130048C787 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B26903426A8534E004BD79F /* Plan.swift in Sources */,
-				6B9E16B826A5F81700CED846 /* ContentView.swift in Sources */,
-				6B9E16B626A5F81700CED846 /* MCheynePlanApp.swift in Sources */,
-				6BAB39AB26A7709F00AC2874 /* SettingsView.swift in Sources */,
-				6B41710327091B7700107719 /* OnboardView.swift in Sources */,
-				6B9B018A26A801120082D70F /* ReadingSelectionView.swift in Sources */,
-				B1C2E0B62A73196800319197 /* PlanConstants.swift in Sources */,
-				6BAB39A926A7703700AC2874 /* PlanView.swift in Sources */,
+				6BB4324D2A9162D60048C787 /* OnboardView.swift in Sources */,
+				6BB432512A9162E20048C787 /* SettingsView.swift in Sources */,
+				6BB4324C2A9162D20048C787 /* PlanConstants.swift in Sources */,
+				6BB4324F2A9162DC0048C787 /* ContentView.swift in Sources */,
+				6BB4324B2A9162CC0048C787 /* Plan.swift in Sources */,
+				6BB432502A9162DF0048C787 /* ReadingSelectionView.swift in Sources */,
+				6BB4320D2A9161130048C787 /* App.swift in Sources */,
+				6BB4324E2A9162D90048C787 /* PlanView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B1C2E0A32A6C70E700319197 /* Sources */ = {
+		6BB432162A9161150048C787 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1C2E0B42A706E8100319197 /* Plan.swift in Sources */,
-				B1C2E0B12A6C727B00319197 /* MockUserDefaults.swift in Sources */,
-				B1C2E0B32A6DBFB600319197 /* MockUserDefaultsTests.swift in Sources */,
-				B1C2E0AA2A6C70E700319197 /* PlanTests.swift in Sources */,
-				B1C2E0B72A73196800319197 /* PlanConstants.swift in Sources */,
+				6BB432522A91634B0048C787 /* Plan.swift in Sources */,
+				6BB432382A9161AC0048C787 /* MockUserDefaults.swift in Sources */,
+				6BB4323A2A9161C30048C787 /* MockUserDefaultsTests.swift in Sources */,
+				6BB4321F2A9161150048C787 /* PlanTests.swift in Sources */,
+				6BB432532A9163770048C787 /* PlanConstants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6BB432202A9161150048C787 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B1C2E0AC2A6C70E700319197 /* PBXTargetDependency */ = {
+		6BB4321C2A9161150048C787 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6B9E16A926A5F81700CED846 /* The M'Cheyne Plan */;
-			targetProxy = B1C2E0AB2A6C70E700319197 /* PBXContainerItemProxy */;
+			target = 6BB432082A9161130048C787 /* The M'Cheyne Plan */;
+			targetProxy = 6BB4321B2A9161150048C787 /* PBXContainerItemProxy */;
+		};
+		6BB432262A9161150048C787 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6BB432082A9161130048C787 /* The M'Cheyne Plan */;
+			targetProxy = 6BB432252A9161150048C787 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		6B9E16BC26A5F81700CED846 /* Debug */ = {
+		6BB4322C2A9161150048C787 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -305,11 +369,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -323,22 +387,23 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		6B9E16BD26A5F81700CED846 /* Release */ = {
+		6BB4322D2A9161150048C787 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -365,11 +430,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -377,81 +442,106 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
 		};
-		6B9E16BF26A5F81700CED846 /* Debug */ = {
+		6BB4322F2A9161150048C787 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "The M'Cheyne Plan.entitlements";
+				CODE_SIGN_ENTITLEMENTS = Shared/App.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 10;
+				DEVELOPMENT_ASSET_PATHS = "\"Shared/Preview Content\"";
 				DEVELOPMENT_TEAM = QSQY64SHJ5;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = iOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "M'Cheyne Plan";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.willswire.mcheyne-plan";
-				PRODUCT_NAME = "The M'Cheyne Plan";
-				SDKROOT = iphoneos;
-				SUPPORTS_MACCATALYST = YES;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		6B9E16C026A5F81700CED846 /* Release */ = {
+		6BB432302A9161150048C787 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "The M'Cheyne Plan.entitlements";
+				CODE_SIGN_ENTITLEMENTS = Shared/App.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 10;
+				DEVELOPMENT_ASSET_PATHS = "\"Shared/Preview Content\"";
 				DEVELOPMENT_TEAM = QSQY64SHJ5;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = iOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "M'Cheyne Plan";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.willswire.mcheyne-plan";
-				PRODUCT_NAME = "The M'Cheyne Plan";
-				SDKROOT = iphoneos;
-				SUPPORTS_MACCATALYST = YES;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		B1C2E0AD2A6C70E700319197 /* Debug */ = {
+		6BB432322A9161150048C787 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = QSQY64SHJ5;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
-				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.willswire.mcheyne-plan-tests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.willswire.mcheyne-planTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -462,19 +552,19 @@
 			};
 			name = Debug;
 		};
-		B1C2E0AE2A6C70E700319197 /* Release */ = {
+		6BB432332A9161150048C787 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = QSQY64SHJ5;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
-				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.willswire.mcheyne-plan-tests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.willswire.mcheyne-planTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -482,40 +572,93 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/The M'Cheyne Plan.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/The M'Cheyne Plan";
+			};
+			name = Release;
+		};
+		6BB432352A9161150048C787 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QSQY64SHJ5;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.willswire.mcheyne-planUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "mcheyne-plan";
+			};
+			name = Debug;
+		};
+		6BB432362A9161150048C787 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QSQY64SHJ5;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.willswire.mcheyne-planUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "mcheyne-plan";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6B9E16A126A5F81500CED846 /* Build configuration list for PBXProject "The M'Cheyne Plan" */ = {
+		6BB432042A9161130048C787 /* Build configuration list for PBXProject "The M'Cheyne Plan" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6B9E16BC26A5F81700CED846 /* Debug */,
-				6B9E16BD26A5F81700CED846 /* Release */,
+				6BB4322C2A9161150048C787 /* Debug */,
+				6BB4322D2A9161150048C787 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6B9E16BE26A5F81700CED846 /* Build configuration list for PBXNativeTarget "The M'Cheyne Plan" */ = {
+		6BB4322E2A9161150048C787 /* Build configuration list for PBXNativeTarget "The M'Cheyne Plan" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6B9E16BF26A5F81700CED846 /* Debug */,
-				6B9E16C026A5F81700CED846 /* Release */,
+				6BB4322F2A9161150048C787 /* Debug */,
+				6BB432302A9161150048C787 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B1C2E0AF2A6C70E700319197 /* Build configuration list for PBXNativeTarget "mcheyne-plan-tests" */ = {
+		6BB432312A9161150048C787 /* Build configuration list for PBXNativeTarget "The M'Cheyne PlanTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B1C2E0AD2A6C70E700319197 /* Debug */,
-				B1C2E0AE2A6C70E700319197 /* Release */,
+				6BB432322A9161150048C787 /* Debug */,
+				6BB432332A9161150048C787 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6BB432342A9161150048C787 /* Build configuration list for PBXNativeTarget "The M'Cheyne PlanUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6BB432352A9161150048C787 /* Debug */,
+				6BB432362A9161150048C787 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 6B9E169E26A5F81500CED846 /* Project object */;
+	rootObject = 6BB432012A9161130048C787 /* Project object */;
 }
