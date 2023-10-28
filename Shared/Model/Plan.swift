@@ -67,8 +67,36 @@ class Plan: ObservableObject {
     var userDefaults: UserDefaults
     
     var indexForTodaysDate: Int {
-        let daysSinceStart = Calendar.current.ordinality(of: .day, in: .year, for: Date())! - Calendar.current.ordinality(of: .day, in: .year, for: self.startDate)!
-        return self.isSelfPaced ? self.selections.firstIndex(where: { !$0.isComplete() }) ?? 0 : daysSinceStart
+        if (self.isSelfPaced) {
+            if let index = self.selections.firstIndex(where: { !$0.isComplete() }) {
+                return index
+            } else {
+                return 0
+            }
+        } else {
+            return self.indexForDateFromStartDate(from: Date())
+        }
+    }
+    
+    func indexForDateFromStartDate(from date: Date) -> Int {
+        var indexForDate: Int = 0
+        if (Calendar.current.component(.year, from: date) > Calendar.current.component(.year, from: self.startDate)) {
+            indexForDate = date.dayOfYear - self.startDate.dayOfYear + 365
+        } else {
+            indexForDate = date.dayOfYear - self.startDate.dayOfYear
+        }
+        
+        // Prevent an index overflow if it's been awhile since the app was opened
+        if indexForDate >= 365 {
+            indexForDate -= 365
+        }
+        
+        // Prevent an index underflow if there's a weird date setting on the device
+        if indexForDate <= 0 {
+            indexForDate = 0
+        }
+        
+        return indexForDate
     }
     
     init(userDefaults: UserDefaults = UserDefaults.standard) {
@@ -198,6 +226,7 @@ class Plan: ObservableObject {
     }
 }
 
+// Copied from https://stackoverflow.com/a/42623106
 extension Date {
     var dayOfYear: Int {
         return Calendar.current.ordinality(of: .day, in: .year, for: self)! - 1

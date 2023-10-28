@@ -23,6 +23,8 @@ final class PlanTests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
+    
+    // MARK: - Schema Migration Tests
 
     func testTotalNumberOfEntriesInPlan() throws {
         let expectedTotalNumberOfEntriesInPlan: Int = (365 * 4) + 2 // Includes 'startDate' entry and 'migrationToV2Schema' entry
@@ -111,7 +113,45 @@ final class PlanTests: XCTestCase {
         }
     }
     
-    // Helper functions
+    // MARK: - Date Index Tests
+    
+    func testDateIndexAcrossFullYear() throws {
+        let plan: Plan = Plan(userDefaults: ud)
+        plan.startDate = dateInNovember2022()
+        
+        for i in 0...364 {
+            let dateToTest: Date = Calendar.current.date(byAdding: .day, value: i, to: plan.startDate)!
+            let calculatedIndex: Int = plan.indexForDateFromStartDate(from: dateToTest)
+            
+            XCTAssertEqual(i, calculatedIndex)
+        }
+    }
+    
+    func testDateIndexAfterAFullYear() throws {
+        let plan: Plan = Plan(userDefaults: ud)
+        plan.startDate = dateInNovember2022()
+        
+        for i in 0...364 {
+            let dateToTest: Date = Calendar.current.date(byAdding: .day, value: i+365, to: plan.startDate)!
+            let calculatedIndex: Int = plan.indexForDateFromStartDate(from: dateToTest)
+            
+            XCTAssertEqual(i, calculatedIndex)
+        }
+    }
+    
+    func testDateIndexBeforeStartDate() throws {
+        let plan: Plan = Plan(userDefaults: ud)
+        
+        var dateToTest: Date = dateInNovember2022()
+        var calculatedIndex: Int = plan.indexForDateFromStartDate(from: dateToTest)
+        XCTAssertGreaterThanOrEqual(calculatedIndex, 0)
+        
+        dateToTest = Calendar.current.date(byAdding: .day, value: -1, to: plan.startDate)!
+        calculatedIndex = plan.indexForDateFromStartDate(from: dateToTest)
+        XCTAssertGreaterThanOrEqual(calculatedIndex, 0)
+    }
+    
+    // MARK: - Helper Functions
     
     private func setStartDateForBothExpectedAndActual(expectedUserDefaults: inout Dictionary<String, AnyHashable>) {
         let startDate: Date = Date()
@@ -158,5 +198,23 @@ final class PlanTests: XCTestCase {
         }
         
         return userDefaultsDictionary
+    }
+    
+    // Copied from https://stackoverflow.com/a/33344575
+    private func dateInNovember2022() -> Date {
+        // Specify date components
+        var dateComponents = DateComponents()
+        dateComponents.year = 2022
+        dateComponents.month = 11
+        dateComponents.day = 24
+        dateComponents.timeZone = TimeZone(abbreviation: "PST") // Pacific Standard Time
+        dateComponents.hour = 1
+        dateComponents.minute = 56
+
+        // Create date from components
+        let userCalendar = Calendar(identifier: .gregorian) // since the components above (like year 1980) are for Gregorian
+        let finalDate = userCalendar.date(from: dateComponents)
+        
+        return finalDate!
     }
 }
