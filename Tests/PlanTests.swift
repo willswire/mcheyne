@@ -115,9 +115,21 @@ final class PlanTests: XCTestCase {
     
     // MARK: - Date Index Tests
     
-    func testDateIndexAcrossFullYear() throws {
+    func testDateIndexAcrossFullLeapYear() throws {
+        ud.set(dateInJanuary2024(), forKey: "startDate")
         let plan: Plan = Plan(userDefaults: ud)
-        plan.startDate = dateInNovember2022()
+        
+        for i in 0...365 {
+            let dateToTest: Date = Calendar.current.date(byAdding: .day, value: i, to: plan.startDate)!
+            let calculatedIndex: Int = plan.indexForDateFromStartDate(from: dateToTest)
+            
+            XCTAssertEqual(i, calculatedIndex)
+        }
+    }
+    
+    func testDateIndexAcrossFullYear() throws {
+        ud.set(dateInNovember2022(), forKey: "startDate")
+        let plan: Plan = Plan(userDefaults: ud)
         
         for i in 0...364 {
             let dateToTest: Date = Calendar.current.date(byAdding: .day, value: i, to: plan.startDate)!
@@ -128,11 +140,23 @@ final class PlanTests: XCTestCase {
     }
     
     func testDateIndexAfterAFullYear() throws {
+        ud.set(dateInNovember2022(), forKey: "startDate")
         let plan: Plan = Plan(userDefaults: ud)
-        plan.startDate = dateInNovember2022()
-        
+
         for i in 0...364 {
             let dateToTest: Date = Calendar.current.date(byAdding: .day, value: i+365, to: plan.startDate)!
+            let calculatedIndex: Int = plan.indexForDateFromStartDate(from: dateToTest)
+            
+            XCTAssertEqual(i, calculatedIndex)
+        }
+    }
+    
+    func testDateIndexAfterAFullLeapYear() throws {
+        ud.set(dateInJanuary2024(), forKey: "startDate")
+        let plan: Plan = Plan(userDefaults: ud)
+
+        for i in 0...365 {
+            let dateToTest: Date = Calendar.current.date(byAdding: .day, value: i+366, to: plan.startDate)!
             let calculatedIndex: Int = plan.indexForDateFromStartDate(from: dateToTest)
             
             XCTAssertEqual(i, calculatedIndex)
@@ -207,6 +231,23 @@ final class PlanTests: XCTestCase {
         dateComponents.year = 2022
         dateComponents.month = 11
         dateComponents.day = 24
+        dateComponents.timeZone = TimeZone(abbreviation: "PST") // Pacific Standard Time
+        dateComponents.hour = 1
+        dateComponents.minute = 56
+
+        // Create date from components
+        let userCalendar = Calendar(identifier: .gregorian) // since the components above (like year 1980) are for Gregorian
+        let finalDate = userCalendar.date(from: dateComponents)
+        
+        return finalDate!
+    }
+    
+    private func dateInJanuary2024() -> Date {
+        // Specify date components
+        var dateComponents = DateComponents()
+        dateComponents.year = 2024
+        dateComponents.month = 01
+        dateComponents.day = 05
         dateComponents.timeZone = TimeZone(abbreviation: "PST") // Pacific Standard Time
         dateComponents.hour = 1
         dateComponents.minute = 56

@@ -75,7 +75,7 @@ struct DateSelectionView: View {
                 Button(action: goForward) {
                     Image(systemName: "arrow.forward")
                 }
-                .disabled(selectedIndex == 364)
+                .disabled(disable(for: selectedIndex))
             }
             .padding()
             .padding(.horizontal, 75)
@@ -103,6 +103,12 @@ struct DateSelectionView: View {
     
     func goToToday() {
         selectedIndex = plan.indexForTodaysDate
+    }
+    
+    func disable(for index: Int) -> Bool {
+        let calendar = Calendar.current
+        let thisYear = calendar.component(.year, from: Date.now)
+        return (selectedIndex == (self.plan.isLeapYear(thisYear) ? 365 : 364))
     }
 }
 

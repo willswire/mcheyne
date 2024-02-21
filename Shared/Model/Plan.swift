@@ -40,11 +40,16 @@ class Passage: Identifiable, ObservableObject {
 
 class ReadingSelection: ObservableObject {
     private var passages: [Passage] = []
+    var isLeap: Bool = false
     
     init(_ references: [String] = Array(repeating: "None", count: 4), userDefaults: UserDefaults = UserDefaults.standard) {
         for reference in references {
             self.passages.append(Passage(reference, id: passages.count, userDefaults: userDefaults))
         }
+    }
+    
+    init(leapYearEntry: Bool = false) {
+        self.isLeap = leapYearEntry
     }
     
     func isComplete() -> Bool {
@@ -78,27 +83,6 @@ class Plan: ObservableObject {
         }
     }
     
-    func indexForDateFromStartDate(from date: Date) -> Int {
-        var indexForDate: Int = 0
-        if (Calendar.current.component(.year, from: date) > Calendar.current.component(.year, from: self.startDate)) {
-            indexForDate = date.dayOfYear - self.startDate.dayOfYear + 365
-        } else {
-            indexForDate = date.dayOfYear - self.startDate.dayOfYear
-        }
-        
-        // Prevent an index overflow if it's been awhile since the app was opened
-        if indexForDate >= 365 {
-            indexForDate -= 365
-        }
-        
-        // Prevent an index underflow if there's a weird date setting on the device
-        if indexForDate <= 0 {
-            indexForDate = 0
-        }
-        
-        return indexForDate
-    }
-    
     init(userDefaults: UserDefaults = UserDefaults.standard) {
         self.userDefaults = userDefaults
         if let startDate = userDefaults.value(forKey: "startDate") as? Date {
@@ -109,6 +93,7 @@ class Plan: ObservableObject {
         }
         self.isSelfPaced = userDefaults.bool(forKey: "selfPaced")
         self.selections = RAW_PLAN_DATA.map { ReadingSelection($0, userDefaults: userDefaults) }
+        self.insertLeapYearEntry()
         migrateUserDefaultsToV2SchemaIfRequired()
     }
     
@@ -223,6 +208,57 @@ class Plan: ObservableObject {
                 passage.read()
             }
         }
+    }
+}
+
+extension Plan {
+    private func insertLeapYearEntry() {
+        var containsFebruary29th = false
+        var leapIndex = 0
+        let calendar = Calendar.current
+
+        for day in 0..<365 {
+            if let futureDate = calendar.date(byAdding: .day, value: day, to: self.startDate) {
+                let dayComponent = calendar.component(.day, from: futureDate)
+                let monthComponent = calendar.component(.month, from: futureDate)
+
+                if dayComponent == 29 && monthComponent == 2 {
+                    containsFebruary29th = true
+                    break
+                }
+            }
+            leapIndex += 1
+        }
+        
+        if containsFebruary29th {
+            self.selections.insert(ReadingSelection(leapYearEntry: true), at: leapIndex)
+        }
+    }
+    
+    func isLeapYear(_ year: Int) -> Bool {
+        return (year % 4 == 0) && (year % 100 != 0 || year % 400 == 0)
+    }
+    
+    func daysInYear(_ year: Int) -> Int {
+        return isLeapYear(year) ? 366 : 365
+    }
+    
+    func indexForDateFromStartDate(from date: Date) -> Int {
+        let calendar = Calendar.current
+        
+        // Calculate the difference in days between the start date and the given date
+        let dateComponents = calendar.dateComponents([.day], from: self.startDate, to: date)
+        guard let dayDifference = dateComponents.day else { return 0 }
+        
+        // If the difference in days is negative, the given date is before the start date, return 0
+        if dayDifference < 0 {
+            return 0
+        }
+        
+        // Adjust index based on the actual length of the plan to prevent overflow
+        let adjustedIndex = dayDifference % selections.count
+        
+        return adjustedIndex
     }
 }
 

@@ -4,10 +4,17 @@ struct ReadingSelectionView: View {
     var selection: ReadingSelection
     
     var body: some View {
-        ForEach(selection.getPassages()) { passage in
-            PassageView(passage: passage)
+        if selection.isLeap {
+            VStack {
+                Label("Happy Leap Year!", systemImage: "figure.gymnastics")
+            }
+            .padding()
+        } else {
+            ForEach(selection.getPassages()) { passage in
+                PassageView(passage: passage)
+            }
+            .padding(.horizontal)
         }
-        .padding(.horizontal)
     }
 }
 

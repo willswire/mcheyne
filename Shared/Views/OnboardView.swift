@@ -5,7 +5,11 @@ struct OnboardingView: View {
     @State private var importPlan: Bool = false
     @State private var isSelfPaced: Bool = false
     @State private var startDate: Date = Date()
-    private let secondsInAYear: TimeInterval = 31536000
+    private var secondsInAYear: TimeInterval {
+        let calendar = Calendar.current
+        let thisYear = calendar.component(.year, from: Date.now)
+        return self.plan.isLeapYear(thisYear) ? 31622400 : 31536000
+    }
     private var yearToDate: ClosedRange<Date> {
         let today = Date()
         return (today - secondsInAYear)...today
