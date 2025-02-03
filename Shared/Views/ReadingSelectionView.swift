@@ -31,7 +31,7 @@ struct PassageView: View {
                     Image(systemName: passage.hasRead() ?  "largecircle.fill.circle" : "circle")
                         .font(.title2)
                     
-                    Text(passage.description)
+                    Text(passage.localizedDescription())
                         .font(.title3)
                         .padding()
                 }
