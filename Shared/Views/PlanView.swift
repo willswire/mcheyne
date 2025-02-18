@@ -39,6 +39,8 @@ struct HeaderView: View {
                 Text("The M'Cheyne")
                     .font(.largeTitle)
                     .bold()
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
                 
                 Text("Daily Bible Reading Plan")
                     .font(.title3)
@@ -46,6 +48,7 @@ struct HeaderView: View {
             }
             .padding()
         }
+        .frame(maxWidth: 340)
     }
 }
 
