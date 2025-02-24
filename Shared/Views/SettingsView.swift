@@ -25,7 +25,7 @@ struct SettingsView: View {
                         Text("Self-Paced Mode")
                     }
                     .onChange(of: isSelfPaced) { oldValue, newValue in
-                        plan.setSelfPaced(to: true)
+                        plan.setSelfPaced(to: newValue)
                     }
                     if (!isSelfPaced) {
                         DatePicker("Start Date", selection: $startDate, in: yearToDate, displayedComponents: [.date])
@@ -54,8 +54,10 @@ struct SettingsView: View {
             }
             .interactiveDismissDisabled(true)
             .onAppear {
-                startDate = plan.startDate
-                isSelfPaced = plan.isSelfPaced
+                DispatchQueue.main.async {
+                    startDate = plan.startDate
+                    isSelfPaced = plan.isSelfPaced
+                }
             }
             #if os(macOS)
             .frame(minHeight: 250)
