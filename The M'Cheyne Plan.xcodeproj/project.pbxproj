@@ -10,6 +10,10 @@
 		49048A422D4F73DE0039D103 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 49048A412D4F73DE0039D103 /* Localizable.xcstrings */; };
 		491E42A42D516D87007DA048 /* Books.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 491E42A32D516D87007DA048 /* Books.xcstrings */; };
 		491E42AA2D518158007DA048 /* LocalDevelopment.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 491E42A92D518158007DA048 /* LocalDevelopment.xcconfig */; };
+		5584360E2E5FB622001FDC49 /* ICloudMigrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584360B2E5FB622001FDC49 /* ICloudMigrationTests.swift */; };
+		5584360F2E5FB622001FDC49 /* ICloudIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584360A2E5FB622001FDC49 /* ICloudIntegrationTests.swift */; };
+		558436102E5FB622001FDC49 /* MockUbiquitousKeyValueStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584360C2E5FB622001FDC49 /* MockUbiquitousKeyValueStore.swift */; };
+		558436112E5FB622001FDC49 /* PassageICloudTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584360D2E5FB622001FDC49 /* PassageICloudTests.swift */; };
 		6BB4320D2A9161130048C787 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB4320C2A9161130048C787 /* App.swift */; };
 		6BB432112A9161150048C787 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BB432102A9161150048C787 /* Assets.xcassets */; };
 		6BB432152A9161150048C787 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BB432142A9161150048C787 /* Preview Assets.xcassets */; };
@@ -48,6 +52,10 @@
 		49048A412D4F73DE0039D103 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		491E42A32D516D87007DA048 /* Books.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Books.xcstrings; sourceTree = "<group>"; };
 		491E42A92D518158007DA048 /* LocalDevelopment.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = LocalDevelopment.xcconfig; sourceTree = "<group>"; };
+		5584360A2E5FB622001FDC49 /* ICloudIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICloudIntegrationTests.swift; sourceTree = "<group>"; };
+		5584360B2E5FB622001FDC49 /* ICloudMigrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICloudMigrationTests.swift; sourceTree = "<group>"; };
+		5584360C2E5FB622001FDC49 /* MockUbiquitousKeyValueStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUbiquitousKeyValueStore.swift; sourceTree = "<group>"; };
+		5584360D2E5FB622001FDC49 /* PassageICloudTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassageICloudTests.swift; sourceTree = "<group>"; };
 		6BB432092A9161130048C787 /* The M'Cheyne Plan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The M'Cheyne Plan.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BB4320C2A9161130048C787 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		6BB432102A9161150048C787 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -143,6 +151,10 @@
 				6BB4321E2A9161150048C787 /* PlanTests.swift */,
 				6BB432372A9161AC0048C787 /* MockUserDefaults.swift */,
 				6BB432392A9161C30048C787 /* MockUserDefaultsTests.swift */,
+				5584360A2E5FB622001FDC49 /* ICloudIntegrationTests.swift */,
+				5584360B2E5FB622001FDC49 /* ICloudMigrationTests.swift */,
+				5584360C2E5FB622001FDC49 /* MockUbiquitousKeyValueStore.swift */,
+				5584360D2E5FB622001FDC49 /* PassageICloudTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -318,6 +330,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BB432522A91634B0048C787 /* Plan.swift in Sources */,
+				5584360E2E5FB622001FDC49 /* ICloudMigrationTests.swift in Sources */,
+				5584360F2E5FB622001FDC49 /* ICloudIntegrationTests.swift in Sources */,
+				558436102E5FB622001FDC49 /* MockUbiquitousKeyValueStore.swift in Sources */,
+				558436112E5FB622001FDC49 /* PassageICloudTests.swift in Sources */,
 				6BB432382A9161AC0048C787 /* MockUserDefaults.swift in Sources */,
 				6BB4323A2A9161C30048C787 /* MockUserDefaultsTests.swift in Sources */,
 				6BB4321F2A9161150048C787 /* PlanTests.swift in Sources */,
