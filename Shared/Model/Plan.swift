@@ -304,7 +304,9 @@ class Plan: ObservableObject {
         }
     }
 
-
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     
     func getSelection(at index: Int?) -> ReadingSelection {
         return selections[index ?? self.indexForTodaysDate]
