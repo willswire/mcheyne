@@ -1,0 +1,732 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "1 Chronicles" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 Crónicas"
+          }
+        }
+      }
+    },
+    "1 Corinthians" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 Corintios"
+          }
+        }
+      }
+    },
+    "1 John" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 Juan"
+          }
+        }
+      }
+    },
+    "1 Kings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 Reyes"
+          }
+        }
+      }
+    },
+    "1 Peter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 Pedro"
+          }
+        }
+      }
+    },
+    "1 Samuel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 Samuel"
+          }
+        }
+      }
+    },
+    "1 Thessalonians" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 Tesalonicenses"
+          }
+        }
+      }
+    },
+    "1 Timothy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 Timoteo"
+          }
+        }
+      }
+    },
+    "2 Chronicles" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2 Crónicas"
+          }
+        }
+      }
+    },
+    "2 Corinthians" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2 Corintios"
+          }
+        }
+      }
+    },
+    "2 John" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2 Juan"
+          }
+        }
+      }
+    },
+    "2 Kings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2 Reyes"
+          }
+        }
+      }
+    },
+    "2 Peter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2 Pedro"
+          }
+        }
+      }
+    },
+    "2 Samuel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2 Samuel"
+          }
+        }
+      }
+    },
+    "2 Thessalonians" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2 Tesalonicenses"
+          }
+        }
+      }
+    },
+    "2 Timothy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2 Timoteo"
+          }
+        }
+      }
+    },
+    "3 John" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3 Juan"
+          }
+        }
+      }
+    },
+    "Acts" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hechos"
+          }
+        }
+      }
+    },
+    "Amos" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Amós"
+          }
+        }
+      }
+    },
+    "Colossians" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Colosenses"
+          }
+        }
+      }
+    },
+    "Daniel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daniel"
+          }
+        }
+      }
+    },
+    "Deuteronomy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deuteronomio"
+          }
+        }
+      }
+    },
+    "Ecclesiastes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eclesiastés"
+          }
+        }
+      }
+    },
+    "Ephesians" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Efesios"
+          }
+        }
+      }
+    },
+    "Esther" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ester"
+          }
+        }
+      }
+    },
+    "Exodus" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Éxodo"
+          }
+        }
+      }
+    },
+    "Ezekiel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ezequiel"
+          }
+        }
+      }
+    },
+    "Ezra" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esdras"
+          }
+        }
+      }
+    },
+    "Galatians" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gálatas"
+          }
+        }
+      }
+    },
+    "Genesis" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Génesis"
+          }
+        }
+      }
+    },
+    "Habakkuk" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Habacuc"
+          }
+        }
+      }
+    },
+    "Haggai" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hageo"
+          }
+        }
+      }
+    },
+    "Hebrews" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hebreos"
+          }
+        }
+      }
+    },
+    "Hosea" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oseas"
+          }
+        }
+      }
+    },
+    "Isaiah" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Isaías"
+          }
+        }
+      }
+    },
+    "James" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Santiago"
+          }
+        }
+      }
+    },
+    "Jeremiah" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jeremías"
+          }
+        }
+      }
+    },
+    "Job" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Job"
+          }
+        }
+      }
+    },
+    "Joel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Joel"
+          }
+        }
+      }
+    },
+    "John" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Juan"
+          }
+        }
+      }
+    },
+    "Jonah" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jonás"
+          }
+        }
+      }
+    },
+    "Joshua" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Josué"
+          }
+        }
+      }
+    },
+    "Jude" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Judas"
+          }
+        }
+      }
+    },
+    "Judges" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jueces"
+          }
+        }
+      }
+    },
+    "Lamentations" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lamentaciones"
+          }
+        }
+      }
+    },
+    "Leviticus" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Levítico"
+          }
+        }
+      }
+    },
+    "Luke" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lucas"
+          }
+        }
+      }
+    },
+    "Malachi" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Malaquías"
+          }
+        }
+      }
+    },
+    "Mark" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marcos"
+          }
+        }
+      }
+    },
+    "Matthew" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mateo"
+          }
+        }
+      }
+    },
+    "Micah" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Miqueas"
+          }
+        }
+      }
+    },
+    "Nahum" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nahúm"
+          }
+        }
+      }
+    },
+    "Nehemiah" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nehemías"
+          }
+        }
+      }
+    },
+    "Numbers" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Números"
+          }
+        }
+      }
+    },
+    "Obadiah" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abdías"
+          }
+        }
+      }
+    },
+    "Philemon" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filemón"
+          }
+        }
+      }
+    },
+    "Philippians" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filipenses"
+          }
+        }
+      }
+    },
+    "Proverbs" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proverbios"
+          }
+        }
+      }
+    },
+    "Psalms" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salmos"
+          }
+        }
+      }
+    },
+    "Revelation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apocalipsis"
+          }
+        }
+      }
+    },
+    "Romans" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Romanos"
+          }
+        }
+      }
+    },
+    "Ruth" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rut"
+          }
+        }
+      }
+    },
+    "Song of Songs" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cantares"
+          }
+        }
+      }
+    },
+    "Titus" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tito"
+          }
+        }
+      }
+    },
+    "Zechariah" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zacarías"
+          }
+        }
+      }
+    },
+    "Zephaniah" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sofonías"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

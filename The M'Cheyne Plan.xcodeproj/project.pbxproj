@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49048A422D4F73DE0039D103 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 49048A412D4F73DE0039D103 /* Localizable.xcstrings */; };
+		491E42A42D516D87007DA048 /* Books.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 491E42A32D516D87007DA048 /* Books.xcstrings */; };
+		491E42AA2D518158007DA048 /* LocalDevelopment.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 491E42A92D518158007DA048 /* LocalDevelopment.xcconfig */; };
 		6BB4320D2A9161130048C787 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB4320C2A9161130048C787 /* App.swift */; };
 		6BB432112A9161150048C787 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BB432102A9161150048C787 /* Assets.xcassets */; };
 		6BB432152A9161150048C787 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BB432142A9161150048C787 /* Preview Assets.xcassets */; };
@@ -42,6 +45,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		49048A412D4F73DE0039D103 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		491E42A32D516D87007DA048 /* Books.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Books.xcstrings; sourceTree = "<group>"; };
+		491E42A92D518158007DA048 /* LocalDevelopment.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = LocalDevelopment.xcconfig; sourceTree = "<group>"; };
 		6BB432092A9161130048C787 /* The M'Cheyne Plan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The M'Cheyne Plan.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BB4320C2A9161130048C787 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		6BB432102A9161150048C787 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -90,6 +96,9 @@
 		6BB432002A9161130048C787 = {
 			isa = PBXGroup;
 			children = (
+				491E42A92D518158007DA048 /* LocalDevelopment.xcconfig */,
+				491E42A32D516D87007DA048 /* Books.xcstrings */,
+				49048A412D4F73DE0039D103 /* Localizable.xcstrings */,
 				6BCD532E2AD49D3C00B2BEC2 /* README.md */,
 				6BB4320B2A9161130048C787 /* Shared */,
 				6BB4321D2A9161150048C787 /* Tests */,
@@ -223,7 +232,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
-				LastUpgradeCheck = 1520;
+				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					6BB432082A9161130048C787 = {
 						CreatedOnToolsVersion = 15.0;
@@ -245,6 +254,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 6BB432002A9161130048C787;
 			productRefGroup = 6BB4320A2A9161130048C787 /* Products */;
@@ -263,8 +273,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				491E42A42D516D87007DA048 /* Books.xcstrings in Resources */,
 				6BB432152A9161150048C787 /* Preview Assets.xcassets in Resources */,
 				6BB432112A9161150048C787 /* Assets.xcassets in Resources */,
+				49048A422D4F73DE0039D103 /* Localizable.xcstrings in Resources */,
+				491E42AA2D518158007DA048 /* LocalDevelopment.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,9 +350,11 @@
 /* Begin XCBuildConfiguration section */
 		6BB4322C2A9161150048C787 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 491E42A92D518158007DA048 /* LocalDevelopment.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -371,6 +386,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -393,15 +409,18 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		6BB4322D2A9161150048C787 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 491E42A92D518158007DA048 /* LocalDevelopment.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -448,6 +467,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 			};
 			name = Release;
 		};
@@ -458,7 +478,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Shared/App.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 17;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Shared/Preview Content\"";
 				DEVELOPMENT_TEAM = QSQY64SHJ5;
@@ -481,7 +501,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.willswire.mcheyne-plan";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -499,7 +519,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Shared/App.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 17;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Shared/Preview Content\"";
 				DEVELOPMENT_TEAM = QSQY64SHJ5;
@@ -522,7 +542,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.willswire.mcheyne-plan";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -536,7 +556,6 @@
 		6BB432322A9161150048C787 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -560,7 +579,6 @@
 		6BB432332A9161150048C787 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -584,7 +602,6 @@
 		6BB432352A9161150048C787 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
@@ -607,7 +624,6 @@
 		6BB432362A9161150048C787 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;

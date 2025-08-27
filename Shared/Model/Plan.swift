@@ -36,6 +36,18 @@ class Passage: Identifiable, ObservableObject {
         userDefaults.set(completed, forKey: userDefaultsKeyV2)
         self.objectWillChange.send()
     }
+    
+    func localizedDescription() -> String {
+        if let lastSpaceIndex = self.description.lastIndex(of: " ")  {
+            let bookName = String(self.description[..<lastSpaceIndex]) // Extract book name by removing the chapter (e.g., "Genesis")
+            let localizedBook = String(localized: String.LocalizationValue(bookName), table: "Books")
+            let chapter = self.description[self.description.index(after: lastSpaceIndex)...] // Extract the passage numbers
+
+            return "\(localizedBook) \(chapter)"
+        }
+        
+        return String(localized: String.LocalizationValue(self.description)) // Fallback if no space is found
+    }
 }
 
 class ReadingSelection: ObservableObject {
