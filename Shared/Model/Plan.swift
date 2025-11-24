@@ -7,14 +7,22 @@ class Passage: Identifiable, ObservableObject {
     var description: String
     var id: Int
     var userDefaults: UserDefaults
+    var store: NSUbiquitousKeyValueStore?
     var userDefaultsKeyV2: String
     
-    init(_ reference: String = "None", id: Int, userDefaults: UserDefaults) {
+    init(_ reference: String = "None", id: Int, userDefaults: UserDefaults, store: NSUbiquitousKeyValueStore? = nil) {
         self.description = reference
         self.id = id
         self.userDefaults = userDefaults
+        self.store = store
         self.userDefaultsKeyV2 = description + "+" + String(id)
-        self.completed = userDefaults.bool(forKey: userDefaultsKeyV2)
+        
+        // Load completed status from appropriate storage
+        if let store = store, userDefaults.bool(forKey: MIGRATION_TO_ICLOUD_COMPLETE_KEY) {
+            self.completed = store.bool(forKey: userDefaultsKeyV2)
+        } else {
+            self.completed = userDefaults.bool(forKey: userDefaultsKeyV2)
+        }
         save()
     }
     
@@ -33,7 +41,12 @@ class Passage: Identifiable, ObservableObject {
     }
     
     func save() {
-        userDefaults.set(completed, forKey: userDefaultsKeyV2)
+        if let store = store, userDefaults.bool(forKey: MIGRATION_TO_ICLOUD_COMPLETE_KEY) {
+            store.set(completed, forKey: userDefaultsKeyV2)
+            store.synchronize()
+        } else {
+            userDefaults.set(completed, forKey: userDefaultsKeyV2)
+        }
         self.objectWillChange.send()
     }
     
@@ -54,9 +67,9 @@ class ReadingSelection: ObservableObject {
     private var passages: [Passage] = []
     var isLeap: Bool = false
     
-    init(_ references: [String] = Array(repeating: "None", count: 4), userDefaults: UserDefaults = UserDefaults.standard) {
+    init(_ references: [String] = Array(repeating: "None", count: 4), userDefaults: UserDefaults = UserDefaults.standard, store: NSUbiquitousKeyValueStore? = nil) {
         for reference in references {
-            self.passages.append(Passage(reference, id: passages.count, userDefaults: userDefaults))
+            self.passages.append(Passage(reference, id: passages.count, userDefaults: userDefaults, store: store))
         }
     }
     
@@ -82,6 +95,7 @@ class Plan: ObservableObject {
     @Published var selections: [ReadingSelection]
     @Published var isSelfPaced: Bool
     var userDefaults: UserDefaults
+    var store = NSUbiquitousKeyValueStore.default
     
     var indexForTodaysDate: Int {
         if (self.isSelfPaced) {
@@ -95,18 +109,50 @@ class Plan: ObservableObject {
         }
     }
     
-    init(userDefaults: UserDefaults = UserDefaults.standard) {
+    init(userDefaults: UserDefaults = UserDefaults.standard, store: NSUbiquitousKeyValueStore = .default) {
         self.userDefaults = userDefaults
-        if let startDate = userDefaults.value(forKey: "startDate") as? Date {
-            self.startDate = startDate
+        self.store = store
+                
+        let isICloudAvailable = FileManager.default.ubiquityIdentityToken != nil
+        
+        if isICloudAvailable && userDefaults.bool(forKey: MIGRATION_TO_ICLOUD_COMPLETE_KEY) {
+            if let startDate = store.object(forKey: "startDate") as? Date {
+                self.startDate = startDate
+            } else {
+                self.startDate = Date()
+                store.setValue(Date(), forKey: "startDate")
+            }
+            self.isSelfPaced = store.bool(forKey: "selfPaced")
+            
+            if let selectionsData = store.data(forKey: "selections"),
+               let references = try? JSONDecoder().decode([[String]].self, from: selectionsData) {
+                self.selections = references.map { ReadingSelection($0, userDefaults: userDefaults, store: store) }
+            } else {
+                self.selections = RAW_PLAN_DATA.map { ReadingSelection($0, userDefaults: userDefaults, store: store) }
+            }
         } else {
-            self.startDate = Date()
-            userDefaults.setValue(Date(), forKey: "startDate")
+            if let startDate = userDefaults.value(forKey: "startDate") as? Date {
+                self.startDate = startDate
+            } else {
+                self.startDate = Date()
+                userDefaults.setValue(Date(), forKey: "startDate")
+            }
+            self.isSelfPaced = userDefaults.bool(forKey: "selfPaced")
+            self.selections = RAW_PLAN_DATA.map { ReadingSelection($0, userDefaults: userDefaults, store: nil) }
         }
-        self.isSelfPaced = userDefaults.bool(forKey: "selfPaced")
-        self.selections = RAW_PLAN_DATA.map { ReadingSelection($0, userDefaults: userDefaults) }
         self.insertLeapYearEntry()
         migrateUserDefaultsToV2SchemaIfRequired()
+        migrateUserDefaultsToICloudIfRequired()
+
+        // Listen for iCloud sync updates
+        if isICloudAvailable {
+            NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(handleICloudSync),
+                name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
+                object: store
+            )
+        }
     }
     
     private func migrateUserDefaultsToV2SchemaIfRequired() {
@@ -188,13 +234,93 @@ class Plan: ObservableObject {
         userDefaults.set(true, forKey: MIGRATION_TO_V2_SCHEMA_COMPLETE_KEY)
     }
     
+    private func migrateUserDefaultsToICloudIfRequired() {
+        // Check if iCloud is available
+        guard FileManager.default.ubiquityIdentityToken != nil else {
+            print("iCloud is not available. Skipping migration.")
+            return
+        }
+
+        // Check if migration has already been done
+        guard !userDefaults.bool(forKey: MIGRATION_TO_ICLOUD_COMPLETE_KEY) else {
+            print("Migration already completed. No action needed.")
+            return
+        }
+        
+        print("Migrating UserDefaults data to iCloud...")
+
+        // Move basic values to iCloud
+        if let startDate = userDefaults.object(forKey: "startDate") as? Date {
+            store.set(startDate, forKey: "startDate")
+        }
+        store.set(userDefaults.bool(forKey: "selfPaced"), forKey: "selfPaced")
+        
+        // Migrate all passage completion states
+        for selection in selections {
+            for passage in selection.getPassages() {
+                if userDefaults.bool(forKey: passage.userDefaultsKeyV2) {
+                    store.set(true, forKey: passage.userDefaultsKeyV2)
+                }
+            }
+        }
+        
+        // Serialize selections structure (this preserves the reading plan structure)
+        let selectionsData = try? JSONEncoder().encode(selections.map { $0.getPassages().map { $0.description } })
+        store.set(selectionsData, forKey: "selections")
+        
+        store.synchronize()
+
+        // Clean up old UserDefaults data after successful migration
+        userDefaults.removeObject(forKey: "startDate")
+        userDefaults.removeObject(forKey: "selfPaced")
+        
+        // Clean up passage completion states from UserDefaults
+        for selection in selections {
+            for passage in selection.getPassages() {
+                userDefaults.removeObject(forKey: passage.userDefaultsKeyV2)
+            }
+        }
+
+        // Mark migration as complete
+        userDefaults.set(true, forKey: MIGRATION_TO_ICLOUD_COMPLETE_KEY)
+        userDefaults.synchronize()
+        
+        print("Migration completed successfully.")
+    }
+    
+    @objc private func handleICloudSync(notification: Notification) {
+        DispatchQueue.main.async {
+            self.startDate = self.store.object(forKey: "startDate") as? Date ?? Date()
+            self.isSelfPaced = self.store.bool(forKey: "selfPaced")
+            if let selectionsData = self.store.data(forKey: "selections"),
+               let references = try? JSONDecoder().decode([[String]].self, from: selectionsData) {
+                self.selections = references.map { ReadingSelection($0, userDefaults: self.userDefaults, store: self.store) }
+            } else {
+                self.selections = RAW_PLAN_DATA.map { ReadingSelection($0, userDefaults: self.userDefaults, store: self.store) }
+            }
+
+            print("iCloud sync updated values.")
+            self.objectWillChange.send()
+        }
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     func getSelection(at index: Int?) -> ReadingSelection {
         return selections[index ?? self.indexForTodaysDate]
     }
     
     func setStartDate(to date: Date) {
         self.startDate = date
-        userDefaults.setValue(date, forKey: "startDate")
+        if (userDefaults.bool(forKey: MIGRATION_TO_ICLOUD_COMPLETE_KEY)) {
+            store.set(date, forKey: "startDate")
+            store.synchronize()
+        } else {
+            userDefaults.setValue(date, forKey: "startDate")
+        }
+        self.objectWillChange.send()
     }
     
     func reset() {
@@ -208,7 +334,14 @@ class Plan: ObservableObject {
     
     func setSelfPaced(to value: Bool) {
         self.isSelfPaced = value
-        userDefaults.set(value, forKey: "selfPaced")
+        
+        if (userDefaults.bool(forKey: MIGRATION_TO_ICLOUD_COMPLETE_KEY)) {
+            store.set(value, forKey: "selfPaced")
+            store.synchronize()
+        } else {
+            userDefaults.set(value, forKey: "selfPaced")
+        }
+    
         self.objectWillChange.send()
     }
     

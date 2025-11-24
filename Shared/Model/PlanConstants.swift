@@ -378,6 +378,8 @@ let RAW_PLAN_DATA: Array<Array<String>> = [
 
 let MIGRATION_TO_V2_SCHEMA_COMPLETE_KEY: String = "migrationToV2UserDefaultsSchemaComplete"
 
+let MIGRATION_TO_ICLOUD_COMPLETE_KEY: String = "migrationToICloudComplete"
+
 let USER_DEFAULTS_SCHEMA_V1_KEYS: Array<String> = [
     "1 Chronicles 1-2",
     "1 Chronicles 11-12",
