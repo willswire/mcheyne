@@ -34,7 +34,7 @@ struct ICloudIntegrationTests {
 
         let reloadedPlan = Plan(userDefaults: mockUserDefaults, store: mockStore)
         guard let firstSelection = firstSelectionWithPassages(in: reloadedPlan) else {
-            #expect(false, "Expected at least one non-leap selection with passages")
+            #expect(Bool(false), "Expected at least one non-leap selection with passages")
             return
         }
         let secondPassage = firstSelection.getPassages()[1]
@@ -59,7 +59,7 @@ struct ICloudIntegrationTests {
         _ = Plan(userDefaults: device1UserDefaults, store: device1Store)
         let plan1 = Plan(userDefaults: device1UserDefaults, store: device1Store)
         guard let plan1Selection = firstSelectionWithPassages(in: plan1) else {
-            #expect(false, "Expected at least one non-leap selection with passages")
+            #expect(Bool(false), "Expected at least one non-leap selection with passages")
             return
         }
 
@@ -76,7 +76,7 @@ struct ICloudIntegrationTests {
 
         let plan2 = Plan(userDefaults: device2UserDefaults, store: device2Store)
         guard let plan2Selection = firstSelectionWithPassages(in: plan2) else {
-            #expect(false, "Expected at least one non-leap selection with passages")
+            #expect(Bool(false), "Expected at least one non-leap selection with passages")
             return
         }
 
@@ -110,7 +110,7 @@ struct ICloudIntegrationTests {
         guard let plan1Selection = firstSelectionWithPassages(in: plan1),
             let plan2Selection = firstSelectionWithPassages(in: plan2)
         else {
-            #expect(false, "Expected at least one non-leap selection with passages")
+            #expect(Bool(false), "Expected at least one non-leap selection with passages")
             return
         }
 
@@ -139,20 +139,22 @@ struct ICloudIntegrationTests {
         _ = Plan(userDefaults: offlineUserDefaults, store: mockStore)
         let reloadedPlan = Plan(userDefaults: offlineUserDefaults, store: mockStore)
         guard let firstSelection = firstSelectionWithPassages(in: reloadedPlan) else {
-            #expect(false, "Expected at least one non-leap selection with passages")
+            #expect(Bool(false), "Expected at least one non-leap selection with passages")
             return
         }
 
-        for i in 0..<5 {
-            firstSelection.getPassages()[i].read()
+        let passages = firstSelection.getPassages()
+        let passageCount = min(5, passages.count)
+        for i in 0..<passageCount {
+            passages[i].read()
         }
         reloadedPlan.setSelfPaced(to: true)
 
         #expect(offlineUserDefaults.bool(forKey: MIGRATION_TO_ICLOUD_COMPLETE_KEY))
         #expect(mockStore.bool(forKey: "selfPaced"))
 
-        for i in 0..<5 {
-            let passage = firstSelection.getPassages()[i]
+        for i in 0..<passageCount {
+            let passage = passages[i]
             #expect(mockStore.bool(forKey: passage.userDefaultsKeyV2))
         }
     }
