@@ -33,7 +33,11 @@ struct ICloudIntegrationTests {
         }
 
         let reloadedPlan = Plan(userDefaults: mockUserDefaults, store: mockStore)
-        let secondPassage = reloadedPlan.selections[0].getPassages()[1]
+        guard let firstSelection = firstSelectionWithPassages(in: reloadedPlan) else {
+            #expect(false, "Expected at least one non-leap selection with passages")
+            return
+        }
+        let secondPassage = firstSelection.getPassages()[1]
         secondPassage.read()
         #expect(mockStore.bool(forKey: secondPassage.userDefaultsKeyV2))
 
@@ -54,9 +58,13 @@ struct ICloudIntegrationTests {
 
         _ = Plan(userDefaults: device1UserDefaults, store: device1Store)
         let plan1 = Plan(userDefaults: device1UserDefaults, store: device1Store)
+        guard let plan1Selection = firstSelectionWithPassages(in: plan1) else {
+            #expect(false, "Expected at least one non-leap selection with passages")
+            return
+        }
 
         for i in 0..<3 {
-            plan1.selections[0].getPassages()[i].read()
+            plan1Selection.getPassages()[i].read()
         }
         plan1.setSelfPaced(to: true)
 
@@ -67,14 +75,18 @@ struct ICloudIntegrationTests {
         device2Store.persistedDictionary = device1Store.persistedDictionary
 
         let plan2 = Plan(userDefaults: device2UserDefaults, store: device2Store)
+        guard let plan2Selection = firstSelectionWithPassages(in: plan2) else {
+            #expect(false, "Expected at least one non-leap selection with passages")
+            return
+        }
 
         #expect(plan2.isSelfPaced)
         #expect(plan2.startDate.timeIntervalSince1970 == plan1.startDate.timeIntervalSince1970)
 
         for i in 0..<3 {
-            #expect(plan2.selections[0].getPassages()[i].completed)
+            #expect(plan2Selection.getPassages()[i].completed)
         }
-        #expect(plan2.selections[0].getPassages()[3].completed == false)
+        #expect(plan2Selection.getPassages()[3].completed == false)
     }
 
     @Test("Conflict resolution scenario")
@@ -95,9 +107,15 @@ struct ICloudIntegrationTests {
 
         let plan1 = Plan(userDefaults: device1UserDefaults, store: device1Store)
         let plan2 = Plan(userDefaults: device2UserDefaults, store: device2Store)
+        guard let plan1Selection = firstSelectionWithPassages(in: plan1),
+            let plan2Selection = firstSelectionWithPassages(in: plan2)
+        else {
+            #expect(false, "Expected at least one non-leap selection with passages")
+            return
+        }
 
-        plan1.selections[0].getPassages()[0].read()
-        plan2.selections[0].getPassages()[1].read()
+        plan1Selection.getPassages()[0].read()
+        plan2Selection.getPassages()[1].read()
 
         device2Store.persistedDictionary = device1Store.persistedDictionary
 
@@ -107,8 +125,8 @@ struct ICloudIntegrationTests {
 
         try await Task.sleep(nanoseconds: 200_000_000)
 
-        #expect(plan2.selections[0].getPassages()[0].completed)
-        #expect(plan2.selections[0].getPassages()[1].completed == false)
+        #expect(plan2Selection.getPassages()[0].completed)
+        #expect(plan2Selection.getPassages()[1].completed == false)
     }
 
     @Test("Offline to online transition")
@@ -120,9 +138,13 @@ struct ICloudIntegrationTests {
 
         _ = Plan(userDefaults: offlineUserDefaults, store: mockStore)
         let reloadedPlan = Plan(userDefaults: offlineUserDefaults, store: mockStore)
+        guard let firstSelection = firstSelectionWithPassages(in: reloadedPlan) else {
+            #expect(false, "Expected at least one non-leap selection with passages")
+            return
+        }
 
         for i in 0..<5 {
-            reloadedPlan.selections[0].getPassages()[i].read()
+            firstSelection.getPassages()[i].read()
         }
         reloadedPlan.setSelfPaced(to: true)
 
@@ -130,7 +152,7 @@ struct ICloudIntegrationTests {
         #expect(mockStore.bool(forKey: "selfPaced"))
 
         for i in 0..<5 {
-            let passage = reloadedPlan.selections[0].getPassages()[i]
+            let passage = firstSelection.getPassages()[i]
             #expect(mockStore.bool(forKey: passage.userDefaultsKeyV2))
         }
     }
@@ -178,4 +200,8 @@ private func findPassage(withDescription description: String, in plan: Plan) -> 
         }
     }
     return nil
+}
+
+private func firstSelectionWithPassages(in plan: Plan) -> ReadingSelection? {
+    return plan.selections.first(where: { !$0.isLeap && !$0.getPassages().isEmpty })
 }
