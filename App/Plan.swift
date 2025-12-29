@@ -16,20 +16,20 @@ class Passage: Identifiable, ObservableObject {
     var id: Int
     var userDefaults: UserDefaults
     var store: NSUbiquitousKeyValueStore?
-    var storageKey: String
+    var userDefaultsKeyV2: String
     
     init(_ reference: String = "None", id: Int, userDefaults: UserDefaults, store: NSUbiquitousKeyValueStore? = nil) {
         self.description = reference
         self.id = id
         self.userDefaults = userDefaults
         self.store = store
-        self.storageKey = Passage.makeStableStorageKey(reference: reference)
+        self.userDefaultsKeyV2 = description + "+" + String(id)
         
         // Load completed status from appropriate storage
         if let store = store, userDefaults.bool(forKey: MIGRATION_TO_ICLOUD_COMPLETE_KEY) {
-            self.completed = store.bool(forKey: storageKey)
+            self.completed = store.bool(forKey: userDefaultsKeyV2)
         } else {
-            self.completed = userDefaults.bool(forKey: storageKey)
+            self.completed = userDefaults.bool(forKey: userDefaultsKeyV2)
         }
         save()
     }
@@ -50,10 +50,10 @@ class Passage: Identifiable, ObservableObject {
     
     func save() {
         if let store = store, userDefaults.bool(forKey: MIGRATION_TO_ICLOUD_COMPLETE_KEY) {
-            store.set(completed, forKey: storageKey)
+            store.set(completed, forKey: userDefaultsKeyV2)
             store.synchronize()
         } else {
-            userDefaults.set(completed, forKey: storageKey)
+            userDefaults.set(completed, forKey: userDefaultsKeyV2)
         }
         self.objectWillChange.send()
     }
@@ -70,22 +70,6 @@ class Passage: Identifiable, ObservableObject {
         return String(localized: String.LocalizationValue(self.description)) // Fallback if no space is found
     }
 
-    static func makeStableStorageKey(reference: String) -> String {
-        // Build a stable key based on reference and its occurrence index in RAW_PLAN_DATA
-        // This avoids using positional IDs that can shift with leap-day insertion.
-        var occurrence = 0
-        for dayRefs in RAW_PLAN_DATA {
-            for ref in dayRefs {
-                if ref == reference {
-                    occurrence += 1
-                }
-            }
-        }
-        // Use the last occurrence count as a stable discriminator across devices with identical RAW_PLAN_DATA
-        // If you want first occurrence, consider computing cumulatively outside. Here we use a hash to avoid collisions.
-        let sanitized = reference.replacingOccurrences(of: " ", with: "_")
-        return "passage_\(sanitized)#\(occurrence)"
-    }
 }
 
 class ReadingSelection: ObservableObject {
@@ -284,8 +268,8 @@ class Plan: ObservableObject {
         // Migrate all passage completion states
         for selection in selections {
             for passage in selection.getPassages() {
-                if userDefaults.bool(forKey: passage.storageKey) {
-                    store.set(true, forKey: passage.storageKey)
+                if userDefaults.bool(forKey: passage.userDefaultsKeyV2) {
+                    store.set(true, forKey: passage.userDefaultsKeyV2)
                 }
             }
         }
@@ -313,7 +297,7 @@ class Plan: ObservableObject {
         // Clean up passage completion states from UserDefaults
         for selection in selections {
             for passage in selection.getPassages() {
-                userDefaults.removeObject(forKey: passage.storageKey)
+                userDefaults.removeObject(forKey: passage.userDefaultsKeyV2)
             }
         }
 
@@ -448,4 +432,3 @@ extension Date {
         return Calendar.current.ordinality(of: .day, in: .year, for: self)! - 1
     }
 }
-
