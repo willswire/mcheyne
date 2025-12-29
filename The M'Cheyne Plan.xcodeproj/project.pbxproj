@@ -3,95 +3,69 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		49048A422D4F73DE0039D103 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 49048A412D4F73DE0039D103 /* Localizable.xcstrings */; };
-		491E42A42D516D87007DA048 /* Books.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 491E42A32D516D87007DA048 /* Books.xcstrings */; };
-		491E42AA2D518158007DA048 /* LocalDevelopment.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 491E42A92D518158007DA048 /* LocalDevelopment.xcconfig */; };
-		5584360E2E5FB622001FDC49 /* ICloudMigrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584360B2E5FB622001FDC49 /* ICloudMigrationTests.swift */; };
-		5584360F2E5FB622001FDC49 /* ICloudIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584360A2E5FB622001FDC49 /* ICloudIntegrationTests.swift */; };
-		558436102E5FB622001FDC49 /* MockUbiquitousKeyValueStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584360C2E5FB622001FDC49 /* MockUbiquitousKeyValueStore.swift */; };
-		558436112E5FB622001FDC49 /* PassageICloudTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584360D2E5FB622001FDC49 /* PassageICloudTests.swift */; };
-		6BB4320D2A9161130048C787 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB4320C2A9161130048C787 /* App.swift */; };
-		6BB432112A9161150048C787 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BB432102A9161150048C787 /* Assets.xcassets */; };
-		6BB432152A9161150048C787 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BB432142A9161150048C787 /* Preview Assets.xcassets */; };
-		6BB4321F2A9161150048C787 /* PlanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB4321E2A9161150048C787 /* PlanTests.swift */; };
-		6BB432382A9161AC0048C787 /* MockUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB432372A9161AC0048C787 /* MockUserDefaults.swift */; };
-		6BB4323A2A9161C30048C787 /* MockUserDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB432392A9161C30048C787 /* MockUserDefaultsTests.swift */; };
-		6BB4324B2A9162CC0048C787 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB4323C2A9161F00048C787 /* Plan.swift */; };
-		6BB4324C2A9162D20048C787 /* PlanConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB4323E2A9161FF0048C787 /* PlanConstants.swift */; };
-		6BB4324D2A9162D60048C787 /* OnboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB432412A91622A0048C787 /* OnboardView.swift */; };
-		6BB4324E2A9162D90048C787 /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB432452A9162430048C787 /* PlanView.swift */; };
-		6BB4324F2A9162DC0048C787 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB432432A9162350048C787 /* ContentView.swift */; };
-		6BB432502A9162DF0048C787 /* ReadingSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB432472A91624D0048C787 /* ReadingSelectionView.swift */; };
-		6BB432512A9162E20048C787 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB432492A9162580048C787 /* SettingsView.swift */; };
-		6BB432522A91634B0048C787 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB4323C2A9161F00048C787 /* Plan.swift */; };
-		6BB432532A9163770048C787 /* PlanConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB4323E2A9161FF0048C787 /* PlanConstants.swift */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXContainerItemProxy section */
-		6BB4321B2A9161150048C787 /* PBXContainerItemProxy */ = {
+		6B4366C72F02D02A003AAF9B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 6BB432012A9161130048C787 /* Project object */;
+			containerPortal = 6B4366B12F02D029003AAF9B /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 6BB432082A9161130048C787;
-			remoteInfo = "mcheyne-plan";
-		};
-		6BB432252A9161150048C787 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6BB432012A9161130048C787 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6BB432082A9161130048C787;
+			remoteGlobalIDString = 6B4366B82F02D029003AAF9B;
 			remoteInfo = "mcheyne-plan";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		49048A412D4F73DE0039D103 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
-		491E42A32D516D87007DA048 /* Books.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Books.xcstrings; sourceTree = "<group>"; };
-		491E42A92D518158007DA048 /* LocalDevelopment.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = LocalDevelopment.xcconfig; sourceTree = "<group>"; };
-		5584360A2E5FB622001FDC49 /* ICloudIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICloudIntegrationTests.swift; sourceTree = "<group>"; };
-		5584360B2E5FB622001FDC49 /* ICloudMigrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICloudMigrationTests.swift; sourceTree = "<group>"; };
-		5584360C2E5FB622001FDC49 /* MockUbiquitousKeyValueStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUbiquitousKeyValueStore.swift; sourceTree = "<group>"; };
-		5584360D2E5FB622001FDC49 /* PassageICloudTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassageICloudTests.swift; sourceTree = "<group>"; };
-		6BB432092A9161130048C787 /* The M'Cheyne Plan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The M'Cheyne Plan.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6BB4320C2A9161130048C787 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
-		6BB432102A9161150048C787 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		6BB432122A9161150048C787 /* App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = App.entitlements; sourceTree = "<group>"; };
-		6BB432142A9161150048C787 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		6BB4321A2A9161150048C787 /* The M'Cheyne PlanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "The M'Cheyne PlanTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6BB4321E2A9161150048C787 /* PlanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTests.swift; sourceTree = "<group>"; };
-		6BB432242A9161150048C787 /* The M'Cheyne PlanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "The M'Cheyne PlanUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6BB432372A9161AC0048C787 /* MockUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserDefaults.swift; sourceTree = "<group>"; };
-		6BB432392A9161C30048C787 /* MockUserDefaultsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserDefaultsTests.swift; sourceTree = "<group>"; };
-		6BB4323C2A9161F00048C787 /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
-		6BB4323E2A9161FF0048C787 /* PlanConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanConstants.swift; sourceTree = "<group>"; };
-		6BB432412A91622A0048C787 /* OnboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardView.swift; sourceTree = "<group>"; };
-		6BB432432A9162350048C787 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		6BB432452A9162430048C787 /* PlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanView.swift; sourceTree = "<group>"; };
-		6BB432472A91624D0048C787 /* ReadingSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingSelectionView.swift; sourceTree = "<group>"; };
-		6BB432492A9162580048C787 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		6BCD532E2AD49D3C00B2BEC2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		6B4366B92F02D029003AAF9B /* The M'Cheyne Plan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The M'Cheyne Plan.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B4366C62F02D02A003AAF9B /* The M'Cheyne PlanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "The M'Cheyne PlanTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B4367562F02EDF5003AAF9B /* The M'Cheyne Plan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "The M'Cheyne Plan.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		6B4367162F02DF65003AAF9B /* Exceptions for "App" folder in "The M'Cheyne PlanTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				App.swift,
+				AppIcon.icon,
+				Assets.xcassets,
+				Plan.swift,
+				PlanConstants.swift,
+				Views/ContentView.swift,
+				Views/OnboardingView.swift,
+				Views/PlanView.swift,
+				Views/ReadingSelectionView.swift,
+				Views/SettingsView.swift,
+			);
+			target = 6B4366C52F02D02A003AAF9B /* The M'Cheyne PlanTests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		6B4366BB2F02D029003AAF9B /* App */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				6B4367162F02DF65003AAF9B /* Exceptions for "App" folder in "The M'Cheyne PlanTests" target */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		6B4366C92F02D02A003AAF9B /* Tests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Tests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
-		6BB432062A9161130048C787 /* Frameworks */ = {
+		6B4366B62F02D029003AAF9B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6BB432172A9161150048C787 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6BB432212A9161150048C787 /* Frameworks */ = {
+		6B4366C32F02D02A003AAF9B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -101,166 +75,93 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6BB432002A9161130048C787 = {
+		6B4366B02F02D029003AAF9B = {
 			isa = PBXGroup;
 			children = (
-				491E42A92D518158007DA048 /* LocalDevelopment.xcconfig */,
-				491E42A32D516D87007DA048 /* Books.xcstrings */,
-				49048A412D4F73DE0039D103 /* Localizable.xcstrings */,
-				6BCD532E2AD49D3C00B2BEC2 /* README.md */,
-				6BB4320B2A9161130048C787 /* Shared */,
-				6BB4321D2A9161150048C787 /* Tests */,
-				6BB4320A2A9161130048C787 /* Products */,
+				6B4367562F02EDF5003AAF9B /* The M'Cheyne Plan.entitlements */,
+				6B4366BB2F02D029003AAF9B /* App */,
+				6B4366C92F02D02A003AAF9B /* Tests */,
+				6B4366BA2F02D029003AAF9B /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		6BB4320A2A9161130048C787 /* Products */ = {
+		6B4366BA2F02D029003AAF9B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6BB432092A9161130048C787 /* The M'Cheyne Plan.app */,
-				6BB4321A2A9161150048C787 /* The M'Cheyne PlanTests.xctest */,
-				6BB432242A9161150048C787 /* The M'Cheyne PlanUITests.xctest */,
+				6B4366B92F02D029003AAF9B /* The M'Cheyne Plan.app */,
+				6B4366C62F02D02A003AAF9B /* The M'Cheyne PlanTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		6BB4320B2A9161130048C787 /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				6BB4320C2A9161130048C787 /* App.swift */,
-				6BB4323B2A9161E90048C787 /* Model */,
-				6BB432402A91620C0048C787 /* Views */,
-				6BB432102A9161150048C787 /* Assets.xcassets */,
-				6BB432122A9161150048C787 /* App.entitlements */,
-				6BB432132A9161150048C787 /* Preview Content */,
-			);
-			path = Shared;
-			sourceTree = "<group>";
-		};
-		6BB432132A9161150048C787 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				6BB432142A9161150048C787 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		6BB4321D2A9161150048C787 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				6BB4321E2A9161150048C787 /* PlanTests.swift */,
-				6BB432372A9161AC0048C787 /* MockUserDefaults.swift */,
-				6BB432392A9161C30048C787 /* MockUserDefaultsTests.swift */,
-				5584360A2E5FB622001FDC49 /* ICloudIntegrationTests.swift */,
-				5584360B2E5FB622001FDC49 /* ICloudMigrationTests.swift */,
-				5584360C2E5FB622001FDC49 /* MockUbiquitousKeyValueStore.swift */,
-				5584360D2E5FB622001FDC49 /* PassageICloudTests.swift */,
-			);
-			path = Tests;
-			sourceTree = "<group>";
-		};
-		6BB4323B2A9161E90048C787 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				6BB4323C2A9161F00048C787 /* Plan.swift */,
-				6BB4323E2A9161FF0048C787 /* PlanConstants.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		6BB432402A91620C0048C787 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				6BB432412A91622A0048C787 /* OnboardView.swift */,
-				6BB432452A9162430048C787 /* PlanView.swift */,
-				6BB432432A9162350048C787 /* ContentView.swift */,
-				6BB432472A91624D0048C787 /* ReadingSelectionView.swift */,
-				6BB432492A9162580048C787 /* SettingsView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6BB432082A9161130048C787 /* The M'Cheyne Plan */ = {
+		6B4366B82F02D029003AAF9B /* The M'Cheyne Plan */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6BB4322E2A9161150048C787 /* Build configuration list for PBXNativeTarget "The M'Cheyne Plan" */;
+			buildConfigurationList = 6B4366DA2F02D02A003AAF9B /* Build configuration list for PBXNativeTarget "The M'Cheyne Plan" */;
 			buildPhases = (
-				6BB432052A9161130048C787 /* Sources */,
-				6BB432062A9161130048C787 /* Frameworks */,
-				6BB432072A9161130048C787 /* Resources */,
+				6B4366B52F02D029003AAF9B /* Sources */,
+				6B4366B62F02D029003AAF9B /* Frameworks */,
+				6B4366B72F02D029003AAF9B /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				6B4366BB2F02D029003AAF9B /* App */,
 			);
 			name = "The M'Cheyne Plan";
+			packageProductDependencies = (
+			);
 			productName = "mcheyne-plan";
-			productReference = 6BB432092A9161130048C787 /* The M'Cheyne Plan.app */;
+			productReference = 6B4366B92F02D029003AAF9B /* The M'Cheyne Plan.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6BB432192A9161150048C787 /* The M'Cheyne PlanTests */ = {
+		6B4366C52F02D02A003AAF9B /* The M'Cheyne PlanTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6BB432312A9161150048C787 /* Build configuration list for PBXNativeTarget "The M'Cheyne PlanTests" */;
+			buildConfigurationList = 6B4366DD2F02D02A003AAF9B /* Build configuration list for PBXNativeTarget "The M'Cheyne PlanTests" */;
 			buildPhases = (
-				6BB432162A9161150048C787 /* Sources */,
-				6BB432172A9161150048C787 /* Frameworks */,
-				6BB432182A9161150048C787 /* Resources */,
+				6B4366C22F02D02A003AAF9B /* Sources */,
+				6B4366C32F02D02A003AAF9B /* Frameworks */,
+				6B4366C42F02D02A003AAF9B /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				6BB4321C2A9161150048C787 /* PBXTargetDependency */,
+				6B4366C82F02D02A003AAF9B /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				6B4366C92F02D02A003AAF9B /* Tests */,
 			);
 			name = "The M'Cheyne PlanTests";
+			packageProductDependencies = (
+			);
 			productName = "mcheyne-planTests";
-			productReference = 6BB4321A2A9161150048C787 /* The M'Cheyne PlanTests.xctest */;
+			productReference = 6B4366C62F02D02A003AAF9B /* The M'Cheyne PlanTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		6BB432232A9161150048C787 /* The M'Cheyne PlanUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6BB432342A9161150048C787 /* Build configuration list for PBXNativeTarget "The M'Cheyne PlanUITests" */;
-			buildPhases = (
-				6BB432202A9161150048C787 /* Sources */,
-				6BB432212A9161150048C787 /* Frameworks */,
-				6BB432222A9161150048C787 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6BB432262A9161150048C787 /* PBXTargetDependency */,
-			);
-			name = "The M'Cheyne PlanUITests";
-			productName = "mcheyne-planUITests";
-			productReference = 6BB432242A9161150048C787 /* The M'Cheyne PlanUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		6BB432012A9161130048C787 /* Project object */ = {
+		6B4366B12F02D029003AAF9B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
-				LastUpgradeCheck = 1620;
+				LastSwiftUpdateCheck = 2620;
+				LastUpgradeCheck = 2620;
 				TargetAttributes = {
-					6BB432082A9161130048C787 = {
-						CreatedOnToolsVersion = 15.0;
+					6B4366B82F02D029003AAF9B = {
+						CreatedOnToolsVersion = 26.2;
 					};
-					6BB432192A9161150048C787 = {
-						CreatedOnToolsVersion = 15.0;
-						TestTargetID = 6BB432082A9161130048C787;
-					};
-					6BB432232A9161150048C787 = {
-						CreatedOnToolsVersion = 15.0;
-						TestTargetID = 6BB432082A9161130048C787;
+					6B4366C52F02D02A003AAF9B = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = 6B4366B82F02D029003AAF9B;
 					};
 				};
 			};
-			buildConfigurationList = 6BB432042A9161130048C787 /* Build configuration list for PBXProject "The M'Cheyne Plan" */;
-			compatibilityVersion = "Xcode 14.0";
+			buildConfigurationList = 6B4366B42F02D029003AAF9B /* Build configuration list for PBXProject "The M'Cheyne Plan" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -268,39 +169,28 @@
 				Base,
 				es,
 			);
-			mainGroup = 6BB432002A9161130048C787;
-			productRefGroup = 6BB4320A2A9161130048C787 /* Products */;
+			mainGroup = 6B4366B02F02D029003AAF9B;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 6B4366BA2F02D029003AAF9B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6BB432082A9161130048C787 /* The M'Cheyne Plan */,
-				6BB432192A9161150048C787 /* The M'Cheyne PlanTests */,
-				6BB432232A9161150048C787 /* The M'Cheyne PlanUITests */,
+				6B4366B82F02D029003AAF9B /* The M'Cheyne Plan */,
+				6B4366C52F02D02A003AAF9B /* The M'Cheyne PlanTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		6BB432072A9161130048C787 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				491E42A42D516D87007DA048 /* Books.xcstrings in Resources */,
-				6BB432152A9161150048C787 /* Preview Assets.xcassets in Resources */,
-				6BB432112A9161150048C787 /* Assets.xcassets in Resources */,
-				49048A422D4F73DE0039D103 /* Localizable.xcstrings in Resources */,
-				491E42AA2D518158007DA048 /* LocalDevelopment.xcconfig in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6BB432182A9161150048C787 /* Resources */ = {
+		6B4366B72F02D029003AAF9B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6BB432222A9161150048C787 /* Resources */ = {
+		6B4366C42F02D02A003AAF9B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -310,38 +200,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		6BB432052A9161130048C787 /* Sources */ = {
+		6B4366B52F02D029003AAF9B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BB4324D2A9162D60048C787 /* OnboardView.swift in Sources */,
-				6BB432512A9162E20048C787 /* SettingsView.swift in Sources */,
-				6BB4324C2A9162D20048C787 /* PlanConstants.swift in Sources */,
-				6BB4324F2A9162DC0048C787 /* ContentView.swift in Sources */,
-				6BB4324B2A9162CC0048C787 /* Plan.swift in Sources */,
-				6BB432502A9162DF0048C787 /* ReadingSelectionView.swift in Sources */,
-				6BB4320D2A9161130048C787 /* App.swift in Sources */,
-				6BB4324E2A9162D90048C787 /* PlanView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6BB432162A9161150048C787 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6BB432522A91634B0048C787 /* Plan.swift in Sources */,
-				5584360E2E5FB622001FDC49 /* ICloudMigrationTests.swift in Sources */,
-				5584360F2E5FB622001FDC49 /* ICloudIntegrationTests.swift in Sources */,
-				558436102E5FB622001FDC49 /* MockUbiquitousKeyValueStore.swift in Sources */,
-				558436112E5FB622001FDC49 /* PassageICloudTests.swift in Sources */,
-				6BB432382A9161AC0048C787 /* MockUserDefaults.swift in Sources */,
-				6BB4323A2A9161C30048C787 /* MockUserDefaultsTests.swift in Sources */,
-				6BB4321F2A9161150048C787 /* PlanTests.swift in Sources */,
-				6BB432532A9163770048C787 /* PlanConstants.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6BB432202A9161150048C787 /* Sources */ = {
+		6B4366C22F02D02A003AAF9B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -351,26 +217,19 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		6BB4321C2A9161150048C787 /* PBXTargetDependency */ = {
+		6B4366C82F02D02A003AAF9B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6BB432082A9161130048C787 /* The M'Cheyne Plan */;
-			targetProxy = 6BB4321B2A9161150048C787 /* PBXContainerItemProxy */;
-		};
-		6BB432262A9161150048C787 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6BB432082A9161130048C787 /* The M'Cheyne Plan */;
-			targetProxy = 6BB432252A9161150048C787 /* PBXContainerItemProxy */;
+			target = 6B4366B82F02D029003AAF9B /* The M'Cheyne Plan */;
+			targetProxy = 6B4366C72F02D02A003AAF9B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		6BB4322C2A9161150048C787 /* Debug */ = {
+		6B4366D82F02D02A003AAF9B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 491E42A92D518158007DA048 /* LocalDevelopment.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -400,9 +259,8 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = QSQY64SHJ5;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -425,18 +283,15 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		6BB4322D2A9161150048C787 /* Release */ = {
+		6B4366D92F02D02A003AAF9B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 491E42A92D518158007DA048 /* LocalDevelopment.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -466,8 +321,8 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = QSQY64SHJ5;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -483,25 +338,25 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_EMIT_LOC_STRINGS = YES;
 			};
 			name = Release;
 		};
-		6BB4322F2A9161150048C787 /* Debug */ = {
+		6B4366DB2F02D02A003AAF9B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Shared/App.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "The M'Cheyne Plan.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
-				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"Shared/Preview Content\"";
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QSQY64SHJ5;
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "M'Cheyne Plan";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -511,38 +366,48 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 2.2;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				/* x-release-please-start-version */
+				MARKETING_VERSION = 2.2.0;
+				/* x-release-please-end */
 				PRODUCT_BUNDLE_IDENTIFIER = "com.willswire.mcheyne-plan";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				XROS_DEPLOYMENT_TARGET = 26.2;
 			};
 			name = Debug;
 		};
-		6BB432302A9161150048C787 /* Release */ = {
+		6B4366DC2F02D02A003AAF9B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Shared/App.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "The M'Cheyne Plan.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
-				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"Shared/Preview Content\"";
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QSQY64SHJ5;
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "M'Cheyne Plan";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -552,153 +417,115 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 2.2;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				/* x-release-please-start-version */
+				MARKETING_VERSION = 2.2.0;
+				/* x-release-please-end */
 				PRODUCT_BUNDLE_IDENTIFIER = "com.willswire.mcheyne-plan";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				XROS_DEPLOYMENT_TARGET = 26.2;
 			};
 			name = Release;
 		};
-		6BB432322A9161150048C787 /* Debug */ = {
+		6B4366DE2F02D02A003AAF9B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = QSQY64SHJ5;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				MACOSX_DEPLOYMENT_TARGET = 26.2;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.willswire.mcheyne-planTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/The M'Cheyne Plan.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/The M'Cheyne Plan";
+				XROS_DEPLOYMENT_TARGET = 26.2;
 			};
 			name = Debug;
 		};
-		6BB432332A9161150048C787 /* Release */ = {
+		6B4366DF2F02D02A003AAF9B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = QSQY64SHJ5;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				MACOSX_DEPLOYMENT_TARGET = 26.2;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.willswire.mcheyne-planTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/The M'Cheyne Plan.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/The M'Cheyne Plan";
-			};
-			name = Release;
-		};
-		6BB432352A9161150048C787 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = QSQY64SHJ5;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.willswire.mcheyne-planUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "mcheyne-plan";
-			};
-			name = Debug;
-		};
-		6BB432362A9161150048C787 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = QSQY64SHJ5;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.willswire.mcheyne-planUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "mcheyne-plan";
+				XROS_DEPLOYMENT_TARGET = 26.2;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6BB432042A9161130048C787 /* Build configuration list for PBXProject "The M'Cheyne Plan" */ = {
+		6B4366B42F02D029003AAF9B /* Build configuration list for PBXProject "The M'Cheyne Plan" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6BB4322C2A9161150048C787 /* Debug */,
-				6BB4322D2A9161150048C787 /* Release */,
+				6B4366D82F02D02A003AAF9B /* Debug */,
+				6B4366D92F02D02A003AAF9B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6BB4322E2A9161150048C787 /* Build configuration list for PBXNativeTarget "The M'Cheyne Plan" */ = {
+		6B4366DA2F02D02A003AAF9B /* Build configuration list for PBXNativeTarget "The M'Cheyne Plan" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6BB4322F2A9161150048C787 /* Debug */,
-				6BB432302A9161150048C787 /* Release */,
+				6B4366DB2F02D02A003AAF9B /* Debug */,
+				6B4366DC2F02D02A003AAF9B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6BB432312A9161150048C787 /* Build configuration list for PBXNativeTarget "The M'Cheyne PlanTests" */ = {
+		6B4366DD2F02D02A003AAF9B /* Build configuration list for PBXNativeTarget "The M'Cheyne PlanTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6BB432322A9161150048C787 /* Debug */,
-				6BB432332A9161150048C787 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6BB432342A9161150048C787 /* Build configuration list for PBXNativeTarget "The M'Cheyne PlanUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6BB432352A9161150048C787 /* Debug */,
-				6BB432362A9161150048C787 /* Release */,
+				6B4366DE2F02D02A003AAF9B /* Debug */,
+				6B4366DF2F02D02A003AAF9B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 6BB432012A9161130048C787 /* Project object */;
+	rootObject = 6B4366B12F02D029003AAF9B /* Project object */;
 }
