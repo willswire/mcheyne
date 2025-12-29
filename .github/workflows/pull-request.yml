@@ -16,7 +16,7 @@ jobs:
         run: |
           xcodebuild build-for-testing \
             -project "The M'Cheyne Plan.xcodeproj" \
-            -scheme "The M'Cheyne PlanTests" \
+            -scheme "The M'Cheyne Plan Tests" \
             -destination 'platform=iOS Simulator,name=iPhone 17' \
           | xcbeautify
 
@@ -27,6 +27,6 @@ jobs:
             -project "The M'Cheyne Plan.xcodeproj" \
             -scheme "The M'Cheyne Plan" \
             -destination 'platform=iOS Simulator,name=iPhone 17' \
-            -only-testing:"The M'Cheyne PlanTests" \
+            -only-testing:"The M'Cheyne Plan Tests" \
             -parallel-testing-enabled NO \
           | xcbeautify
