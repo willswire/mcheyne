@@ -13,5 +13,5 @@ Open `The M'Cheyne Plan.xcodeproj` in Xcode and run.
 
 ## Structure
 
-- `Shared/` - App source and shared assets
+- `App/` - App source and shared assets
 - `Tests/` - Unit tests
