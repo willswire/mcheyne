@@ -1,0 +1,32 @@
+name: Pull Request
+
+on:
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  test:
+    runs-on: macos-26
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build for Testing
+        shell: bash
+        run: |
+          xcodebuild build-for-testing \
+            -project "The M'Cheyne Plan.xcodeproj" \
+            -scheme "The M'Cheyne PlanTests" \
+            -destination 'platform=iOS Simulator,name=iPhone 17' \
+          | xcbeautify
+
+      - name: Run Unit Tests
+        shell: bash
+        run: |
+          xcodebuild test-without-building \
+            -project "The M'Cheyne Plan.xcodeproj" \
+            -scheme "The M'Cheyne Plan" \
+            -destination 'platform=iOS Simulator,name=iPhone 17' \
+            -only-testing:"The M'Cheyne PlanTests" \
+            -parallel-testing-enabled NO \
+          | xcbeautify
