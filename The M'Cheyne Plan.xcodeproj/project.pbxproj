@@ -373,7 +373,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				/* x-release-please-start-version */
-				MARKETING_VERSION = 2.2.0;
+				MARKETING_VERSION = 2.3.0;
 				/* x-release-please-end */
 				PRODUCT_BUNDLE_IDENTIFIER = "com.willswire.mcheyne-plan";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -424,7 +424,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				/* x-release-please-start-version */
-				MARKETING_VERSION = 2.2.0;
+				MARKETING_VERSION = 2.3.0;
 				/* x-release-please-end */
 				PRODUCT_BUNDLE_IDENTIFIER = "com.willswire.mcheyne-plan";
 				PRODUCT_NAME = "$(TARGET_NAME)";
