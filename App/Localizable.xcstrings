@@ -1,0 +1,190 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "All reading plan progress will be erased. A new plan will be created starting on today's date." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se borrará todo el progreso del plan de lectura. Se creará un nuevo plan a partir de la fecha de hoy."
+          }
+        }
+      }
+    },
+    "Close" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerrar"
+          }
+        }
+      }
+    },
+    "Close Settings" : {
+
+    },
+    "Continue to Plan" : {
+
+    },
+    "Daily Bible Reading Plan" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan de Lectura de la Biblia"
+          }
+        }
+      }
+    },
+    "Danger Zone" : {
+
+    },
+    "Go to Today" : {
+
+    },
+    "Happy Leap Year!" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Feliz Año Bisiesto!"
+          }
+        }
+      }
+    },
+    "Import Progress" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importar Progreso"
+          }
+        }
+      }
+    },
+    "Next" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siguiente"
+          }
+        }
+      }
+    },
+    "Next Day" : {
+
+    },
+    "Plan" : {
+
+    },
+    "Preferences" : {
+
+    },
+    "Previous Day" : {
+
+    },
+    "Read" : {
+
+    },
+    "Reset" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reiniciar"
+          }
+        }
+      }
+    },
+    "Reset Plan" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reiniciar Plan"
+          }
+        }
+      }
+    },
+    "Reset Progress" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reiniciar Progreso"
+          }
+        }
+      }
+    },
+    "Robert Murray M'Cheyne was an early 19th century minister who lived in Scotland. His daily Bible reading plan guides readers through the Old Testament once and the New Testament and Psalms twice per year." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Robert Murray M'Cheyne fue un ministro de principios del siglo XIX que vivió en Escocia. Su plan de lectura diaria de la Biblia guía a los lectores a través del Antiguo Testamento una vez y del Nuevo Testamento y los Salmos dos veces al año"
+          }
+        }
+      }
+    },
+    "Self-Paced Mode" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modo a Ritmo Propio"
+          }
+        }
+      }
+    },
+    "Settings" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configuración"
+          }
+        }
+      }
+    },
+    "Start Date" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fecha de Inicio"
+          }
+        }
+      }
+    },
+    "The M'Cheyne" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Robert M’Cheyne"
+          }
+        }
+      }
+    },
+    "Today" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hoy"
+          }
+        }
+      }
+    },
+    "Unread" : {
+
+    },
+    "Welcome" : {
+
+    }
+  },
+  "version" : "1.0"
+}
